@@ -6,7 +6,7 @@ import '../App.css'
 function products() {
   return (
     <>
-      <div className="h-auto md:h-[100vh] lg:h-[100vh] bg-gray-100 text-black py-20">
+      <div className="h-auto md:h-[auto] lg:h-[auto] bg-gray-100 text-black py-20">
         <h1 className="prod-1 7font-bold text-5xl">What We Offer</h1>
         <p className="">Curious? Here are our most popular items.</p>
         <div className="block md:flex lg:flex justify-between w-5/6 mx-auto mt-8">
