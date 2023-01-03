@@ -129,5 +129,9 @@
 /* prod */
 
 .prod-1 {
-  animation: s ease-in-out .5s 1 fadeIn;
+  animation: .5s ease-in-out .5s 1 fadeIn;
+}
+
+.fullproduct {
+  animation: .5s ease-in-out .5s 1 slideInRight;
 }
