@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../App.css'
 
 function home() {
@@ -10,8 +11,9 @@ function home() {
           <h1 className="larry-pat mt-8 font-bold text-5xl md:text-7xl lg:text-7xl">Larry-Pat</h1>
           <h1 className="foods font-bold text-5xl md:text-7xl lg:text-7xl">Foods</h1>
           <p className='under-foods mt-4 text-xl md:text-2xl lg:text-2xl text-center md:text-left lg:text-left'>The best quality food product there is</p>
+          <br />
           <div className="text-center md:text-left lg:text-left">
-            <button id='order-button' className='mt-16 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xl md:text-2xl lg:text-2xl animate-bounce'>ORDER NOW</button>
+            <Link to='/prodlist' id='order-button' className='mt-16 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xl md:text-2xl lg:text-2xl animate-bounce'>CHECK OUT</Link>
           </div>
         </div>
         <div className="first-image block md:my-auto lg:my-auto w-[100%] md:w-[50%] lg:w-[50%] p-20 md:pl-0 lg:pl-0 pt-5 md:pt-20 lg:pt-20">

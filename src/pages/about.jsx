@@ -13,7 +13,7 @@ function about() {
           <p className="about-3 mt-8">
             Get yourself a great quality product today!
           </p>
-          <button className='mt-8 bg-black hover:bg-gray-900 transition-all py-2 px-4 rounded-3xl text-white animate-bounce'>LEARN MORE</button>
+          {/* <button className='mt-8 bg-black hover:bg-gray-900 transition-all py-2 px-4 rounded-3xl text-white animate-bounce'>LEARN MORE</button> */}
         </div>
       </div>
     </>

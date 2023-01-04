@@ -33,7 +33,7 @@ function loginpage() {
                 <br />
                 <label htmlFor="mobilenumber">Phone Number: </label>
                 <br className="block md:hidden lg:hidden" />
-                <input type="number" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder=''  required />
+                <input type="tel" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder=''  required />
                 <br />
                 <br />
                 <label htmlFor="email">Email: </label>
@@ -43,7 +43,7 @@ function loginpage() {
                 <br />
                 <label htmlFor="address">Address: </label>
                 <br className="block md:hidden lg:hidden" />
-                <input type="address" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder=''  required />
+                <textarea type='address' id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' required />
                 <br />
                 <br />
                 <label htmlFor="country">Country: </label>
