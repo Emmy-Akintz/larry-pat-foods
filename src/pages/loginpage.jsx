@@ -18,10 +18,12 @@ function loginpage() {
                 <h1 className='font-bold text-xl'>LOGIN TO LARRY-PAT FOODS</h1>
                 <br />
                 <label htmlFor="email">Email: </label>
+                <br className="block md:hidden lg:hidden" />
                 <input type="email" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' required />
                 <br />
                 <br />
                 <label htmlFor="password">Password: </label>
+                <br className="block md:hidden lg:hidden" />
                 <input type="password" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' required />
                 <br />
                 <br />

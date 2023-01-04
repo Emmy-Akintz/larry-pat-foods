@@ -17,34 +17,42 @@ function loginpage() {
                 <h1 className='font-bold text-xl'>SIGNUP TO LARRY-PAT FOODS</h1>
                 <br />
                 <label htmlFor="firstName">First Name: </label>
+                <br className="block md:hidden lg:hidden" />
                 <input type="text" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' required />
                 <br />
                 <br />
                 <label htmlFor="lastName">Last Name: </label>
+                <br className="block md:hidden lg:hidden" />
                 <input type="text" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder=''  required />
                 <br />
                 <br />
                 <label htmlFor="password">Password: </label>
+                <br className="block md:hidden lg:hidden" />
                 <input type="password" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder=''  required />
                 <br />
                 <br />
                 <label htmlFor="mobilenumber">Phone Number: </label>
+                <br className="block md:hidden lg:hidden" />
                 <input type="number" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder=''  required />
                 <br />
                 <br />
                 <label htmlFor="email">Email: </label>
+                <br className="block md:hidden lg:hidden" />
                 <input type="email" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder=''  required />
                 <br />
                 <br />
                 <label htmlFor="address">Address: </label>
+                <br className="block md:hidden lg:hidden" />
                 <input type="address" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder=''  required />
                 <br />
                 <br />
                 <label htmlFor="country">Country: </label>
+                <br className="block md:hidden lg:hidden" />
                 <input type="country" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder=''  required />
                 <br />
                 <br />
                 <label htmlFor="postcode">Postal Code: </label>
+                <br className="block md:hidden lg:hidden" />
                 <input type="postcode" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder=''  required />
                 <br />
                 <br />
