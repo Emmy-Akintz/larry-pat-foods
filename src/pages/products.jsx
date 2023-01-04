@@ -13,6 +13,7 @@ function products() {
           <div className="bg-white w-[150px] md:w-[25%] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
             <img src="images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png" alt="" />
             <p className="font-bold">SAMOSA</p>
+            <p className="">₦5000</p>
             <IconContext.Provider value={{ color: 'black' }}>
               <FaArrowDown className='mx-auto mt-4 animate-bounce' />
             </IconContext.Provider>
@@ -23,6 +24,7 @@ function products() {
           <div className="bg-white w-[150px] md:w-[25%] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
             <img src="images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png" alt="" />
             <p className="font-bold">PEANUT</p>
+            <p className="">₦5000</p>
             <IconContext.Provider value={{ color: 'black' }}>
               <FaArrowDown className='mx-auto mt-4 animate-bounce' />
             </IconContext.Provider>
@@ -33,6 +35,7 @@ function products() {
           <div className="bg-white w-[150px] md:w-[25%] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
             <img src="images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png" alt="" />
             <p className="font-bold">CHINCHIN</p>
+            <p className="">₦5000</p>  
             <IconContext.Provider value={{ color: 'black' }}>
               <FaArrowDown className='mx-auto mt-4 animate-bounce' />
             </IconContext.Provider>

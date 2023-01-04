@@ -1,6 +1,6 @@
 import React from 'react'
 import { IconContext } from 'react-icons'
-import { FaArrowLeft, FaTimes } from 'react-icons/fa'
+import { FaHome, FaTimes } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
 function loginpage() {
@@ -9,7 +9,7 @@ function loginpage() {
             <Link to='/'>
                 <div className="p-4 bg-green-500 hover:bg-green-300 w-12 rounded">
                     <IconContext.Provider value={{ color: 'white' }}>
-                        <FaArrowLeft />
+                        <FaHome />
                     </IconContext.Provider>
                 </div>
             </Link>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { IconContext } from 'react-icons'
-import { FaArrowLeft } from 'react-icons/fa'
+import { FaHome, FaTimes } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
 function loginpage() {
@@ -9,7 +9,7 @@ function loginpage() {
             <Link to='/'>
                 <div className="p-4 bg-green-500 hover:bg-green-300 w-12 rounded">
                     <IconContext.Provider value={{ color: 'white' }}>
-                        <FaArrowLeft />
+                        <FaHome />
                     </IconContext.Provider>
                 </div>
             </Link>
@@ -24,6 +24,8 @@ function loginpage() {
                 <label htmlFor="password">Password: </label>
                 <input type="password" id='' className='rounded border-gray-700 px-2 py-1' placeholder='' required />
                 <br />
+                <br />
+                <button type="reset" title='Clear form'><FaTimes /></button>
                 <br />
                 <button type="submit" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'>LOGIN</button>
                 <br />
