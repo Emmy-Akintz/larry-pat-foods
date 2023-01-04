@@ -17,35 +17,35 @@ function loginpage() {
                 <h1 className='font-bold text-xl'>SIGNUP TO LARRY-PAT FOODS</h1>
                 <br />
                 <label htmlFor="firstName">First Name: </label>
-                <input type="text" id='' className='rounded border-gray-700 px-2 py-1' placeholder='' required />
+                <input type="text" id='' className='rounded border-gray-700 px-2 py- w-[150px] md:w-[170px] lg:w-[200px]1' placeholder='' required />
                 <br />
                 <br />
                 <label htmlFor="lastName">Last Name: </label>
-                <input type="text" id='' className='rounded border-gray-700 px-2 py-1' placeholder=''  required />
+                <input type="text" id='' className='rounded border-gray-700 px-2 py-1 w-[150px] md:w-[170px] lg:w-[200px]' placeholder=''  required />
                 <br />
                 <br />
                 <label htmlFor="password">Password: </label>
-                <input type="password" id='' className='rounded border-gray-700 px-2 py-1' placeholder=''  required />
+                <input type="password" id='' className='rounded border-gray-700 px-2 py-1 w-[150px] md:w-[170px] lg:w-[200px]' placeholder=''  required />
                 <br />
                 <br />
                 <label htmlFor="mobilenumber">Phone Number: </label>
-                <input type="number" id='' className='rounded border-gray-700 px-2 py-1' placeholder=''  required />
+                <input type="number" id='' className='rounded border-gray-700 px-2 py-1 w-[150px] md:w-[170px] lg:w-[200px]' placeholder=''  required />
                 <br />
                 <br />
                 <label htmlFor="email">Email: </label>
-                <input type="email" id='' className='rounded border-gray-700 px-2 py-1' placeholder=''  required />
+                <input type="email" id='' className='rounded border-gray-700 px-2 py-1 w-[150px] md:w-[170px] lg:w-[200px]' placeholder=''  required />
                 <br />
                 <br />
                 <label htmlFor="address">Address: </label>
-                <input type="address" id='' className='rounded border-gray-700 px-2 py-1' placeholder=''  required />
+                <input type="address" id='' className='rounded border-gray-700 px-2 py-1 w-[150px] md:w-[170px] lg:w-[200px]' placeholder=''  required />
                 <br />
                 <br />
                 <label htmlFor="country">Country: </label>
-                <input type="country" id='' className='rounded border-gray-700 px-2 py-1' placeholder=''  required />
+                <input type="country" id='' className='rounded border-gray-700 px-2 py-1 w-[150px] md:w-[170px] lg:w-[200px]' placeholder=''  required />
                 <br />
                 <br />
                 <label htmlFor="postcode">Postal Code: </label>
-                <input type="postcode" id='' className='rounded border-gray-700 px-2 py-1' placeholder=''  required />
+                <input type="postcode" id='' className='rounded border-gray-700 px-2 py-1 w-[150px] md:w-[170px] lg:w-[200px]' placeholder=''  required />
                 <br />
                 <br />
                 <button type="reset" title='Clear form'><FaTimes /></button>
