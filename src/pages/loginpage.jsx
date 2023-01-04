@@ -32,6 +32,8 @@ function loginpage() {
                 <button type="submit" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'>LOGIN</button>
                 <br />
                 <br />
+                <p>Forgotten <Link to='/login' className='text-green-700 font-bold hover:underline'>PASSWORD</Link></p>
+                <br />
                 <hr />
                 <br />
                 <p>Don't have an account?</p>
