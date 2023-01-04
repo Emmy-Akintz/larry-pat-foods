@@ -1,6 +1,7 @@
 import React from 'react'
 import { IconContext } from 'react-icons'
 import { FaArrowDown } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
 import '../App.css'
 
 function products() {
@@ -46,7 +47,7 @@ function products() {
         </div>
         <br />
         <button>
-          <a href="/prodlist" className='mt-12 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white animate-bounce'>VIEW FULL MENU</a>
+          <Link to="/prodlist" className='mt-12 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white animate-bounce'>VIEW FULL MENU</Link>
         </button>
       </div>
     </>
