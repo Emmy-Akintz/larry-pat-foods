@@ -18,11 +18,11 @@ function loginpage() {
                 <h1 className='font-bold text-xl'>LOGIN TO LARRY-PAT FOODS</h1>
                 <br />
                 <label htmlFor="email">Email: </label>
-                <input type="email" id='' className='rounded border-gray-700 px-2 py-1 w-[150px] md:w-[170px] lg:w-[200px]' placeholder='' required />
+                <input type="email" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' required />
                 <br />
                 <br />
                 <label htmlFor="password">Password: </label>
-                <input type="password" id='' className='rounded border-gray-700 px-2 py-1 w-[150px] md:w-[170px] lg:w-[200px]' placeholder='' required />
+                <input type="password" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' required />
                 <br />
                 <br />
                 <button type="reset" title='Clear form'><FaTimes /></button>
