@@ -73,12 +73,30 @@
   }
 }
 
+@keyframes slideInRight2 {
+  0% {
+    transform: translateX(200%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes slideInTop {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 
@@ -134,4 +152,10 @@
 
 .fullproduct {
   animation: .5s ease-in-out .5s 1 slideInRight;
+}
+
+/* back to top */
+
+.back-to-top {
+  animation: 2s ease-in-out 1s 1 slideInRight2;
 }
