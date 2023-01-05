@@ -6,7 +6,7 @@ import '../App.css'
 
 function signup() {
     return (
-        <div className='logsign p-4'>
+        <div className='logsign p-4 bg-gray-200'>
             <Link to='/'>
                 <div className="p-4 bg-green-500 hover:bg-green-300 w-12 rounded">
                     <IconContext.Provider value={{ color: 'white' }}>
