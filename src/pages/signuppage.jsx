@@ -3,7 +3,7 @@ import { IconContext } from 'react-icons'
 import { FaHome, FaTimes } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
-function loginpage() {
+function signup() {
     return (
         <div className='p-4'>
             <Link to='/'>
@@ -70,4 +70,4 @@ function loginpage() {
     )
 }
 
-export default loginpage
+export default signup
