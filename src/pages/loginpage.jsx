@@ -2,10 +2,11 @@ import React from 'react'
 import { IconContext } from 'react-icons'
 import { FaHome, FaTimes } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
+import '../App.css'
 
 function loginpage() {
     return (
-        <div className='p-4'>
+        <div className='logsign p-4'>
             <Link to='/'>
                 <div className="p-4 bg-green-500 hover:bg-green-300 w-12 rounded">
                     <IconContext.Provider value={{ color: 'white' }}>

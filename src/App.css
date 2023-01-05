@@ -157,5 +157,11 @@
 /* back to top */
 
 .back-to-top {
-  animation: 2.5s ease-in-out 0s 1 slideInRight2;
+  animation: 2.5s ease-in-out 0s 1 slideInRight;
+}
+
+/* login and signup */
+
+.logsign {
+  animation: 1s ease-in-out 0s 1 slideInRight;
 }
