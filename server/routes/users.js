@@ -7,7 +7,7 @@ const {
 const router = express.Router()
 
 // create a new user
-router.post('/:id', createUser)
+router.post('/', createUser)
 
 // update password
 router.patch('/:id', updatePassword)
