@@ -15,28 +15,28 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    phoneNumber: {
-        type: Number,
-        required: true,
-        unique: true
-    },
+    // phoneNumber: {
+    //     type: Number,
+    //     required: true,
+    //     unique: true
+    // },
     email: {
         type: String,
         required: true,
         unique: true
-    },
-    address: {
-        type: String,
-        required: true
-    },
-    country: {
-        type: String,
-        required: true
-    },
-    postalCode: {
-        type: Number,
-        required: true
     }
+    // address: {
+    //     type: String,
+    //     required: true
+    // },
+    // country: {
+    //     type: String,
+    //     required: true
+    // },
+    // postalCode: {
+    //     type: Number,
+    //     required: true
+    // }
 }, { timestamps: true })
 
 module.exports = mongoose.model('User', userSchema)
