@@ -3,7 +3,11 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
-// const bodyParser = require('body-parser')
+// 
+const bodyParser = require('body-parser')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
+// 
 const larrypatUsers = require('./routes/users')
 
 // express app
@@ -21,6 +25,21 @@ app.use((res, req, next) => {
 
 // routes
 app.use('/larrypat/users', larrypatUsers)
+
+// user login
+app.use(bodyParser.json())
+
+app.post('/larrypat/users/login', (req, res) => {
+    const {email, password} = req.body;
+    const user = users.find(user => user.email === email);
+
+    if(!user || !bcrypt.compareSync(password, user.password)) {
+        return res.status(401).json({message: 'Invalid credentials'});
+    }
+
+    const token = jwt.sign({userID: user.id}, 'testing123');
+    res.json({token});
+})
 
 // connect to db
 mongoose.connect(process.env.MONGO_URI)
