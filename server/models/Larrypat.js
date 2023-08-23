@@ -6,5 +6,5 @@ const LarrypatSchema = new mongoose.Schema({
     password: String
 })
 
-const LarrypatModel = mongoose.model("larrypatUsers". LarrypatSchema)
+const LarrypatModel = mongoose.model("larrypatUsers", LarrypatSchema)
 module.exports = LarrypatModel

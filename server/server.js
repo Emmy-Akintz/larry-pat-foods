@@ -11,7 +11,7 @@ mongoose.connect("mongodb://localhost://127.0.0.1:27017/larrypat");
 
 app.post('/users', (req, res) => {
     LarrypatModel.create(req.body)
-    .then(larrypatUsers => res.json(larrypatUsers))
+    .then(larryPatUsers => res.json(larryPatUsers))
     .catch(err => res.json(err))
 })
 
