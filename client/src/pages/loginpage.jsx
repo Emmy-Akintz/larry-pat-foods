@@ -1,6 +1,6 @@
-import React, { 
+import React, {
     // useState
- } from 'react'
+} from 'react'
 import { IconContext } from 'react-icons'
 import { FaHome, FaTimes } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
@@ -48,8 +48,8 @@ function Loginpage() {
                 <hr />
                 <br />
                 <p>Don't have an account?</p>
-                <p>SignUp <Link to='/signup' className='text-green-700 font-bold hover:underline'>HERE</Link></p>
             </form>
+            <p>SignUp <Link to='/signup' className='text-green-700 font-bold hover:underline'>HERE</Link></p>
         </div>
     );
 }
