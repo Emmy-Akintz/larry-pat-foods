@@ -34,7 +34,7 @@ function Signup() {
     const register = () => {
         const {name,  password, phoneNumber, email, address, country, postalCode} = user
         if (name && password && phoneNumber && email && address && country && postalCode) {
-            axios.post("http://localhost:25S0/signUp", user)
+            axios.post("http://localhost:25S0/larrypat/users/signup", user)
             .then(res=>console.log(res))
         } 
         else {
