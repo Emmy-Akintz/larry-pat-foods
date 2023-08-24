@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom'
 import { FaArrowAltCircleUp } from 'react-icons/fa'
 import '../App.css'
 
-function parentpage() {
+function Parentpage() {
   return (
     <>
     <div className="h-auto">
@@ -26,4 +26,4 @@ function parentpage() {
   )
 }
 
-export default parentpage
+export default Parentpage

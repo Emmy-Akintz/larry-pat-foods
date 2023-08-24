@@ -1,17 +1,29 @@
-import React, {
-    // useState
-} from 'react'
+import React, { useState } from 'react'
 import { IconContext } from 'react-icons'
 import { FaHome, FaTimes } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../App.css'
-
-// import axios from 'axios'
+import axios from 'axios'
 
 function Loginpage() {
+    const [email, setEmail] = useState()
+    const [password, setPassword] = useState()
+    const navigate = useNavigate()
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        axios.post("http://localhost:2500/login", { email, password })
+            .then(result => {
+                console.log(result)
+                if (result.data === "Success!") {
+                    navigate('/')
+                }
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
-        <div className='logsign p-4 bg-gray-200 h-[100vh]'>
+        <div className='logsign p-4 bg-gray-200 h-auto'>
             <Link to='/'>
                 <div className="p-4 bg-green-500 hover:bg-green-300 w-12 rounded">
                     <IconContext.Provider value={{ color: 'white' }}>
@@ -20,22 +32,17 @@ function Loginpage() {
                 </div>
             </Link>
             <br />
-            <form action="/" className='rounded-xl w-[250px] md:w-[400px] lg:w-[500px] m-auto p-4 bg-green-100'>
+            <form action="/" className='rounded-xl w-[250px] md:w-[400px] lg:w-[500px] m-auto p-4 bg-green-100' onSubmit={handleSubmit}>
                 <h1 className='font-bold text-xl'>LOGIN TO LARRY-PAT FOODS</h1>
-                <br />
-                <label htmlFor="fullName">Full Name: </label>
-                <br className="block md:hidden lg:hidden" />
-                <input type="text" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' required />
-                <br />
                 <br />
                 <label htmlFor="email">Email: </label>
                 <br className="block md:hidden lg:hidden" />
-                <input type="email" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' required />
+                <input type="email" id='email' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' name='email' onChange={(e) => setEmail(e.target.value)} required />
                 <br />
                 <br />
                 <label htmlFor="password">Password: </label>
                 <br className="block md:hidden lg:hidden" />
-                <input type="password" id='' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' required />
+                <input type="password" id='password' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' name='password' onChange={(e) => setPassword(e.target.value)} required />
                 <br />
                 <br />
                 <button type="reset" title='Clear form'><FaTimes /></button>
