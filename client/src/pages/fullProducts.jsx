@@ -15,9 +15,9 @@ function FullProducts() {
                     </IconContext.Provider>
                 </div>
             </Link>
-            <div className="grid grid-cols-2 gap-10 md:list-item lg:list-item justify-between w-5/6 mx-auto mt-8">
+            <div className="grid grid-cols-2 gap-10 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 justify-between w-5/6 mx-auto mt-8">
                 {prod.map((e) => (
-                    <div className="bg-white w-[150px] md:w-[25%] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
+                    <div className="bg-white w-[150px] md:w-[150px] lg:w-[150px] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
                         <img src={e.image} alt="" />
                         <p className="font-bold">{e.name}</p>
                         <p className="">{e.price}</p>

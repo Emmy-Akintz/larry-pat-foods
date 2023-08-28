@@ -5,7 +5,7 @@ import { FaStar } from 'react-icons/fa'
 function review() {
   return (
     <>
-    <div className="h-auto md:h-[100vh] lg:h-[100vh] bg-green-500 text-white p-20">
+    <div className="h-auto md:h-auto lg:h-[100vh] bg-green-500 text-white p-20">
       <h1 className="font-bold text-4xl md:text-5xl lg:text-5xl">What Our Clients Say</h1>
       <div className="block md:flex lg:flex p-2 md:p-12 lg:p-12 mt-20 justify-between justify-center">
         <div className="block mt-12 md:mt-0 lg:mt-0 max-w-xs">
