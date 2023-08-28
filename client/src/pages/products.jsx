@@ -10,8 +10,8 @@ function products() {
       <div className="h-auto md:h-[auto] lg:h-[auto] bg-gray-100 text-black py-20">
         <h1 className="prod-1 7font-bold text-5xl">What We Offer</h1>
         <p className="">Curious? Here are our most popular items.</p>
-        <div className="block md:flex lg:flex justify-between w-5/6 mx-auto mt-8">
-          <div className="bg-white w-[200px] md:w-[25%] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
+        <div className="grid grid-cols-2 gap-6 md:flex lg:flex justify-between w-5/6 mx-auto mt-8">
+          <div className="bg-white w-[150px] md:w-[25%] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
             <img src="images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png" alt="" />
             <p className="font-bold">SAMOSA</p>
             <p className="">₦5000</p>
@@ -19,10 +19,10 @@ function products() {
               <FaArrowDown className='mx-auto mt-4 animate-bounce' />
             </IconContext.Provider>
             <button className='mt-4'>
-              <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm animate-bounce'>ORDER NOW</a>
+              <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>ORDER NOW</a>
             </button>
           </div>
-          <div className="bg-white w-[200px] md:w-[25%] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
+          <div className="bg-white w-[150px] md:w-[25%] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
             <img src="images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png" alt="" />
             <p className="font-bold">PEANUT</p>
             <p className="">₦5000</p>
@@ -30,10 +30,21 @@ function products() {
               <FaArrowDown className='mx-auto mt-4 animate-bounce' />
             </IconContext.Provider>
             <button className='mt-4'>
-              <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm animate-bounce'>ORDER NOW</a>
+              <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>ORDER NOW</a>
             </button>
           </div>
-          <div className="bg-white w-[200px] md:w-[25%] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
+          <div className="bg-white w-[150px] md:w-[25%] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
+            <img src="images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png" alt="" />
+            <p className="font-bold">PEANUT</p>
+            <p className="">₦5000</p>
+            <IconContext.Provider value={{ color: 'black' }}>
+              <FaArrowDown className='mx-auto mt-4 animate-bounce' />
+            </IconContext.Provider>
+            <button className='mt-4'>
+              <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>ORDER NOW</a>
+            </button>
+          </div>
+          <div className="bg-white w-[150px] md:w-[25%] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
             <img src="images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png" alt="" />
             <p className="font-bold">CHINCHIN</p>
             <p className="">₦5000</p>  
@@ -41,7 +52,7 @@ function products() {
               <FaArrowDown className='mx-auto mt-4 animate-bounce' />
             </IconContext.Provider>
             <button className='mt-4'>
-              <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm animate-bounce'>ORDER NOW</a>
+              <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>ORDER NOW</a>
             </button>
           </div>
         </div>

@@ -15,9 +15,9 @@ function FullProducts() {
                     </IconContext.Provider>
                 </div>
             </Link>
-            <div className="block md:list-item lg:list-item justify-between w-5/6 mx-auto mt-8">
+            <div className="grid grid-cols-2 gap-10 md:list-item lg:list-item justify-between w-5/6 mx-auto mt-8">
                 {prod.map((e) => (
-                    <div className="bg-white w-[200px] md:w-[300px] lg:w-[576px] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
+                    <div className="bg-white w-[150px] md:w-[25%] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
                         <img src={e.image} alt="" />
                         <p className="font-bold">{e.name}</p>
                         <p className="">{e.price}</p>
@@ -25,7 +25,7 @@ function FullProducts() {
                             <FaArrowDown className='mx-auto mt-4 animate-bounce' />
                         </IconContext.Provider>
                         <button className='mt-4'>
-                            <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm animate-bounce'>ORDER NOW</a>
+                            <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>ORDER NOW</a>
                         </button>
                     </div>
                 ))}
