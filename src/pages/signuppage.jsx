@@ -13,7 +13,7 @@ function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:2500/signup", {name, email, password})
+        axios.post("http://localhost:2500/larrypat/users/signup", {name, email, password})
         .then(result => {console.log(result)
         navigate('/login')
         })
@@ -29,7 +29,7 @@ function Signup() {
                     </IconContext.Provider>
                 </div>
             </Link>
-            <form action="/" className='rounded-xl w-[250px] md:w-[400px] lg:w-[500px] m-auto p-4 bg-green-100' onSubmit={handleSubmit}>
+            <form action="/" className='rounded-xl w-[300px] md:w-[400px] lg:w-[500px] m-auto p-4 bg-green-100' onSubmit={handleSubmit}>
                 <h1 className='font-bold text-xl'>SIGNUP TO LARRY-PAT FOODS</h1>
                 <br />
                 <label htmlFor="fullName">Full Name: </label>

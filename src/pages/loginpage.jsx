@@ -12,7 +12,7 @@ function Loginpage() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:2500/login", { email, password })
+        axios.post("http://localhost:2500/larrypat/users/login", { email, password })
             .then(result => {
                 console.log(result)
                 if (result.data === "Success!") {
@@ -23,7 +23,7 @@ function Loginpage() {
     }
 
     return (
-        <div className='logsign p-4 bg-gray-200 h-auto'>
+        <div className='logsign p-4 bg-gray-200 h-[100vh]'>
             <Link to='/'>
                 <div className="p-4 bg-green-500 hover:bg-green-300 w-12 rounded">
                     <IconContext.Provider value={{ color: 'white' }}>
@@ -32,7 +32,7 @@ function Loginpage() {
                 </div>
             </Link>
             <br />
-            <form action="/" className='rounded-xl w-[250px] md:w-[400px] lg:w-[500px] m-auto p-4 bg-green-100' onSubmit={handleSubmit}>
+            <form action="/" className='rounded-xl w-[300px] md:w-[400px] lg:w-[500px] m-auto p-4 bg-green-100' onSubmit={handleSubmit}>
                 <h1 className='font-bold text-xl'>LOGIN TO LARRY-PAT FOODS</h1>
                 <br />
                 <label htmlFor="email">Email: </label>
