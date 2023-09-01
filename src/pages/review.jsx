@@ -13,7 +13,7 @@ function review() {
             <img src="images/Display Picture 2.jpg" alt="" className='relative' />
           </div>
           <h1 className='font-bold text-xl mt-8'>
-            Mr & Mrs Janet
+            Mr & Mrs Samuelson
           </h1>
           <p className='mt-4'>
             Testimonies are short quotes from people who love your brand. It's a great way to convince customers to try your service.
