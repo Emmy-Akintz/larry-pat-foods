@@ -1,109 +1,111 @@
 export const prod = [
     {
-        name: 'PEANUT CUP',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'GROUNDNUT BALLS',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'PEANUT SACHET',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'HEALTHY CHIN CHIN',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'CHIN CHIN CUP',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'SUYA SPICE KULI KULI',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
         name: 'CHIN CHIN SACHET',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'COCKTAIL DRINKS',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'DETOX SOUP POWDER (GBANUNU)',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'SMOOTHIES',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'DRIED CATFISH',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'FRUIT SALADS',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'HYGIENIC GARRI',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'SPECIAL KULI-KULI',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'TRADITIONALLY FERMENTED CASSAVA FLOUR (PUPURU)',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'TIGER NUTS',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'PICKED HONEY BEANS',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'Salad Mix',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'PEALED HONEY BEANS',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'Salad Mix',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'PALM OIL (LOW FFA)',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'Salad Mix',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'SOYA BEANS POWDER',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'Salad Mix',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'SOYOAT MEAL',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'Salad Mix',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'OATPLAN MEAL',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'Salad Mix',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'PLANTAIN FLOUR',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'Salad Mix',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'ORGANIC ROLLED OAT',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'Salad Mix',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'BLENDED OAT',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     },
 
     {
-        name: 'Salad Mix',
-        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
-        price: '₦5000'
+        name: 'POTATO FLOUR',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
+    },
+
+    {
+        name: 'PLANTAIN FLOUR',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
+    },
+
+    {
+        name: 'BITTER GOURD POWDER (EJIRIN)',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
+    },
+
+    {
+        name: 'DRIED BITTER LEAF',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
+    },
+
+    {
+        name: 'SCENT LEAF POWDER (EFINRIN)',
+        image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png'
     }
 ];
