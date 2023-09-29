@@ -1,54 +1,54 @@
 export const prod = [
     {
-        name: 'PEANUT',
+        name: 'PEANUT CUP',
         image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
         price: '₦5000'
     },
 
     {
-        name: 'CHIN CHIN',
+        name: 'PEANUT SACHET',
         image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
         price: '₦5000'
     },
 
     {
-        name: 'Salad Mix',
+        name: 'CHIN CHIN CUP',
         image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
         price: '₦5000'
     },
 
     {
-        name: 'Salad Mix',
+        name: 'CHIN CHIN SACHET',
         image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
         price: '₦5000'
     },
 
     {
-        name: 'Salad Mix',
+        name: 'COCKTAIL DRINKS',
         image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
         price: '₦5000'
     },
 
     {
-        name: 'Salad Mix',
+        name: 'SMOOTHIES',
         image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
         price: '₦5000'
     },
 
     {
-        name: 'Salad Mix',
+        name: 'FRUIT SALADS',
         image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
         price: '₦5000'
     },
 
     {
-        name: 'Salad Mix',
+        name: 'SPECIAL KULI-KULI',
         image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
         price: '₦5000'
     },
 
     {
-        name: 'Salad Mix',
+        name: 'TIGER NUTS',
         image: './images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png',
         price: '₦5000'
     },
