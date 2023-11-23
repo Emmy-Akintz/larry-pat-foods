@@ -9,16 +9,21 @@ function Signup() {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
-    // const [error, setError] = useState(null)
+    const [error, setError] = useState("")
+    setTimeout(() => {
+        setError("")
+    }, 5000)
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:2500/larrypat/users/signup", {name, email, password})
-        .then(result => {console.log(result)
-        navigate('/login')
-        })
-        .catch(err => console.log(err))
+        axios.post("http://localhost:2500/larrypat/users/signup", { name, email, password })
+            .then(result => {
+                console.log(result)
+                setError(result.data)
+                navigate('/login')
+            })
+            .catch(err => console.log(err))
     }
 
     return (
@@ -50,6 +55,9 @@ function Signup() {
                 <br />
                 <button type="reset" title='Clear form'><FaTimes /></button>
                 <br />
+                <div className="error text-red-500">
+                    {error}
+                </div>
                 <button type="submit" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'>SIGNUP</button>
                 <br />
                 <br />

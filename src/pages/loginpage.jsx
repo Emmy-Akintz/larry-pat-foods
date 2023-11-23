@@ -8,15 +8,21 @@ import axios from 'axios'
 function Loginpage() {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
+    const [error, setError] = useState("")
+    setTimeout(() => {
+        setError("")
+    }, 5000)
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post("http://localhost:2500/larrypat/users/login", { email, password })
             .then(result => {
-                console.log(result)
+                // console.log(result)
                 if (result.data === "Success!") {
                     navigate('/')
+                } else {
+                    setError(result.data)
                 }
             })
             .catch(err => console.log(err))
@@ -48,6 +54,9 @@ function Loginpage() {
                 <button type="reset" title='Clear form'><FaTimes /></button>
                 <br />
                 <button type="submit" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'>LOGIN</button>
+                <div className="error text-red-500">
+                    {error}
+                </div>
                 <br />
                 <br />
                 <p>Forgotten <Link to='/login' className='text-green-700 font-bold hover:underline'>PASSWORD</Link></p>
