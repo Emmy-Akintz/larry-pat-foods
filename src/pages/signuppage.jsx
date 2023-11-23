@@ -12,16 +12,19 @@ function Signup() {
     const [error, setError] = useState("")
     setTimeout(() => {
         setError("")
-    }, 5000)
+    }, 10000)
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post("http://localhost:2500/larrypat/users/signup", { name, email, password })
             .then(result => {
-                console.log(result)
-                setError(result.data)
-                navigate('/login')
+                // console.log(result)
+                if (result.data === "Success!") {
+                    navigate('/login')
+                } else {
+                    setError(result.data)
+                }
             })
             .catch(err => console.log(err))
     }

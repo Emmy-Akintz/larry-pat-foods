@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { prod } from '../data'
 import '../App.css'
 
+// ADD SEARCH BUTTON
 function FullProducts() {
     return (
         <div className='bg-gray-100 p-4 fullproduct'>
