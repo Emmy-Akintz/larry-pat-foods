@@ -38,7 +38,7 @@ Clients can send emails to the admin of the website.
 
 ### ACTIVITIES
 
-#### AUTHORIZATION AND VERIFICATION
+#### AUTHORIZATION AND VERIFICATION ongoing
 
 When the website is opened by the client, the first thing is to check the local storage if there is any existing user token there. If yes the login button will be a path to the `USER PROFILE` page and there's not, it will be a path to the login page.
 
