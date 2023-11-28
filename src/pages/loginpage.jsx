@@ -11,7 +11,7 @@ function Loginpage() {
     const [error, setError] = useState("")
     setTimeout(() => {
         setError("")
-    }, 10000)
+    }, 3000)
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {

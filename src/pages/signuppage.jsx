@@ -12,7 +12,7 @@ function Signup() {
     const [error, setError] = useState("")
     setTimeout(() => {
         setError("")
-    }, 10000)
+    }, 3000)
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
@@ -43,7 +43,7 @@ function Signup() {
                 <br />
                 <label htmlFor="fullName">Full Name: </label>
                 <br className="block md:hidden lg:hidden" />
-                <input type="text" id='name' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='firstName, surName' name='name' onChange={(e) => setName(e.target.value)} required />
+                <input type="text" id='name' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='firstName surName' name='name' onChange={(e) => setName(e.target.value)} required />
                 <br />
                 <br />
                 <label htmlFor="email">Email: </label>
