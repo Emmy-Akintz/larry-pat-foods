@@ -6,6 +6,8 @@
 
 #### Login done
 
+######## `CHANGE THE ANIMATION TO FRAMER MOTION WITH TYPESCRIPT`
+
 This is so that each user has his or her identity which can be used when tracking his or her ordered products or products on cart.
 
 #### SIGNUP done
