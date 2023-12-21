@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { IconContext } from 'react-icons'
-import { 
- // FaArrowDown,
- FaHome
- } from 'react-icons/fa'
+import {
+    // FaArrowDown,
+    FaHome
+} from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { prod } from '../data'
 import '../App.css'
@@ -37,7 +37,7 @@ function FullProducts() {
                         <img src={e.image} alt="" />
                         <p className="font-bold">{e.name}</p>
                         {/* <p className="">{e.price}</p> */}
-                     {/*   <IconContext.Provider value={{ color: 'black' }}>
+                        {/*   <IconContext.Provider value={{ color: 'black' }}>
                            <FaArrowDown className='mx-auto mt-4 animate-bounce' />
                         </IconContext.Provider>*/}
                         <button className='mt-4'>
