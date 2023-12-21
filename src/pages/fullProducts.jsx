@@ -35,7 +35,7 @@ function FullProducts() {
                 }).map((e) => (
                     <div className="bg-white w-[150px] md:w-[150px] lg:w-[150px] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto" key={e.id}>
                         <img src={e.image} alt="" />
-                        <p className="font-bold text-green-500">{e.name}</p>
+                        <p className="font-bold">{e.name}</p>
                         {/* <p className="">{e.price}</p> */}
                      {/*   <IconContext.Provider value={{ color: 'black' }}>
                            <FaArrowDown className='mx-auto mt-4 animate-bounce' />
