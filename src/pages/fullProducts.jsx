@@ -34,9 +34,9 @@ function FullProducts() {
                         <img src={e.image} alt="" />
                         <p className="font-bold text-green-500">{e.name}</p>
                         {/* <p className="">{e.price}</p> */}
-                        <IconContext.Provider value={{ color: 'black' }}>
-                            <FaArrowDown className='mx-auto mt-4 animate-bounce' />
-                        </IconContext.Provider>
+                     {/*   <IconContext.Provider value={{ color: 'black' }}>
+                           <FaArrowDown className='mx-auto mt-4 animate-bounce' />
+                        </IconContext.Provider>*/}
                         <button className='mt-4'>
                             <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>VIEW</a>
                         </button>
