@@ -59,7 +59,7 @@ function Loginpage() {
                 </div>
                 <br />
                 <br />
-                <p>Forgotten <Link to='/login' className='text-green-700 font-bold hover:underline'>PASSWORD</Link></p>
+                <p>Forgotten <Link to='/forgotPass' className='text-green-700 font-bold hover:underline'>PASSWORD</Link></p>
                 <br />
                 <hr />
                 <br />

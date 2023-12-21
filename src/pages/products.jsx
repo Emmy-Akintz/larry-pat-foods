@@ -19,8 +19,11 @@ function products() {
               <FaArrowDown className='mx-auto mt-4 animate-bounce' />
             </IconContext.Provider>
             <button className='mt-4'>
-              <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>ORDER NOW</a>
-            </button>
+                            <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>VIEW</a>
+                        </button>
+                        <button className='mt-4'>
+                            <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>ADD TO CART</a>
+                        </button>
           </div>
           <div className="bg-white w-[150px] md:w-[150px] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
             <img src="images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png" alt="" />
@@ -30,8 +33,11 @@ function products() {
               <FaArrowDown className='mx-auto mt-4 animate-bounce' />
             </IconContext.Provider>
             <button className='mt-4'>
-              <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>ORDER NOW</a>
-            </button>
+                            <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>VIEW</a>
+                        </button>
+                        <button className='mt-4'>
+                            <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>ADD TO CART</a>
+                        </button>
           </div>
           <div className="bg-white w-[150px] md:w-[150px] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
             <img src="images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png" alt="" />
@@ -41,8 +47,11 @@ function products() {
               <FaArrowDown className='mx-auto mt-4 animate-bounce' />
             </IconContext.Provider>
             <button className='mt-4'>
-              <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>ORDER NOW</a>
-            </button>
+                            <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>VIEW</a>
+                        </button>
+                        <button className='mt-4'>
+                            <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>ADD TO CART</a>
+                        </button>
           </div>
           <div className="bg-white w-[150px] md:w-[150px] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
             <img src="images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png" alt="" />
@@ -52,8 +61,11 @@ function products() {
               <FaArrowDown className='mx-auto mt-4 animate-bounce' />
             </IconContext.Provider>
             <button className='mt-4'>
-              <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>ORDER NOW</a>
-            </button>
+                            <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>VIEW</a>
+                        </button>
+                        <button className='mt-4'>
+                            <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>ADD TO CART</a>
+                        </button>
           </div>
         </div>
         <br />

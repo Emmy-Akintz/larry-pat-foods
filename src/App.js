@@ -6,6 +6,7 @@ import Signuppage from './pages/signuppage';
 import { Route, Routes } from 'react-router-dom';
 import AuthContextProvider from './contexts/AuthContext';
 import ThemeContextProvider from './contexts/ThemeContext';
+import ForgotPass from './pages/ForgotPass';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path='/prodlist' element={<FullProducts />} />
             <Route path='/login' element={<Loginpage />} />
             <Route path='/signup' element={<Signuppage />} />
+            <Route path='/forgotPass' element={<ForgotPass />} />
           </Routes>
         </ThemeContextProvider>
       </AuthContextProvider>
