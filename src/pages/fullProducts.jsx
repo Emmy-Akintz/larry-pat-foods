@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { IconContext } from 'react-icons'
-import { FaArrowDown, FaHome } from 'react-icons/fa'
+import { 
+ // FaArrowDown,
+ FaHome
+ } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 import { prod } from '../data'
 import '../App.css'
