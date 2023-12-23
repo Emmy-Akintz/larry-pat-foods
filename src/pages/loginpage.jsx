@@ -20,12 +20,15 @@ function Loginpage() {
             .then(result => {
                 // console.log(result)
                 if (result.data === "Success!") {
-                    navigate('/')
-                } else {
-                    setError(result.data)
+                    if (result.data.role === "manager") {
+                        navigate('/manager-dashbord')
+                    } else if (result.data.role === "admin") {
+                        navigate('/admin-dashbord')
+                    } else {
+                        navigate('/')
+                    }
                 }
-            })
-            .catch(err => console.log(err))
+            }).catch(err => console.log(err))
     }
 
     return (
