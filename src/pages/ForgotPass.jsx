@@ -3,7 +3,7 @@ import { IconContext } from 'react-icons'
 import { FaHome } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
-
+// still yet to fully function 😩
 function ForgotPass() {
     const [email, setEmail] = useState('')
     const [error, setError] = useState('')
