@@ -1,7 +1,8 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import { IconContext } from 'react-icons'
-import { FaHome } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
+import { FaHome, FaTimes } from 'react-icons/fa'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 function ForgotPass() {
