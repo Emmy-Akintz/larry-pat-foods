@@ -5,7 +5,6 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const userRoutes = require('./routes/user')
 const productRoutes = require('./routes/product')
-const orderRoutes = require('./routes/order')
 
 const port = process.env.PORT
 const mongo_uri = process.env.MONGO_URI
@@ -27,9 +26,8 @@ app.get('/', (req, res, next) => {
     res.json({ message: 'Welcome to larry-pat foods!' })
     next()
 })
-app.use('/api/larrypat', userRoutes)
-app.use('/api/larrypat', productRoutes)
-app.use('/api/larrypat', orderRoutes)
+app.use('/api/user', userRoutes)
+app.use('/api/product', productRoutes)
 
 // connect to db
 mongoose.connect(mongo_uri)

@@ -5,11 +5,13 @@ import { Link, useNavigate } from 'react-router-dom'
 import '../App.css'
 import axios from 'axios'
 
-// to make things work
 function Signup() {
-    const [name, setName] = useState()
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [firstName, setFirstName] = useState("")
+    const [lastName, setLastName] = useState("")
+    // const [address, setAddress] = useState("")
+    const [phone, setPhone] = useState("")
     const [error, setError] = useState("")
     setTimeout(() => {
         setError("")
@@ -18,16 +20,23 @@ function Signup() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:2500/larrypat/users/signup", { name, email, password })
-            .then(result => {
-                // console.log(result)
-                if (result.data === "Success!") {
+        axios.post("http://localhost:2500/api/user/signup", { email, password, firstName, lastName, phone }, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(res => {
+                // console.log(res)
+                if (res.status === 200) {
                     navigate('/login')
                 } else {
-                    setError(result.data)
+                    setError(res.message)
                 }
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                setError(err.message)
+                console.log(err.response.status);
+            })
     }
 
     return (
@@ -42,11 +51,6 @@ function Signup() {
             <form action="/" className='rounded-xl w-[300px] md:w-[400px] lg:w-[500px] m-auto p-4 bg-green-100' onSubmit={handleSubmit}>
                 <h1 className='font-bold text-xl'>SIGNUP TO LARRY-PAT FOODS</h1>
                 <br />
-                <label htmlFor="fullName">Full Name: </label>
-                <br className="block md:hidden lg:hidden" />
-                <input type="text" id='name' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='firstName surName' name='name' onChange={(e) => setName(e.target.value)} required />
-                <br />
-                <br />
                 <label htmlFor="email">Email: </label>
                 <br className="block md:hidden lg:hidden" />
                 <input type="email" id='email' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' name='email' onChange={(e) => setEmail(e.target.value)} required />
@@ -55,6 +59,21 @@ function Signup() {
                 <label htmlFor="password">Password: </label>
                 <br className="block md:hidden lg:hidden" />
                 <input type="password" id='password' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' name='password' onChange={(e) => setPassword(e.target.value)} required />
+                <br />
+                <br />
+                <label htmlFor="first_name">First Name: </label>
+                <br className="block md:hidden lg:hidden" />
+                <input type="text" id='first_name' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' name='first_name' onChange={(e) => setFirstName(e.target.value)} required />
+                <br />
+                <br />
+                <label htmlFor="last_name">Last Name: </label>
+                <br className="block md:hidden lg:hidden" />
+                <input type="text" id='last_name' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' name='last_name' onChange={(e) => setLastName(e.target.value)} required />
+                <br />
+                <br />
+                <label htmlFor="phone">Phone Number: </label>
+                <br className="block md:hidden lg:hidden" />
+                <input type="text" id='phone' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' name='address' onChange={(e) => setPhone(e.target.value)} required />
                 <br />
                 <br />
                 <button type="reset" title='Clear form'><FaTimes /></button>

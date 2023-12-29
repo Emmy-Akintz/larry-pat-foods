@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
-const validator = require('validator')
+// const bcrypt = require('bcrypt')
+// const validator = require('validator')
 
-const Schema = mongoose.Schema
+const { Schema } = mongoose
 
 const userSchema = new Schema({
     email: {
@@ -22,10 +22,15 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    address: {
-        type: String,
-        required: true
-    },
+    address: [
+        {
+            street: String,
+            city: String,
+            state: String,
+            country: String,
+            postal_code: String
+        }
+    ],
     phone: {
         type: String,
         required: true,
@@ -36,73 +41,94 @@ const userSchema = new Schema({
         enum: ['manager', 'admin', 'client'],
         default: 'client',
     },
-})
-
-// static signup method
-userSchema.statics.signup = async function (email, password, firstName, lastName, address, phone) {
-
-    // validation
-    if (!email || !password || !firstName || !lastName || !address || !phone) {
-        throw Error('All fields must be filled!')
+    cart: [
+        {
+            product: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Product',
+            },
+            orderDate: {
+                type: Date,
+                default: Date.now
+            },
+            orderStatus: {
+                type: String,
+                enum: ['pending', 'processing', 'shipped', 'delivered'],
+                default: 'pending'
+            },
+        }
+    ],
+    shippingAddress: {
+        type: String
+    },
+    notes: {
+        type: String
     }
-    if (!validator.isEmail(email)) {
-        throw Error('Email is not valid!')
-    }// password should have uppercase, lowercase, a minimum length of 8 and a symbol
-    if (!validator.isStrongPassword(password)) {
-        throw Error('Password not strong enough!')
-    }
-    // if (!validator.isMobilePhone(phone)) {
-    //     throw Error('Phone number is not valid!')
-    // }
+}, { timestamps: true })
 
-    const emailExists = await this.findOne({ email })
+// // static signup method
+// userSchema.statics.signup = async function (email, password, firstName, lastName, phone) {
 
-    if (emailExists) {
-        throw Error('Email already in use!')
-    }
+//     // validation
+//     if (!email || !password || !firstName || !lastName || !phone) {
+//         throw Error('All fields must be filled!')
+//     }
+//     if (!validator.isEmail(email)) {
+//         throw Error('Email is not valid!')
+//     }// password should have uppercase, lowercase, a minimum length of 8 and a symbol
+//     if (!validator.isStrongPassword(password)) {
+//         throw Error('Password not strong enough!')
+//     }
+//     // if (!validator.isMobilePhone(phone)) {
+//     //     throw Error('Phone number is not valid!')
+//     // }
 
-    const phoneExists = await this.findOne({ phone })
+//     const emailExists = await this.findOne({ email })
 
-    if (phoneExists) {
-        throw Error('Phone number already in use!')
-    }
+//     if (emailExists) {
+//         throw Error('Email already in use!')
+//     }
 
-    const phoneLength = phone.length
+//     const phoneExists = await this.findOne({ phone })
 
-    const isPhoneLength = phoneLength === 11
+//     if (phoneExists) {
+//         throw Error('Phone number already in use!')
+//     }
 
-    if (!isPhoneLength) {
-        throw Error('Phone number is not valid!')
-    }
+//     const phoneLength = phone.length
 
-    const salt = await bcrypt.genSalt(10)
-    const hash = await bcrypt.hash(password, salt)
+//     const isPhoneLength = phoneLength === 11
 
-    const user = await this.create({ email, password: hash, firstName, lastName, address, phone })
+//     if (!isPhoneLength) {
+//         throw Error('Phone number is not valid!')
+//     }
 
-    return user
-}
+//     const salt = await bcrypt.genSalt(10)
+//     const hash = await bcrypt.hash(password, salt)
 
-//statics login method
-userSchema.statics.login = async function (email, password) {
-    // validation
-    if (!email || !password) {
-        throw Error('All fields must be filled')
-    }
+//     return user = await this.create({ email, password: hash, firstName, lastName, phone })
+// }
 
-    const user = await this.findOne({ email })
+// //statics login method
+// userSchema.statics.login = async function (email, password) {
+//     // validation
+//     if (!email || !password) {
+//         throw new Error('All fields must be filled')
+//     }
 
-    if (!user) {
-        throw Error('Incorrect email')
-    }
+//     const user = await this.findOne({ email })
 
-    const match = await bcrypt.compare(password, user.password)
+//     if (!user) {
+//         throw  new Error('Email does not exist')
+//     }
 
-    if (!match) {
-        throw Error('Incorrect password')
-    }
+//     const match = await bcrypt.compare(password, user.password)
 
-    return user
-}
+//     if (!match) {
+//         throw new Error('Incorrect password')
+//     }
+
+//     return user
+// }
 
 module.exports = mongoose.model('User', userSchema)

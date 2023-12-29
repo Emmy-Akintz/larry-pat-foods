@@ -16,19 +16,25 @@ function Loginpage() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:2500/larrypat/users/login", { email, password })
-            .then(result => {
-                // console.log(result)
-                if (result.data === "Success!") {
-                    if (result.data.role === "manager") {
+        axios.post("http://localhost:2500/api/user/login", { email, password })
+            .then(response => {
+                if (response.status === 200) {
+                    if (response.data.user.role === "manager") {
                         navigate('/manager-dashbord')
-                    } else if (result.data.role === "admin") {
+                    } else if (response.data.user.role === "admin") {
                         navigate('/admin-dashbord')
                     } else {
                         navigate('/')
                     }
                 }
-            }).catch(err => console.log(err))
+            }).catch(err => {
+                console.log(err);
+                if (err.status === 404) {
+                    setError("Invalid Credentials")
+                } else {
+                    setError(err.message)
+                }
+            })
     }
 
     return (
