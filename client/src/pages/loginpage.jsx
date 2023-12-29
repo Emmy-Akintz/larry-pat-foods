@@ -23,7 +23,7 @@ function Loginpage() {
                         navigate('/manager-dashbord')
                     } else if (response.data.user.role === "admin") {
                         navigate('/admin-dashbord')
-                    } else {
+                    } else if (response.data.user.role === "client") {
                         navigate('/')
                     }
                 }

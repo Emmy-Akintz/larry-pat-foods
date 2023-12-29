@@ -19,6 +19,9 @@ function App() {
             <Route path='/login' element={<Loginpage />} />
             <Route path='/signup' element={<Signuppage />} />
             <Route path='/forgotPass' element={<ForgotPass />} />
+            {/* <Route path='/card/:id' element={< />} />
+            <Route path='/manager-dashbord' element={< />} />
+            <Route path='/admin-dashbord' element={< />} /> */}
           </Routes>
         </ThemeContextProvider>
       </AuthContextProvider>
