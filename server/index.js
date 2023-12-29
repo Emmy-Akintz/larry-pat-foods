@@ -23,6 +23,10 @@ app.use((req, res, next) => {
 })
 
 // routes
+app.get('/', (req, res, next) => {
+    res.json({ message: 'Welcome to larry-pat foods!' })
+    next()
+})
 app.use('/api/larrypat', userRoutes)
 app.use('/api/larrypat', productRoutes)
 app.use('/api/larrypat', orderRoutes)
