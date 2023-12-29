@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import '../App.css'
 import axios from 'axios'
 
+// to make things work
 function Signup() {
     const [name, setName] = useState()
     const [email, setEmail] = useState()
