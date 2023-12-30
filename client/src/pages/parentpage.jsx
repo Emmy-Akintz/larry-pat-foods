@@ -11,17 +11,17 @@ import '../App.css'
 function Parentpage() {
   return (
     <>
-    <div className="h-auto">
-      <Home />
-      <About />
-      <Products />
-      <Review />
-      <Contact />
-      <Link to='/login' className="absolute top-4 right-4 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm animate-bounce">LOGIN</Link>
-      <a href='#top' className='back-to-top right-4 bottom-4 p-4 bg-green-600 hover:bg-green-500 rounded fixed justify-center w-12'>
-        <FaArrowAltCircleUp />
-      </a>
-    </div>
+      <div className="h-auto">
+        <Home />
+        <About />
+        <Products />
+        <Review />
+        <Contact />
+        <Link to='/login' className="absolute top-4 right-4 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm animate-bounce">LOGIN</Link>
+        <a href='#top' className='back-to-top right-4 bottom-4 p-4 bg-green-600 hover:bg-green-500 rounded fixed justify-center w-12'>
+          <FaArrowAltCircleUp />
+        </a>
+      </div>
     </>
   )
 }
