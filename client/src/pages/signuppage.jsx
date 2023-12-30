@@ -32,10 +32,12 @@ function Signup() {
                 } else {
                     setError(res.message)
                 }
-            })
-            .catch(err => {
-                setError(err.message)
-                console.log(err.response.status);
+            }).catch(err => {
+                // console.log(err);
+                if (err) {
+                    console.log(err.response.status)
+                    setError(err.response.data.message)
+                }
             })
     }
 

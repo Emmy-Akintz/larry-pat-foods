@@ -15,13 +15,18 @@ function ForgotPass() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:2500/larrypat/users/reset-password", { email })
-            .then(result => {
-                // console.log(result)
-                if (result.data === "Success!") {
+        axios.post("http://localhost:2500/api/user/reset-password", { email })
+            .then(response => {
+                if (response.status === 200) {
                     navigate('/login')
                 }
-            }).catch(err => console.log(err))
+            }).catch(err => {
+                // console.log(err);
+                if (err) {
+                    console.log(err.response.status)
+                    setError(err.response.data.message)
+                }
+            })
     }
 
     return (

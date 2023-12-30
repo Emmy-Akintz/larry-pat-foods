@@ -28,11 +28,10 @@ function Loginpage() {
                     }
                 }
             }).catch(err => {
-                console.log(err);
-                if (err.status === 404) {
-                    setError("Invalid Credentials")
-                } else {
-                    setError(err.message)
+                // console.log(err);
+                if (err) {
+                    console.log(err.response.status)
+                    setError(err.response.data.message)
                 }
             })
     }
