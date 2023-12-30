@@ -94,20 +94,42 @@ const signupUser = async (req, res) => {
     })
 
     user.save()
-    .then(doc => res.status(200).json({ message: 'Signup successful', doc }))
-    .catch(error => res.json({ error }))
+        .then(doc => res.status(200).json({ message: 'Signup successful', doc }))
+        .catch(error => res.json({ error }))
 }
 
 //reset-password
 const forgotPass = async (req, res) => {
     const { email } = req.body
     User.findOne({ email: email })
-    .then(user => {
-        if (!user) {
-            return res.status(404).json({ message: 'User does not exist' })
-        }
-        const token = createToken(user._id)
-    })
+        .then(user => {
+            if (!user) {
+                return res.status(404).json({ message: 'User does not exist' })
+            }
+            const token = createToken(user._id)
+            var transporter = nodemailer.createTransport({
+                service: 'gmail',
+                auth: {
+                    user: process.env.MYEMAIL,
+                    pass: process.env.MYPASS
+                }
+            });
+
+            var mailOptions = {
+                from: process.env.MYEMAIL,
+                to: email,
+                subject: 'Reset Your Password',
+                text: `http://localhost:3000/forgotPass/${user._id}/${token}`
+            };
+
+            transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    return res.status(200).json({ message: 'Successfully sent to your mail' })
+                }
+            });
+        })
 }
 
 module.exports = { signupUser, loginUser, forgotPass }
