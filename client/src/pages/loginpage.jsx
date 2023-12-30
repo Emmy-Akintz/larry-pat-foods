@@ -18,12 +18,14 @@ function Loginpage() {
         e.preventDefault()
         axios.post("http://localhost:2500/api/user/login", { email, password })
             .then(response => {
+                // console.log(response);
+                // console.log(response.status);
                 if (response.status === 200) {
-                    if (response.data.user.role === "manager") {
+                    if (response.data.user === "manager") {
                         navigate('/manager-dashbord')
-                    } else if (response.data.user.role === "admin") {
+                    } else if (response.data.user === "admin") {
                         navigate('/admin-dashbord')
-                    } else if (response.data.user.role === "client") {
+                    } else if (response.data.user === "client") {
                         navigate('/')
                     }
                 }

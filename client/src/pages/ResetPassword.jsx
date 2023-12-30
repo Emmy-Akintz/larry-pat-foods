@@ -2,19 +2,20 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { IconContext } from 'react-icons'
 import { FaHome, FaTimes } from 'react-icons/fa'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
-function ForgotPass() {
-    const [email, setEmail] = useState()
+function ResetPassword() {
+    const [password, setPassword] = useState()
     const [error, setError] = useState("")
     setTimeout(() => {
         setError("")
     }, 3000)
     const navigate = useNavigate()
+    const { id, token } = useParams()
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post("http://localhost:2500/api/user/forgot-password", { email })
+        axios.post(`http://localhost:2500/api/user/reset-password/${id}/${token}`, { password })
             .then(response => {
                 if (response.status === 200) {
                     navigate('/login')
@@ -39,16 +40,16 @@ function ForgotPass() {
             </Link>
             <br />
             <form action="/" className='rounded-xl w-[300px] md:w-[400px] lg:w-[500px] m-auto p-4 bg-green-100' onSubmit={handleSubmit}>
-                <h1 className='font-bold text-xl'>FORGOT PASSWORD</h1>
+                <h1 className='font-bold text-xl'>RESET PASSWORD</h1>
                 <br />
-                <label htmlFor="email">Email: </label>
+                <label htmlFor="password">New password: </label>
                 <br className="block md:hidden lg:hidden" />
-                <input type="email" id='email' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' name='email' onChange={(e) => setEmail(e.target.value)} required />
+                <input type="password" id='password' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' name='email' onChange={(e) => setPassword(e.target.value)} required />
                 <br />
                 <br />
                 <button type="reset" title='Clear form'><FaTimes /></button>
                 <br />
-                <button type="submit" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'>SEND</button>
+                <button type="submit" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'>UPDATE</button>
                 <div className="error text-red-500">
                     {error}
                 </div>
@@ -57,4 +58,4 @@ function ForgotPass() {
     );
 }
 
-export default ForgotPass    
+export default ResetPassword

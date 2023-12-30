@@ -15,24 +15,24 @@ const loginUser = async (req, res) => {
 
     // validation
     if (!email || !password) {
-        res.status(401).json({ message: 'All fields must be filled' })
+        return res.status(401).json({ message: 'All fields must be filled' })
     }
 
     const user = await User.findOne({ email })
 
     if (!user) {
-        res.status(404).json({ message: 'This user does not exist' })
+        return res.status(404).json({ message: 'This user does not exist' })
     }
 
     const match = await bcrypt.compare(password, user.password)
 
     if (!match) {
-        res.status(401).json({ message: 'Password does not match' })
+        return res.status(401).json({ message: 'Password does not match' })
     }
 
     const token = createToken(user._id)
 
-    res.status(200).json({ message: 'User successfully logged in', token })
+    res.status(200).json({ message: 'User successfully logged in', token, user: user.role })
 
     // try {
     //     const user = await User.login(email, password)
@@ -56,33 +56,33 @@ const signupUser = async (req, res) => {
 
     // validation
     if (!email || !password || !firstName || !lastName || !phone) {
-        res.status(401).json({ message: 'All fields must be filled' })
+        return res.status(401).json({ message: 'All fields must be filled' })
     }
     if (!validator.isEmail(email)) {
-        res.status(400).json({ message: 'Invalid Email' })
+        return res.status(400).json({ message: 'Invalid Email' })
     }
     if (!validator.isStrongPassword(password)) {
-        res.status(400).json({ message: 'Password not strong enough. It must include a symbol, Upper case, lower case and a minimum of 8 characters' })
+        return res.status(400).json({ message: 'Password not strong enough. It must include a symbol, Upper case, lower case and a minimum of 8 characters' })
     }
 
     const emailExists = await User.findOne({ email })
 
     if (emailExists) {
-        res.status(409).json({ message: 'Email already exists' })
+        return res.status(409).json({ message: 'Email already exists' })
     }
 
     const phoneExists = await User.findOne({ phone })
 
     if (phoneExists) {
-        res.status(409).json({ message: 'Phone number already exists' })
+        return res.status(409).json({ message: 'Phone number already exists' })
     }
 
     const phoneLength = phone.length
 
-    const isPhoneLength = phoneLength === 11
+    const isPhoneLength = phoneLength === 11 || phoneLength === 14
 
     if (!isPhoneLength) {
-        res.status(400).json({ message: 'Invalid Phone Number' })
+        return res.status(400).json({ message: 'Invalid Phone Number' })
     }
 
     // hash the password
@@ -119,7 +119,7 @@ const forgotPass = async (req, res) => {
                 from: process.env.MYEMAIL,
                 to: email,
                 subject: 'Reset Your Password',
-                text: `http://localhost:3000/forgotPass/${user._id}/${token}`
+                text: `http://localhost:5173/reset-password/${user._id}/${token}`
             };
 
             transporter.sendMail(mailOptions, function (error, info) {
@@ -132,4 +132,23 @@ const forgotPass = async (req, res) => {
         })
 }
 
-module.exports = { signupUser, loginUser, forgotPass }
+const resetPass = async (req, res) => {
+    const { id, token } = req.params
+    const { password } = req.body
+
+    jwt.verify(token, process.env.SECRET, (err, decoded) => {
+        if (err) {
+            res.json({ message: "Error with token" })
+        } else {
+            bcrypt.hash(password, 10)
+                .then(hash => {
+                    User.findByIdAndUpdate({ _id: id }, { password: hash })
+                        .then(u => res.status(200).json({ message: 'Password successfully updated' }))
+                        .catch(err => res.json({ message: err }))
+                })
+                .catch(err => res.json({ message: err }))
+        }
+    })
+}
+
+module.exports = { signupUser, loginUser, forgotPass, resetPass }
