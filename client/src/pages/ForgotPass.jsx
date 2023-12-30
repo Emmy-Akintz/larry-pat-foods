@@ -48,9 +48,6 @@ function ForgotPass() {
                 <div className="error text-red-500">
                     {error}
                 </div>
-                <br />
-                <br />
-                <p>Forgotten <Link to='/forgotPass' className='text-green-700 font-bold hover:underline'>PASSWORD</Link></p>
             </form>
         </div>
     );
