@@ -32,7 +32,7 @@ const loginUser = async (req, res) => {
 
     const token = createToken(user._id)
 
-    res.status(200).json({ message: 'User successfully logged in', token, user: user.role })
+    res.status(200).json({ message: 'User successfully logged in', token, role: user.role, email: user.email, firstName: user.firstName, cart: user.cart })
 
     // try {
     //     const user = await User.login(email, password)

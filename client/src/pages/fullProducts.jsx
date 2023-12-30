@@ -13,6 +13,12 @@ function FullProducts() {
     const [search, setSearch] = useState('')
     // console.log(search);
 
+    const [selectedProd, setSelectedProd] = useState(null)
+
+    const handleClick = (prod) => {
+        setSelectedProd(prod)
+    }
+
     return (
         <div className='bg-gray-100 p-4 fullproduct'>
             <Link to='/'>
@@ -40,7 +46,7 @@ function FullProducts() {
                         {/*   <IconContext.Provider value={{ color: 'black' }}>
                            <FaArrowDown className='mx-auto mt-4 animate-bounce' />
                         </IconContext.Provider>*/}
-                        <button className='mt-4'>
+                        <button className='mt-4' onClick={handleClick}>
                             <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>VIEW</a>
                         </button>
                         <button className='mt-4'>
@@ -48,6 +54,7 @@ function FullProducts() {
                         </button>
                     </div>
                 ))}
+                {selectedProd && <div onClick={setSelectedProd(null)}>Selected Prod: {selectedProd.name}</div>}
             </div>
         </div>
     )

@@ -4,41 +4,44 @@ import { FaHome, FaTimes } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import '../App.css'
 import axios from 'axios'
+import { useSignup } from '../hooks/useSignup'
 
 function Signup() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
-    // const [address, setAddress] = useState("")
     const [phone, setPhone] = useState("")
-    const [error, setError] = useState("")
-    setTimeout(() => {
-        setError("")
-    }, 3000)
+    const {signup, isLoading, error} = useSignup()
+    // setTimeout(() => {
+    //     setError("")
+    // }, 3000)
     const navigate = useNavigate()
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        axios.post("http://localhost:2500/api/user/signup", { email, password, firstName, lastName, phone }, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(res => {
-                // console.log(res)
-                if (res.status === 200) {
-                    navigate('/login')
-                } else {
-                    setError(res.message)
-                }
-            }).catch(err => {
-                // console.log(err);
-                if (err) {
-                    console.log(err.response.status)
-                    setError(err.response.data.message)
-                }
-            })
+
+        await signup(email, password, firstName, lastName, phone)
+
+        // axios.post("http://localhost:2500/api/user/signup", { email, password, firstName, lastName, phone }, {
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     }
+        // })
+        //     .then(res => {
+        //         // console.log(res)
+        //         if (res.status === 200) {
+        //             navigate('/login')
+        //         } else {
+        //             setError(res.message)
+        //         }
+        //     }).catch(err => {
+        //         // console.log(err);
+        //         if (err) {
+        //             console.log(err.response.status)
+        //             setError(err.response.data.message)
+        //         }
+        //     })
     }
 
     return (
@@ -81,9 +84,9 @@ function Signup() {
                 <button type="reset" title='Clear form'><FaTimes /></button>
                 <br />
                 <div className="error text-red-500">
-                    {error}
+                    {error && <div className='error'>{error}</div>}
                 </div>
-                <button type="submit" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'>SIGNUP</button>
+                <button type="submit" disabled={isLoading} className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'>SIGNUP</button>
                 <br />
                 <br />
                 <hr />
