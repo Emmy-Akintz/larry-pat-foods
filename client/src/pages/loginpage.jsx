@@ -20,7 +20,7 @@ function Loginpage() {
 
         await login(email, password)
 
-        navigate('/')
+        // navigate('/')
 
         // axios.post("http://localhost:2500/api/user/login", { email, password })
         //     .then(response => {

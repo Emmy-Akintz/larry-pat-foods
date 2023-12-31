@@ -22,15 +22,13 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    address: [
-        {
+    address: {
             street: String,
             city: String,
             state: String,
             country: String,
             postal_code: String
-        }
-    ],
+        },
     phone: {
         type: String,
         required: true,
@@ -58,9 +56,6 @@ const userSchema = new Schema({
             },
         }
     ],
-    shippingAddress: {
-        type: String
-    },
     notes: {
         type: String
     }
