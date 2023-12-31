@@ -13,6 +13,13 @@ import AdminDashbord from './pages/AdminDashbord'
 import Profile from './pages/Profile'
 
 function App() {
+  //   if (user.role === "manager") {
+  //     navigate('/manager-dashbord')
+  // } else if (user.role === "admin") {
+  //     navigate('/admin-dashbord')
+  // } else if (user.role === "client") {
+  //     navigate('/')
+  // }
 
   return (
     <>
