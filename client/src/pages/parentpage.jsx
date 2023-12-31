@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Home from '../pages/home'
 import About from '../pages/about'
 import Products from '../pages/products'
 import Review from '../pages/review'
 import Contact from '../pages/contact'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { FaArrowAltCircleUp } from 'react-icons/fa'
 import '../App.css'
 
@@ -12,8 +12,18 @@ import { useAuthContext } from '../hooks/useAuthContext'
 
 function Parentpage() {
   const { user } = useAuthContext()
+  const navigate = useNavigate()
 
-  console.log(user);
+  // console.log(user);
+  useEffect(() => {
+    if (user) {
+      if (user.role === "manager") {
+        navigate('/manager-dashbord')
+      } else if (user.role === "admin") {
+        navigate('/admin-dashbord')
+      }
+    }
+  }, [user])
 
   return (
     <>

@@ -1,6 +1,6 @@
 import './App.css'
 
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import Parentpage from './pages/parentpage'
 import FullProducts from './pages/fullProducts'
@@ -12,7 +12,10 @@ import ManagerDashbord from './pages/ManagerDashbord'
 import AdminDashbord from './pages/AdminDashbord'
 import Profile from './pages/Profile'
 
+import { useAuthContext } from './hooks/useAuthContext';
+
 function App() {
+
   //   if (user.role === "manager") {
   //     navigate('/manager-dashbord')
   // } else if (user.role === "admin") {

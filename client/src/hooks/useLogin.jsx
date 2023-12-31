@@ -19,7 +19,7 @@ export const useLogin = () => {
         })
         const json = await response.json()
 
-        console.log(json, response);
+        // console.log(json, response);
 
         if (!response.ok) {
             setIsLoading(false)
@@ -31,16 +31,6 @@ export const useLogin = () => {
             dispatch(({ type: 'LOGIN', payload: json }))
 
             setIsLoading(false)
-
-            // await user
-
-            // if (user.role === "manager") {
-            //     navigate('/manager-dashbord')
-            // } else if (user.role === "admin") {
-            //     navigate('/admin-dashbord')
-            // } else if (user.role === "client") {
-            //     navigate('/')
-            // }
         }
     }
 
