@@ -26,7 +26,7 @@ function products() {
         <p className="">Curious? Here are our most popular items.</p>
         <div className="grid grid-cols-2 gap-6 md:flex lg:flex justify-between w-5/6 mx-auto mt-8">
           {product && product.slice(0, 4).map(product => (
-            <div className="bg-white w-[150px] md:w-[150px] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto">
+            <div className="bg-white w-[150px] md:w-[150px] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto" key={product._id}>
             <img src="images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png" alt={product.name} />
             <p className="font-bold text-green-500">{product.name}</p>
             <IconContext.Provider value={{ color: 'black' }}>

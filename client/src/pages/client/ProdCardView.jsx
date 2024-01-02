@@ -19,10 +19,6 @@ function ProdCardView() {
         fetchProduct()
     }, [dispatch, id])
 
-    if (product) {
-        console.log(product);
-    }
-
     return (
         <div>
             <button onClick={() => navigate(-1)} className="absolute top-4 left-4 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm">

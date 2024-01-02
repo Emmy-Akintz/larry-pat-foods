@@ -1,23 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { IconContext } from 'react-icons'
 import {
     // FaArrowDown,
     FaHome
 } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { prod } from '../../data'
 import '../../App.css'
+import { useProductContext } from '../../hooks/useProductContext'
 
 function FullProducts() {
+    const { dispatch } = useProductContext()
+    const [product, setProduct] = useState(null)
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const response = await fetch('http://localhost:2500/api/product')
+            const json = await response.json()
+            setProduct(json)
+        }
+
+        fetchProducts()
+    }, [dispatch])
 
     const [search, setSearch] = useState('')
     // console.log(search);
-
-    const [selectedProd, setSelectedProd] = useState(null)
-
-    const handleClick = (prod) => {
-        setSelectedProd(prod)
-    }
 
     return (
         <div className='bg-gray-100 p-4 fullproduct'>
@@ -36,25 +42,26 @@ function FullProducts() {
                 placeholder='Search Product...'
             />
             <div className="grid grid-cols-2 gap-10 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 justify-between w-5/6 mx-auto mt-8">
-                {prod.filter((item) => {
+                {product && product.filter((item) => {
                     return search.toLowerCase() === '' ? item : item.name.toLowerCase().includes(search)
-                }).map((e) => (
-                    <div className="bg-white w-[150px] md:w-[150px] lg:w-[150px] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto" key={e.id}>
+                }).map(e => (
+                    <div className="bg-white w-[150px] md:w-[150px] lg:w-[150px] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto" key={e._id}>
                         <img src={e.image} alt="" />
                         <p className="font-bold">{e.name}</p>
                         {/* <p className="">{e.price}</p> */}
                         {/*   <IconContext.Provider value={{ color: 'black' }}>
                            <FaArrowDown className='mx-auto mt-4 animate-bounce' />
                         </IconContext.Provider>*/}
-                        <button className='mt-4' onClick={handleClick}>
-                            <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>VIEW</a>
+                        <button className='mt-4'>
+                            <Link to={`/prod-card-view/${e._id}`} className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>VIEW</Link>
                         </button>
                         <button className='mt-4'>
                             <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>ADD TO CART</a>
                         </button>
+                        <br />
+                        <span className="text-sm">{e.stockQuantity} left</span>
                     </div>
                 ))}
-                {selectedProd && <div onClick={setSelectedProd(null)}>Selected Prod: {selectedProd.name}</div>}
             </div>
         </div>
     )
