@@ -5,8 +5,8 @@ import {
     FaHome
 } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
-import { prod } from '../data'
-import '../App.css'
+import { prod } from '../../data'
+import '../../App.css'
 
 function FullProducts() {
 

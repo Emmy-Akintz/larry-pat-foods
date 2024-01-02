@@ -1,16 +1,16 @@
 import React, {
-  // useEffect
+  useEffect
 } from 'react'
 
-import Home from '../pages/home'
-import About from '../pages/about'
-import Products from '../pages/products'
-import Review from '../pages/review'
-import Contact from '../pages/contact'
+import Home from '../pages/client/home'
+import About from '../pages/client/about'
+import Products from '../pages/client/products'
+import Review from '../pages/client/review'
+import Contact from '../pages/client/contact'
 
 import {
   Link,
-  //  useNavigate
+   useNavigate
 } from 'react-router-dom'
 
 import { FaArrowAltCircleUp, FaShoppingCart } from 'react-icons/fa'
@@ -21,17 +21,17 @@ import { IconContext } from 'react-icons'
 
 function Parentpage() {
   const { user } = useAuthContext()
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
-  // useEffect(() => {
-  //   if (user) {
-  //     if (user.role === "manager") {
-  //       navigate('/manager-dashbord')
-  //     } else if (user.role === "admin") {
-  //       navigate('/admin-dashbord')
-  //     }
-  //   }
-  // }, [user])
+  useEffect(() => {
+    if (user) {
+      if (user.role === "manager") {
+        navigate('/manager-dashbord')
+      } else if (user.role === "admin") {
+        navigate('/admin-dashbord')
+      }
+    }
+  }, [user])
 
   return (
     <>
