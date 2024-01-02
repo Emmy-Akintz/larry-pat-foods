@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useLogout } from '../hooks/useLogout'
 import { useNavigate } from 'react-router-dom'
+import { FaBackward } from 'react-icons/fa'
 
 function Profile() {
   const { logout } = useLogout()
@@ -20,6 +21,9 @@ function Profile() {
 
   return (
     <div>
+      <button onClick={() => navigate(-1)} className="absolute top-4 left-4 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm">
+        <FaBackward />
+      </button>
       <h1>PROFILE</h1>
       {user && (
         <div>

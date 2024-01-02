@@ -12,18 +12,18 @@ const {
 const router = express.Router()
 
 // get all products
-router.get('/products', getProducts)
+router.get('/', getProducts)
 
 // get a single product
-router.get('/products/:id', getProduct)
+router.get('/:id', getProduct)
 
 // post a new product
-router.post('/products', createProduct)
+router.post('/', createProduct)
 
 // delete a product
-router.delete('/products/:id', deleteProduct)
+router.delete('/:id', deleteProduct)
 
 // update a product
-router.patch('/products/:id', updateProduct)
+router.patch('/:id', updateProduct)
 
 module.exports = router

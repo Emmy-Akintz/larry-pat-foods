@@ -1,5 +1,5 @@
 import React, {
-  useEffect
+  useLayoutEffect
 } from 'react'
 
 import Home from '../pages/client/home'
@@ -10,7 +10,7 @@ import Contact from '../pages/client/contact'
 
 import {
   Link,
-   useNavigate
+   useNavigate,
 } from 'react-router-dom'
 
 import { FaArrowAltCircleUp, FaShoppingCart } from 'react-icons/fa'
@@ -23,7 +23,7 @@ function Parentpage() {
   const { user } = useAuthContext()
   const navigate = useNavigate()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (user) {
       if (user.role === "manager") {
         navigate('/manager-dashbord')
@@ -42,7 +42,7 @@ function Parentpage() {
         <Review />
         <Contact />
         {user ? <Link to='/profile' className="absolute top-4 right-4 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm">PROFILE</Link> : <Link to='/login' className="absolute top-4 right-4 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm animate-bounce">LOGIN</Link>}
-        {user && <Link to='/' className="absolute top-2 right-32 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm h-[40px]">
+        {user && <Link to='/' className="absolute top-2 right-32 transition-all py-2 px-4 rounded-3xl text-white text-sm h-[40px]">
           <span className='relative left-4 top-2 text-black bg-green-500 p-0.5 rounded-xl'>{user.cart.length}</span>
           <IconContext.Provider value={{ color: 'black' }}>
             <FaShoppingCart />

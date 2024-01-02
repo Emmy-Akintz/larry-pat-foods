@@ -16,6 +16,15 @@ export const productReducer = (state, action) => {
             return {
                 products: state.products.filter((w) => w._id !== action.payload._id)
             }
+        case 'PRODUCT_DELETED':
+            return {
+                ...state,
+                productDeleted: true
+            }
+        case 'UPDATE_PRODUCT':
+            return {
+                products: state.products.map(product => product._id === action.payload._id ? action.payload : product)
+            }
         default:
             return state
     }
@@ -23,7 +32,8 @@ export const productReducer = (state, action) => {
 
 export const ProductContextProvider = ({ children }) => {
     const [state, dispatch] = useReducer(productReducer, {
-        products: null
+        products: null,
+        productDeleted: false
     })
 
     return (

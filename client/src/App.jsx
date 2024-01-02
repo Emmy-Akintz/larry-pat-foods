@@ -16,6 +16,8 @@ import AdminProducts from './pages/admin/AdminProducts';
 import ManagerClients from './pages/manager/ManagerClients';
 import ManagerAdmins from './pages/manager/ManagerAdmins';
 import ManagerOrderController from './pages/manager/ManagerOrderController';
+import UpdateProduct from './pages/manager/products/UpdateProduct';
+import ProdCardView from './pages/client/ProdCardView';
 
 function App() {
 
@@ -27,6 +29,7 @@ function App() {
             <Route path='/' element={<Parentpage />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/prodlist' element={<FullProducts />} />
+            <Route path='/prod-card-view/:id' element={<ProdCardView />} />
             <Route path='/login' element={<Loginpage />} />
             <Route path='/signup' element={<Signuppage />} />
             <Route path='/forgotPass' element={<ForgotPass />} />
@@ -35,6 +38,7 @@ function App() {
             <Route path='/manager-product' element={<ManagerProducts />} />
             <Route path='/manager-admins' element={<ManagerAdmins />} />
             <Route path='/manager-clients' element={<ManagerClients />} />
+            <Route path='/product-update/:id' element={<UpdateProduct />} />
             <Route path='/manager-order-controller' element={<ManagerOrderController />} />
             <Route path='/admin-dashbord' element={<AdminDashbord />} />
             <Route path='/admin-product' element={<AdminProducts />} />
