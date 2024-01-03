@@ -9,6 +9,8 @@ function Profile() {
   const { user } = useAuthContext()
   const navigate = useNavigate()
 
+  // console.log(user.cart);
+
   const handleClick = () => {
     logout()
   }
@@ -30,7 +32,7 @@ function Profile() {
           <div>Welcome {user.firstName}</div>
           <div>Email: {user.email}</div>
           {user.cart && (
-            <div>{user.cart}</div>
+            <div>{user.cart.length}</div>
           )}
           <button onClick={handleClick}>Logout</button>
         </div>

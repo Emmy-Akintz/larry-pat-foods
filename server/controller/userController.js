@@ -4,6 +4,8 @@ const nodemailer = require('nodemailer')
 const { randomBytes } = require('crypto')
 const validator = require('validator')
 const bcrypt = require('bcrypt')
+const { log } = require('console')
+const mongoose = require('mongoose')
 
 const createToken = (_id) => {
     return jwt.sign(({ _id }), process.env.SECRET)
@@ -151,4 +153,24 @@ const resetPass = async (req, res) => {
     })
 }
 
-module.exports = { signupUser, loginUser, forgotPass, resetPass }
+const addItem = async (req, res) => {
+    const { userId, productId } = req.params
+
+    try {
+        await User.updateOne({ _id: userId }, {
+            $push: {
+                cart: {
+                    product: new mongoose.Types.ObjectId(productId),
+                    orderStatus: 'pending',
+                    orderDate: Date.now()
+                }
+            }
+        })
+        res.status(200).json({ message: 'Product added to cart' })
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error.toString() })
+    }
+}
+
+module.exports = { signupUser, loginUser, forgotPass, resetPass, addItem }
