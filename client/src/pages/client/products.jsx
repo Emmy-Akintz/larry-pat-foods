@@ -24,7 +24,7 @@ function products() {
 
   const addItem = useCallback(async (product) => {
     setIsLoading(true)
-    setError(null)
+    setError('')
 
     const response = await fetch(`http://localhost:2500/api/user/add-item/${user.id}/${product._id}`, {
       method: 'POST',
@@ -39,7 +39,7 @@ function products() {
     if (!response.ok) {
       setIsLoading(false)
       setError(json.message)
-      console.log(json.message);
+      // console.log(json.message);
     }
     if (response.ok) {
       authDispatch(({ type: 'ADD_ITEM', payload: json.updatedUser.cart }))

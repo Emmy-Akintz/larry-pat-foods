@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { IconContext } from 'react-icons'
 import {
     // FaArrowDown,
@@ -7,10 +7,12 @@ import {
 import { Link } from 'react-router-dom'
 import '../../App.css'
 import { useProductContext } from '../../hooks/useProductContext'
+import { useAuthContext } from '../../hooks/useAuthContext'
 
 function FullProducts() {
-    const { dispatch } = useProductContext()
+    const { dispatch: productDispatch } = useProductContext()
     const [product, setProduct] = useState(null)
+    const { user, dispatch: authDispatch } = useAuthContext()
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -20,10 +22,37 @@ function FullProducts() {
         }
 
         fetchProducts()
-    }, [dispatch])
+    }, [productDispatch, authDispatch])
 
     const [search, setSearch] = useState('')
     // console.log(search);
+
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState('')
+
+    const addItem = useCallback(async (product) => {
+        setIsLoading(true)
+        setError('')
+
+        const response = await fetch(`http://localhost:2500/api/user/add-item/${user.id}/${product._id}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${user.token}`
+            }
+        })
+        const json = await response.json()
+
+        if (!response.ok) {
+            setIsLoading(false)
+            setError(json.message)
+        }
+        if (response.ok) {
+            authDispatch(({ type: 'ADD_ITEM', payload: json.updatedUser.cart }))
+
+            setIsLoading(false)
+        }
+    }, [authDispatch, user])
 
     return (
         <div className='bg-gray-100 p-4 fullproduct'>
@@ -55,9 +84,7 @@ function FullProducts() {
                         <button className='mt-4'>
                             <Link to={`/prod-card-view/${e._id}`} className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>VIEW</Link>
                         </button>
-                        <button className='mt-4'>
-                            <a href="/" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs animate-bounce'>ADD TO CART</a>
-                        </button>
+                        <button disabled={isLoading} className='mt-4 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-xs' onClick={() => addItem(product)}>ADD TO CART</button>
                         <br />
                         <span className="text-sm">{e.stockQuantity} left</span>
                     </div>

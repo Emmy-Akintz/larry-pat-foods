@@ -13,7 +13,8 @@ export const authReducer = (state, action) => {
         // case 'REMOVE_ITEM':
         // return { user: { ...state.user, cart: action.payload } }
         case 'CLEAR_CART':
-            return { user: { ...state.user, cart: [] } }
+            state.user.cart = []
+            return state
         default:
             return false
     }
