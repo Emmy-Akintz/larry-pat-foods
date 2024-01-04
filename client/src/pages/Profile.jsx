@@ -40,7 +40,7 @@ function Profile() {
     if (!response.ok) {
       setIsLoading(false)
       setError(json.message)
-      console.log(json.message);
+      // console.log(json.message);
     }
     if (response.ok) {
       dispatch(({ type: 'CLEAR_CART' }))
@@ -65,6 +65,8 @@ function Profile() {
               <button onClick={clearCart}>Clear Cart</button>
             </div>
           )}
+          <br />
+          <br />
           <button onClick={handleClick}>Logout</button>
         </div>
       )}

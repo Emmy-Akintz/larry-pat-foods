@@ -34,6 +34,7 @@ function products() {
       }
     })
     const json = await response.json()
+    // console.log(json)
 
     if (!response.ok) {
       setIsLoading(false)
@@ -41,7 +42,7 @@ function products() {
       console.log(json.message);
     }
     if (response.ok) {
-      authDispatch(({ type: 'ADD_ITEM', payload: json.cart }))
+      authDispatch(({ type: 'ADD_ITEM', payload: json.updatedUser.cart }))
 
       setIsLoading(false)
     }
