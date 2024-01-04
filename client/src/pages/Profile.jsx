@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { useLogout } from '../hooks/useLogout'
 import { useNavigate } from 'react-router-dom'
@@ -6,8 +6,11 @@ import { FaBackward } from 'react-icons/fa'
 
 function Profile() {
   const { logout } = useLogout()
-  const { user } = useAuthContext()
+  const { user, dispatch } = useAuthContext()
   const navigate = useNavigate()
+
+  const [error, setError] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   // console.log(user.cart);
 
@@ -21,6 +24,29 @@ function Profile() {
     }
   }, [user])
 
+  const clearCart = async () => {
+    setIsLoading(true)
+    setError('')
+
+    const response = await fetch(`http://localhost:2500/api/user/clear-cart/${user.id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user.token}`
+      }
+    })
+    const json = await response.json()
+
+    if (!response.ok) {
+      setIsLoading(false)
+      setError(json.message)
+      console.log(json.message);
+    }
+    if (response.ok) {
+      dispatch(({ type: 'CLEAR_CART' }))
+    }
+  }
+
   return (
     <div>
       <button onClick={() => navigate(-1)} className="absolute top-4 left-4 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm">
@@ -32,7 +58,12 @@ function Profile() {
           <div>Welcome {user.firstName}</div>
           <div>Email: {user.email}</div>
           {user.cart && (
-            <div>{user.cart.length}</div>
+            <div>
+              {/* {error && <span className='border border-red-500 p-2'>{error}</span>} */}
+              <span>{user.cart.length}</span>
+              <br />
+              <button onClick={clearCart}>Clear Cart</button>
+            </div>
           )}
           <button onClick={handleClick}>Logout</button>
         </div>

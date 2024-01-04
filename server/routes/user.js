@@ -3,7 +3,7 @@ const requireAuth = require('../middleware/requireAuth')
 // const bodyParser = require('body-parser')
 
 // controller functions
-const { signupUser, loginUser, forgotPass, resetPass, addItem } = require('../controller/userController')
+const { signupUser, loginUser, forgotPass, resetPass, addItem, clearCart } = require('../controller/userController')
 const bodyParser = require('body-parser')
 
 const router = express.Router()
@@ -15,6 +15,10 @@ router.post('/login', loginUser)
 router.post('/signup', signupUser)
 
 router.post('/add-item/:userId/:productId', requireAuth, addItem)
+
+// router.post('/add-item/:userId/:productId', requireAuth, addItem)
+
+router.delete('/clear-cart/:userId', requireAuth, clearCart)
 
 // change password... this must involve verification code being sent to email. 
 router.use(bodyParser.json())

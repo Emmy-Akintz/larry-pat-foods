@@ -8,20 +8,19 @@ export const authReducer = (state, action) => {
             return { user: action.payload }
         case 'LOGOUT':
             return { user: null }
-        case 'ADD_ITEM':
-            const cartItems = Object.values(action.payload.cart);
-            return { ...state, cart: [...state.cart, ...cartItems] }
-        case 'REMOVE_ITEM':
-            return { ...state, cart: state.cart.filter(item => item !== action.payload.cart) }
-        case 'CLEAR CART':
-            return { ...state, cart: [] }
+        // case 'ADD_ITEM':
+        //     return { ...state, cart: action.payload };
+        // case 'REMOVE_ITEM':
+        //     return { user: action.payload }
+        // case 'CLEAR_CART':
+        //     return action.payload 
         default:
             return false
     }
 }
 
 export const AuthContextProvider = ({ children }) => {
-    const [state, dispatch] = useReducer(authReducer, { user: null, cart: [] })
+    const [state, dispatch] = useReducer(authReducer, { user: null })
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('larry-pat-user'))

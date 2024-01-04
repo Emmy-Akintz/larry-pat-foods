@@ -41,7 +41,7 @@ function products() {
       console.log(json.message);
     }
     if (response.ok) {
-      authDispatch(({ type: 'ADD_ITEM', payload: json }))
+      authDispatch(({ type: 'ADD_ITEM', payload: json.cart }))
 
       setIsLoading(false)
     }
