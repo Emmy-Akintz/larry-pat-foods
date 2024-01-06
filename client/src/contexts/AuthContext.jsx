@@ -9,10 +9,9 @@ export const authReducer = (state, action) => {
         case 'LOGOUT':
             return { user: null }
         case 'ADD_ITEM':
-            console.log(action.payload);
             return { user: { ...state.user, cart: action.payload } }
         case 'REMOVE_ITEM':
-        return { user: { ...state.user, cart: action.payload } }
+            return { user: { ...state.user, cart: action.payload } }
         case 'CLEAR_CART':
             state.user.cart = []
             return state

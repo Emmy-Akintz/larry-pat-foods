@@ -29,7 +29,7 @@ function ProductForm() {
             body: JSON.stringify(product),
             headers: {
                 'Content-Type': 'application/json',
-                // 'Authorization': `Bearer ${user.token}`
+                'Authorization': `Bearer ${user.token}`
             }
         })
         const json = await response.json()

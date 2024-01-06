@@ -1,6 +1,4 @@
-import React, {
-  useLayoutEffect
-} from 'react'
+import React, { useEffect } from 'react'
 
 import Home from '../pages/client/home'
 import About from '../pages/client/about'
@@ -8,10 +6,7 @@ import Products from '../pages/client/products'
 import Review from '../pages/client/review'
 import Contact from '../pages/client/contact'
 
-import {
-  Link,
-   useNavigate,
-} from 'react-router-dom'
+import { Link, useNavigate, } from 'react-router-dom'
 
 import { FaArrowAltCircleUp, FaShoppingCart } from 'react-icons/fa'
 import '../App.css'
@@ -23,7 +18,7 @@ function Parentpage() {
   const { user } = useAuthContext()
   const navigate = useNavigate()
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (user) {
       if (user.role === "manager") {
         navigate('/manager-dashbord')

@@ -1,4 +1,5 @@
 const express = require('express')
+const requireAuth = require('../middleware/requireAuth')
 
 // controller functions
 const {
@@ -18,12 +19,12 @@ router.get('/', getProducts)
 router.get('/:id', getProduct)
 
 // post a new product
-router.post('/', createProduct)
+router.post('/', requireAuth, createProduct)
 
 // delete a product
-router.delete('/:id', deleteProduct)
+router.delete('/:id', requireAuth, deleteProduct)
 
 // update a product
-router.patch('/:id', updateProduct)
+router.patch('/:id', requireAuth, updateProduct)
 
 module.exports = router

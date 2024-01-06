@@ -16,8 +16,6 @@ router.post('/signup', signupUser)
 
 router.post('/add-item/:userId/:productId', requireAuth, addItem)
 
-// router.post('/add-item/:userId/:productId', requireAuth, addItem)
-
 router.delete('/clear-cart/:userId', requireAuth, clearCart)
 
 // change password... this must involve verification code being sent to email. 
