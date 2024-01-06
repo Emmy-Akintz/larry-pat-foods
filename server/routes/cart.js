@@ -14,7 +14,7 @@ router.get('/get-item/:userId', () => {})
 router.post('/add-item/:userId/:productId', () => {})
 
 // delete an item from a cart
-router.delete('/delete-cart/:userId/:cartId', () => {})
+router.delete('/delete-item/:userId/:cartId', () => {})
 
 // delete a user's cart
-router.delete('/delete-carts/:userId', () => {})
+router.delete('/delete-cart/:userId', () => {})
