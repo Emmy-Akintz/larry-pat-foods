@@ -8,7 +8,7 @@ const router = express.Router()
 router.use(requireAuth)
 
 // get user's cart
-router.get('/get-item/:userId/:productId', () => {})
+router.get('/get-item/:userId', () => {})
 
 // add item to cart
 router.post('/add-item/:userId/:productId', () => {})
