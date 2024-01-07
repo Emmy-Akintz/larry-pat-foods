@@ -97,7 +97,7 @@ const signupUser = async (req, res) => {
 
     user.save()
         .then(doc => res.status(200).json({ message: 'Signup successful', doc }))
-        .catch(error => res.json({ error }))
+        .catch(error => res.json({ message: error }))
 }
 
 //reset-password

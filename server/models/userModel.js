@@ -41,10 +41,10 @@ const userSchema = new Schema({
     },
     cart: [
         {
-            product: {
-                type: mongoose.Schema.Types.ObjectId,
-                ref: 'Product',
-            },
+            // product: {
+            //     type: mongoose.Schema.Types.ObjectId,
+            //     ref: 'Product',
+            // },
             orderDate: {
                 type: Date,
                 default: Date.now
