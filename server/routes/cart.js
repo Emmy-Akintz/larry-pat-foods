@@ -18,3 +18,5 @@ router.delete('/delete-item/:userId/:cartId', () => {})
 
 // delete a user's cart
 router.delete('/delete-cart/:userId', () => {})
+
+module.exports = router

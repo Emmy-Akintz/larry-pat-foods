@@ -15,3 +15,5 @@ router.patch('/update-address/:userId', () => {})
 
 // delete user's address
 router.delete('/delete-address/:userId', () => {})
+
+module.exports = router
