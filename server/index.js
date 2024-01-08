@@ -6,6 +6,7 @@ const cors = require('cors')
 const userRoutes = require('./routes/user')
 const productRoutes = require('./routes/product')
 const cartRoutes = require('./routes/cart')
+const addressRoutes = require('./routes/address')
 
 const port = process.env.PORT
 const mongo_uri = process.env.MONGO_URI
@@ -30,6 +31,7 @@ app.get('/', (req, res, next) => {
 app.use('/api/user', userRoutes)
 app.use('/api/product', productRoutes)
 app.use('/api/cart', cartRoutes)
+app.use('/api/address', addressRoutes)
 
 // connect to db
 mongoose.connect(mongo_uri)
