@@ -60,20 +60,25 @@ const addAddress = async (req, res) => {
 // update user's address
 const updateAddress = async (req, res) => {
     const { userId } = req.params
+    const addressUpdate = req.body
 
-    if (!mongoose.Types.ObjectId.isValid(userId)) {
-        return res.status(404).json({ message: "User doesn't have an address" })
+    try {
+        // update the address document
+        const updatedAddress = await Address.findOneAndUpdate(
+            { userId: userId }, // find a document by user Id
+            { address: addressUpdate }, // update the address field
+            { new: true, runValidators: true }, // options: return the updated document and run the schema validators
+        )
+
+        if (!updatedAddress) {
+            return res.status(404).json({ message: 'Address not found' })
+        }
+
+        res.status(200).json({ message: 'Address updated successfully', updatedAddress })
+    } catch (error) {
+        // handle the potential errors, such as validation errors or cast errors
+        res.status(400).json({ message: error.message })
     }
-
-    const address = await Address.findOneAndUpdate({ userId: userId }, {
-        ...req.body
-    })
-
-    if (!address) {
-        return res.status(400).json({ message: "User doesn't have an address" })
-    }
-
-    res.status(200).json({ message: 'Address updated successfully!!!', address })
 }
 
 // delete user's address
