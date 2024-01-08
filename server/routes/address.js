@@ -4,6 +4,7 @@ const requireAuth = require('../middleware/requireAuth')
 // controller functions
 const {
     getAddress,
+    addAddress,
     updateAddress,
     deleteAddress
 } = require('../controller/addressController')
@@ -16,7 +17,7 @@ router.use(requireAuth)
 router.get('/get-address/:userId', getAddress)
 
 // add user's address
-router.post('/add-address/:userId', () => {})
+router.post('/add-address/:userId', addAddress)
 
 // update user's address
 router.patch('/update-address/:userId', updateAddress)

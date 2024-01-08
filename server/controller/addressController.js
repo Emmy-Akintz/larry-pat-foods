@@ -14,6 +14,47 @@ const getAddress = async (req, res) => {
 const addAddress = async (req, res) => {
     const { userId } = req.params
     const { street, city, state, country, postal_code } = req.body
+
+    let emptyFields = []
+
+    if (!street) {
+        emptyFields.push('street')
+    }
+    if (!city) {
+        emptyFields.push('city')
+    }
+    if (!state) {
+        emptyFields.push('state')
+    }
+    if (!country) {
+        emptyFields.push('country')
+    }
+    if (!postal_code) {
+        emptyFields.push('postal_code')
+    }
+    if (emptyFields.length > 0) {
+        return res.status(400).json({ message: 'Please fill in all fields', emptyFields })
+    }
+
+    // add doc to database
+    try {
+        let newAddress = new Address({
+            userId: userId,
+            address: {
+                street,
+                city,
+                state,
+                country,
+                postal_code
+            }
+        })
+
+        // await the save operation and send the response afterwards
+        let savedAddress = await newAddress.save()
+        return res.status(200).json({ message: 'Address created successfully', address: savedAddress })
+    } catch (error) {
+        res.status(500).json({ message: error.toString() })
+    }
 }
 
 // update user's address
@@ -54,6 +95,7 @@ const deleteAddress = async (req, res) => {
 
 module.exports = {
     getAddress,
+    addAddress,
     updateAddress,
     deleteAddress
 }
