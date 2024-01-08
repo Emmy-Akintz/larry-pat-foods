@@ -13,24 +13,33 @@ const getCart = async (req, res) => {
 // add item to cart
 const addItem = async (req, res) => {
     const { userId, productId } = req.params;
+    const { quantity } = req.body; // Assume quantity is passed in the request body
 
     try {
         let cart = await Cart.findOne({ userId: userId });
 
         if (!cart) {
-            // No cart for the user, create a new cart
+            // No cart for the user, create a new cart with the product
             let newCart = new Cart({
                 userId: userId,
-                cart: [{ productId: productId }] // Corrected to match the schema
+                cart: [{ productId: productId, quantity: quantity }]
             });
 
-            // Await the save operation and send the response afterwards
             let savedCart = await newCart.save();
             return res.status(200).json({ message: 'Cart created successfully', cart: savedCart });
         }
 
-        // Cart exists for the user, add the product to the cart
-        cart.cart.push({ productId: productId });
+        // Cart exists for the user, check if the product is already in the cart
+        let productExists = cart.cart.find(item => item.productId.toString() === productId);
+
+        if (productExists) {
+            // Product exists, update the quantity
+            productExists.quantity += quantity;
+        } else {
+            // Product does not exist, add new product with quantity
+            cart.cart.push({ productId: productId, quantity: quantity });
+        }
+
         let savedCart = await cart.save();
         res.status(200).json({ message: 'Product added to cart', cart: savedCart });
 
@@ -39,6 +48,7 @@ const addItem = async (req, res) => {
         res.status(500).json({ message: error.toString() });
     }
 };
+
 
 // delete an item from a cart
 const deleteItem = async (req, res) => {
