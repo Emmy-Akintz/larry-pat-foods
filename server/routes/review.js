@@ -8,6 +8,8 @@ const {
     deleteReview
 } = require('../controller/reviewController')
 
+const router = express.Router()
+
 // Create a new review
 router.post('/reviews', requireAuth, createReview); 
 
@@ -19,3 +21,5 @@ router.patch('/reviews/:reviewId', requireAuth, updateReview);
 
 // Delete a review by ID
 router.delete('/reviews/:reviewId', requireAuth, deleteReview); 
+
+module.exports = router

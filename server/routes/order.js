@@ -9,6 +9,8 @@ const {
     deleteOrder
 } = require('../controller/orderController')
 
+const router = express.Router()
+
 // Create a new order
 router.post('/orders', requireAuth, createOrder); 
 
@@ -23,3 +25,5 @@ router.patch('/orders/:orderId', requireAuth, updateOrder);
 
 // Delete an order by ID
 router.delete('/orders/:orderId', requireAuth, deleteOrder); 
+
+module.exports = router

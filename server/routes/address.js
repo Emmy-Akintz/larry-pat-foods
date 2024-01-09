@@ -11,18 +11,16 @@ const {
 
 const router = express.Router()
 
-router.use(requireAuth)
-
 // get user's address
-router.get('/get-address/:userId', getAddress)
+router.get('/get-address/:userId', requireAuth, getAddress)
 
 // add user's address
-router.post('/add-address/:userId', addAddress)
+router.post('/add-address/:userId', requireAuth, addAddress)
 
 // update user's address
-router.patch('/update-address/:userId', updateAddress)
+router.patch('/update-address/:userId', requireAuth, updateAddress)
 
 // delete user's address
-router.delete('/delete-address/:userId', deleteAddress)
+router.delete('/delete-address/:userId', requireAuth, deleteAddress)
 
 module.exports = router
