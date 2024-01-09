@@ -100,6 +100,10 @@ const signupUser = async (req, res) => {
         .catch(error => res.json({ message: error }))
 }
 
+const deleteUser = async (req, res) => {
+    const { userId } = req.params
+}
+
 //reset-password
 const forgotPass = async (req, res) => {
     const { email } = req.body
@@ -153,44 +157,4 @@ const resetPass = async (req, res) => {
     })
 }
 
-const addItem = async (req, res) => {
-    const { userId, productId } = req.params
-
-    try {
-        await User.updateOne({ _id: userId }, {
-            $push: {
-                cart: {
-                    product: new mongoose.Types.ObjectId(productId),
-                    orderStatus: 'pending',
-                    orderDate: Date.now()
-                }
-            }
-        })
-        const updatedUser = await User.findById(userId)
-
-        res.status(200).json({ message: 'Product added to cart', updatedUser })
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: error.toString() })
-    }
-}
-
-const clearCart = async (req, res) => {
-    const { userId } = req.params
-
-    try {
-        await User.updateOne({ _id: userId }, {
-            $set: {
-                cart: []
-            }
-        })
-        const updatedUser = await User.findById(userId)
-
-        res.status(200).json({ message: 'Cart cleared', updatedUser })
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({ message: error.toString() })
-    }
-}
-
-module.exports = { signupUser, loginUser, forgotPass, resetPass, addItem, clearCart }
+module.exports = { signupUser, loginUser, deleteUser, forgotPass, resetPass }
