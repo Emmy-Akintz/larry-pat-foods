@@ -1,5 +1,25 @@
-router.post('/orders', orderController.createOrder); // Create a new order
-router.get('/orders/:userId', orderController.getUserOrders); // Get all orders for a user
-router.get('/orders/:orderId', orderController.getOrder); // Get a single order by ID
-router.patch('/orders/:orderId', orderController.updateOrder); // Update an order by ID
-router.delete('/orders/:orderId', orderController.deleteOrder); // Delete an order by ID
+const express = require('express')
+const requireAuth = require('../middleware/requireAuth')
+
+const {
+    createOrder,
+    getUserOrders,
+    getOrder,
+    updateOrder,
+    deleteOrder
+} = require('../controller/orderController')
+
+// Create a new order
+router.post('/orders', requireAuth, createOrder); 
+
+// Get all orders for a user
+router.get('/orders/:userId', requireAuth, getUserOrders); 
+
+// Get a single order by ID
+router.get('/orders/:orderId', requireAuth, getOrder); 
+
+// Update an order by ID
+router.patch('/orders/:orderId', requireAuth, updateOrder); 
+
+// Delete an order by ID
+router.delete('/orders/:orderId', requireAuth, deleteOrder); 

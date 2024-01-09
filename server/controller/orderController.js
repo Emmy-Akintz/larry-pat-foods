@@ -1,31 +1,20 @@
-const Order = require('../models/Order'); // Assuming you have an Order model defined as per the previous example
+const Order = require('../models/Order');
+const mongoose = require('mongoose')
 
-// createOrder controller function
-const createOrder = async (req, res) => {
-    try {
-        const { userId, products, status } = req.body;
+const createOrder = async (req, res) => {};
 
-        // Create a new order with the request body data
-        const newOrder = new Order({
-            userId,
-            products,
-            status
-        });
+const getUserOrders = async (req, res) => {}
 
-        // Save the order to the database
-        await newOrder.save();
+const getOrder = async (req, res) => {}
 
-        // Send a response with the created order
-        res.status(201).json({
-            message: 'Order created successfully',
-            order: newOrder
-        });
-    } catch (error) {
-        // Handle possible errors
-        res.status(500).json({ message: 'Error creating order', error: error.message });
-    }
-};
+const updateOrder = async (req, res) => {}
+
+const deleteOrder = async (req, res) => {}
 
 module.exports = {
-    createOrder
+    createOrder,
+    getUserOrders,
+    getOrder,
+    updateOrder,
+    deleteOrder
 };

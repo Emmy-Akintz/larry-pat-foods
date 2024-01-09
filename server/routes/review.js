@@ -1,4 +1,21 @@
-router.post('/reviews', reviewController.createReview); // Create a new review
-router.get('/reviews/:productId', reviewController.getProductReviews); // Get all reviews for a product
-router.patch('/reviews/:reviewId', reviewController.updateReview); // Update a review by ID
-router.delete('/reviews/:reviewId', reviewController.deleteReview); // Delete a review by ID
+const express = require('express')
+const requireAuth = require('../middleware/requireAuth')
+
+const {
+    createReview,
+    getProductReviews,
+    updateReview,
+    deleteReview
+} = require('../controller/reviewController')
+
+// Create a new review
+router.post('/reviews', requireAuth, createReview); 
+
+// Get all reviews for a product
+router.get('/reviews/:productId', getProductReviews); 
+
+// Update a review by ID
+router.patch('/reviews/:reviewId', requireAuth, updateReview); 
+
+// Delete a review by ID
+router.delete('/reviews/:reviewId', requireAuth, deleteReview); 
