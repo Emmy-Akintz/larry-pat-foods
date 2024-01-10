@@ -54,10 +54,10 @@ const loginUser = async (req, res) => {
 
 // signup user
 const signupUser = async (req, res) => {
-    const { email, password, firstName, lastName, phone } = req.body
+    const { email, password, firstName, lastName } = req.body
 
     // validation
-    if (!email || !password || !firstName || !lastName || !phone) {
+    if (!email || !password || !firstName || !lastName) {
         return res.status(401).json({ message: 'All fields must be filled' })
     }
     if (!validator.isEmail(email)) {
