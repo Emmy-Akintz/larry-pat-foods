@@ -1,11 +1,11 @@
 const User = require('../models/userModel')
 const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer')
-const { randomBytes } = require('crypto')
+// const { randomBytes } = require('crypto')
 const validator = require('validator')
 const bcrypt = require('bcrypt')
-const { log } = require('console')
-const mongoose = require('mongoose')
+// const { log } = require('console')
+// const mongoose = require('mongoose')
 
 const createToken = (_id) => {
     return jwt.sign(({ _id }), process.env.SECRET)
@@ -73,26 +73,12 @@ const signupUser = async (req, res) => {
         return res.status(409).json({ message: 'Email already exists' })
     }
 
-    const phoneExists = await User.findOne({ phone })
-
-    if (phoneExists) {
-        return res.status(409).json({ message: 'Phone number already exists' })
-    }
-
-    const phoneLength = phone.length
-
-    const isPhoneLength = phoneLength === 11 || phoneLength === 14
-
-    if (!isPhoneLength) {
-        return res.status(400).json({ message: 'Invalid Phone Number' })
-    }
-
     // hash the password
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
     let user = new User({
-        email, password: hash, firstName, lastName, phone
+        firstName, lastName, email, password: hash, 
     })
 
     user.save()
