@@ -1,4 +1,4 @@
-const Order = require('../models/Order');
+const Order = require('../models/orderModel');
 const mongoose = require('mongoose')
 
 const createOrder = async (req, res) => {};
