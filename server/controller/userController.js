@@ -34,22 +34,7 @@ const loginUser = async (req, res) => {
 
     const token = createToken(user._id)
 
-    res.status(200).json({ message: 'User successfully logged in', token, id: user._id, role: user.role, email: user.email, firstName: user.firstName, lastName: user.lastName, cart: user.cart, address: user.address, phone: user.phone, notes: user.notes })
-
-    // try {
-    //     const user = await User.login(email, password)
-
-    //     // create a token
-    //     const token = createToken(user._id)
-
-    //     res.status(200).json({
-    //         email,
-    //         // user,
-    //         token
-    //     })
-    // } catch (error) {
-    //     res.status(400).json({ error: error.message })
-    // }
+    res.status(200).json({ message: 'User successfully logged in', user, token })
 }
 
 // signup user
@@ -78,7 +63,7 @@ const signupUser = async (req, res) => {
     const hash = await bcrypt.hash(password, salt)
 
     let user = new User({
-        firstName, lastName, email, password: hash, 
+        firstName, lastName, email, password: hash,
     })
 
     user.save()
@@ -88,6 +73,14 @@ const signupUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     const { userId } = req.params
+
+    User.findOneAndDelete({ userId })
+        .then(user => {
+            return res.status(200).json({ message: 'User deleted successfully', user })
+        })
+        .catch(error => {
+            return res.json({ message: error.message })
+        })
 }
 
 //reset-password
