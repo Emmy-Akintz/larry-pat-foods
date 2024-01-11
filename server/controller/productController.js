@@ -10,13 +10,13 @@ const getProducts = async (req, res) => {
 
 // get a single product
 const getProduct = async (req, res) => {
-    const { id } = req.params
+    const { productId } = req.params
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!mongoose.Types.ObjectId.isValid(productId)) {
         return res.status(404).json({ error: 'No such product' })
     }
 
-    const product = await Product.findById(id)
+    const product = await Product.findById(productId)
 
     if (!product) {
         return res.status(404).json({ error: 'No such product' })
@@ -48,23 +48,24 @@ const createProduct = async (req, res) => {
     }
 
     // add document to db
-    try {
-        const product = await Product.create({ name, description, price: mongoose.Types.Decimal128.fromString(price), stockQuantity })
-        res.status(200).json(product)
-    } catch (error) {
-        res.status(400).json({ error: error.message })
-    }
+    let product = new Product({
+        name, description, price: mongoose.Types.Decimal128.fromString(price), stockQuantity
+    })
+
+    product.save()
+        .then(doc => res.status(200).json({ message: 'Product added successfully', doc }))
+        .catch(error => res.json({ message: error.message }))
 }
 
 // delete a product
 const deleteProduct = async (req, res) => {
-    const { id } = req.params
+    const { productId } = req.params
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!mongoose.Types.ObjectId.isValid(productId)) {
         return res.status(404).json({ error: 'No such product' })
     }
 
-    const product = await Product.findOneAndDelete({ _id: id })
+    const product = await Product.findOneAndDelete({ _id: productId })
 
     if (!product) {
         return res.status(400).json({ error: 'No such product' })
@@ -75,13 +76,13 @@ const deleteProduct = async (req, res) => {
 
 // update a product
 const updateProduct = async (req, res) => {
-    const { id } = req.params
+    const { productId } = req.params
 
-    if (!mongoose.Types.ObjectId.isValid(id)) {
+    if (!mongoose.Types.ObjectId.isValid(productId)) {
         return res.status(404).json({ error: 'No such product' })
     }
 
-    const product = await Product.findOneAndUpdate({ _id: id }, {
+    const product = await Product.findOneAndUpdate({ _id: productId }, {
         ...req.body
     })
 

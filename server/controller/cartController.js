@@ -1,11 +1,10 @@
 const Cart = require('../models/cartModel')
-const mongoose = require('mongoose')
 
 // get user's cart
 const getCart = async (req, res) => {
     const { userId } = req.params
 
-    const cart = await Cart.find({ userId }).sort({ createdAt: -1 })
+    const cart = await Cart.find({ user: userId }).sort({ createdAt: -1 })
 
     res.status(200).json(cart)
 }
@@ -21,7 +20,7 @@ const addItem = async (req, res) => {
         if (!cart) {
             // No cart for the user, create a new cart with the product
             let newCart = new Cart({
-                userId: userId,
+                user: userId,
                 cart: [{ productId: productId, quantity: quantity }]
             });
 
