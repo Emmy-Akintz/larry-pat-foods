@@ -17,12 +17,9 @@ router.use(requireAuth)
 router.get('/get-cart/:userId', getCart)
 
 // add item to cart
-router.post('/add-item/:userId/:productId', addItem)
+router.post('/add-item/:userId', addItem)
 
 // delete an item from a cart
 router.delete('/delete-item/:userId/:productId', deleteItem)
-
-// delete a user's cart
-router.delete('/delete-cart/:userId', deleteCart)
 
 module.exports = router
