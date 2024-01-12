@@ -13,90 +13,86 @@ const getAddress = async (req, res) => {
 // add user's address
 const addAddress = async (req, res) => {
     const { userId } = req.params
-    const { street, city, state, country, postal_code } = req.body
 
-    let emptyFields = []
+    const addressCheck = Address.findOne(userId)
 
-    if (!street) {
-        emptyFields.push('street')
-    }
-    if (!city) {
-        emptyFields.push('city')
-    }
-    if (!state) {
-        emptyFields.push('state')
-    }
-    if (!country) {
-        emptyFields.push('country')
-    }
-    if (!postal_code) {
-        emptyFields.push('postal_code')
-    }
-    if (emptyFields.length > 0) {
-        return res.status(400).json({ message: 'Please fill in all fields', emptyFields })
+    if (addressCheck) {
+        return res.status(409).json({ message: 'Address already exists.' })
     }
 
-    // add doc to database
     try {
-        let newAddress = new Address({
-            userId: userId,
-            address: {
-                street,
-                city,
-                state,
-                country,
-                postal_code
-            }
-        })
+        // Create a new address instance with data from request body
+        const address = new Address({
+            user: req.user._id, // assuming you have the user id stored in req.user
+            fullName: req.body.fullName,
+            streetAddress: req.body.streetAddress,
+            city: req.body.city,
+            stateProvince: req.body.stateProvince,
+            zipCode: req.body.zipCode,
+            country: req.body.country,
+            phone: req.body.phone
+        });
 
-        // await the save operation and send the response afterwards
-        let savedAddress = await newAddress.save()
-        return res.status(200).json({ message: 'Address created successfully', address: savedAddress })
+        // Save the new address to the database
+        await address.save();
+
+        // Send a success response with the new address
+        res.status(201).json(address);
     } catch (error) {
-        res.status(500).json({ message: error.toString() })
+        // If an error occurs, send an error response
+        res.status(400).json({ error: error.message });
     }
-}
+};
 
 // update user's address
 const updateAddress = async (req, res) => {
-    const { userId } = req.params
-    const addressUpdate = req.body
+    const { userId } = req.params; // Assuming the user ID is passed in the URL
+    const updateData = {
+        fullName: req.body.fullName,
+        streetAddress: req.body.streetAddress,
+        city: req.body.city,
+        stateProvince: req.body.stateProvince,
+        zipCode: req.body.zipCode,
+        country: req.body.country,
+        phone: req.body.phone
+    };
 
     try {
-        // update the address document
+        // Find the address by user ID and update it
         const updatedAddress = await Address.findOneAndUpdate(
-            { userId: userId }, // find a document by user Id
-            { address: addressUpdate }, // update the address field
-            { new: true, runValidators: true }, // options: return the updated document and run the schema validators
-        )
+            { user: userId }, // Find an address that belongs to the user
+            updateData, // Apply the updates from the request body
+            { new: true, runValidators: true } // Return the updated document and run validators
+        );
 
-        if (!updatedAddress) {
-            return res.status(404).json({ message: 'Address not found' })
+        if (updatedAddress) {
+            res.status(200).json(updatedAddress);
+        } else {
+            res.status(404).json({ message: 'Address not found for this user' });
         }
-
-        res.status(200).json({ message: 'Address updated successfully', updatedAddress })
     } catch (error) {
-        // handle the potential errors, such as validation errors or cast errors
-        res.status(400).json({ message: error.message })
+        res.status(500).json({ message: 'Error updating address', error: error });
     }
-}
+};
+
 
 // delete user's address
 const deleteAddress = async (req, res) => {
-    const { userId } = req.params
+    const { userId } = req.params; // Assuming the user ID is passed in the URL
 
-    if (!mongoose.Types.ObjectId.isValid(userId)) {
-        return res.status(404).json({ message: "User doesn't have an address" })
+    try {
+        // Find the address by user ID and delete it
+        const deletedAddress = await Address.findOneAndDelete({ user: userId });
+
+        if (deletedAddress) {
+            res.status(200).json({ message: 'Address successfully deleted' });
+        } else {
+            res.status(404).json({ message: 'No address found for this user' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: 'Error deleting address', error: error });
     }
-
-    const address = await Address.findOneAndDelete({ userId: userId })
-
-    if (!address) {
-        return res.status(400).json({ message: "User doesn't have an address" })
-    }
-
-    res.status(200).json({ message: 'Address deleted successfully', address })
-}
+};
 
 module.exports = {
     getAddress,
