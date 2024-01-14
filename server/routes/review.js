@@ -3,6 +3,7 @@ const requireAuth = require('../middleware/requireAuth')
 
 const {
     createReview,
+    getReviews,
     getProductReviews,
     updateReview,
     deleteReview
@@ -11,15 +12,18 @@ const {
 const router = express.Router()
 
 // Create a new review
-router.post('/reviews', requireAuth, createReview); 
+router.post('/:productId', requireAuth, createReview); 
+
+// Get all reviews
+router.get('/', getReviews); 
 
 // Get all reviews for a product
-router.get('/reviews/:productId', getProductReviews); 
+router.get('/:productId', getProductReviews); 
 
 // Update a review by ID
-router.patch('/reviews/:reviewId', requireAuth, updateReview); 
+router.patch('/:reviewId', requireAuth, updateReview); 
 
 // Delete a review by ID
-router.delete('/reviews/:reviewId', requireAuth, deleteReview); 
+router.delete('/:reviewId', requireAuth, deleteReview); 
 
 module.exports = router
