@@ -12,18 +12,18 @@ const {
 const router = express.Router()
 
 // Create a new order
-router.post('/orders', requireAuth, createOrder); 
+router.post('/', requireAuth, createOrder); 
 
 // Get all orders for a user
-router.get('/orders/:userId', requireAuth, getUserOrders); 
+router.get('/:userId', requireAuth, getUserOrders); 
 
 // Get a single order by ID
-router.get('/orders/:orderId', requireAuth, getOrder); 
+router.get('/:orderId', requireAuth, getOrder); 
 
 // Update an order by ID
-router.patch('/orders/:orderId', requireAuth, updateOrder); 
+router.patch('/:orderId', requireAuth, updateOrder); 
 
 // Delete an order by ID
-router.delete('/orders/:orderId', requireAuth, deleteOrder); 
+router.delete('/:orderId', requireAuth, deleteOrder); 
 
 module.exports = router
