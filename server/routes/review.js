@@ -12,7 +12,7 @@ const {
 const router = express.Router()
 
 // Create a new review
-router.post('/:productId', requireAuth, createReview); 
+router.post('/:userId/:productId', requireAuth, createReview); 
 
 // Get all reviews
 router.get('/', getReviews); 
