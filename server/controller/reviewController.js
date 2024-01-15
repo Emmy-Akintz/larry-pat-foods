@@ -60,13 +60,13 @@ const deleteReview = async (req, res) => {
     const { reviewId } = req.params
 
     try {
-         const deletedReview = await Review.findByIdAndDelete(reviewId)
+        const deletedReview = await Review.findByIdAndDelete(reviewId)
 
-         if (!deletedReview) {
+        if (!deletedReview) {
             return res.status(404).json({ message: 'Review not found' })
-         }
+        }
 
-         res.status(200).json({ message: 'Review successfully deleted', deletedReview })
+        res.status(200).json({ message: 'Review successfully deleted', deletedReview })
     } catch (error) {
         res.status(400).json({ message: error.message })
     }
