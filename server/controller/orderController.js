@@ -2,7 +2,24 @@ const Order = require('../models/orderModel');
 const mongoose = require('mongoose');
 const { findById } = require('../models/userModel');
 
-const createOrder = async (req, res) => {};
+const createOrder = async (req, res) => {
+    try {
+        // Extract order data from the request body
+        const orderData = req.body;
+
+        // Create a new order instance with the extracted data
+        const order = new Order(orderData);
+
+        // Save the new order to the database
+        await order.save();
+
+        // Send a success response with the saved order
+        res.status(201).json(order);
+    } catch (error) {
+        // Handle potential errors
+        res.status(500).json({ message: 'Error creating order', error: error });
+    }
+};
 
 const getUserOrders = async (req, res) => {
     try {
@@ -34,9 +51,9 @@ const getOrder = async (req, res) => {
     }
 }
 
-const updateOrder = async (req, res) => {}
+const updateOrder = async (req, res) => { }
 
-const deleteOrder = async (req, res) => {}
+const deleteOrder = async (req, res) => { }
 
 module.exports = {
     createOrder,
