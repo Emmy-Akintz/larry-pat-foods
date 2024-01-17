@@ -51,7 +51,43 @@ const getOrder = async (req, res) => {
     }
 }
 
-const updateOrder = async (req, res) => { }
+const updateOrder = async (req, res) => {
+    const { orderId } = req.params; // or however you're passing the order ID
+    const updateData = req.body; // the update fields
+
+    try {
+        // You can use dot notation to update nested fields
+        const dotNotationUpdateData = convertToDotNotation(updateData);
+
+        const updatedOrder = await Order.findByIdAndUpdate(
+            orderId,
+            { $set: dotNotationUpdateData },
+            { new: true, runValidators: true } // options to return the new document and run schema validators
+        );
+
+        if (!updatedOrder) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
+
+        res.status(200).json(updatedOrder);
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating order', error: error.message });
+    }
+}
+
+// Helper function to convert nested objects to dot notation
+function convertToDotNotation(obj, newObj = {}, prefix = "") {
+    for (let key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            if (typeof obj[key] === "object" && obj[key] !== null && !Array.isArray(obj[key])) {
+                convertToDotNotation(obj[key], newObj, prefix + key + ".");
+            } else {
+                newObj[prefix + key] = obj[key];
+            }
+        }
+    }
+    return newObj;
+}
 
 const deleteOrder = async (req, res) => { }
 
