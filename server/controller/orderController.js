@@ -89,7 +89,20 @@ function convertToDotNotation(obj, newObj = {}, prefix = "") {
     return newObj;
 }
 
-const deleteOrder = async (req, res) => { }
+const deleteOrder = async (req, res) => {
+    try {
+        const { orderId } = req.params; // Or however you get the order ID from the request
+        const result = await Order.deleteOne({ _id: orderId });
+
+        if (result.deletedCount === 0) {
+            return res.status(404).json({ message: 'Order not found' });
+        }
+
+        res.status(200).json({ message: 'Order deleted successfully' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error deleting order', error: error.message });
+    }
+};
 
 module.exports = {
     createOrder,
