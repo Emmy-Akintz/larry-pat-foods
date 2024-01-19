@@ -11,8 +11,7 @@ function Signup() {
     const [password, setPassword] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
-    const [phone, setPhone] = useState("")
-    const {signup, isLoading, error} = useSignup()
+    const { signup, isLoading, error } = useSignup()
     // setTimeout(() => {
     //     setError("")
     // }, 3000)
@@ -21,7 +20,7 @@ function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        await signup(email, password, firstName, lastName, phone)
+        await signup(email, password, firstName, lastName)
 
         // axios.post("http://localhost:2500/api/user/signup", { email, password, firstName, lastName, phone }, {
         //     headers: {
@@ -74,11 +73,6 @@ function Signup() {
                 <label htmlFor="last_name">Last Name: </label>
                 <br className="block md:hidden lg:hidden" />
                 <input type="text" id='last_name' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' name='last_name' onChange={(e) => setLastName(e.target.value)} required />
-                <br />
-                <br />
-                <label htmlFor="phone">Phone Number: </label>
-                <br className="block md:hidden lg:hidden" />
-                <input type="text" id='phone' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' name='address' onChange={(e) => setPhone(e.target.value)} required />
                 <br />
                 <br />
                 <button type="reset" title='Clear form'><FaTimes /></button>
