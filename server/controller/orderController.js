@@ -4,11 +4,12 @@ const { findById } = require('../models/userModel');
 
 const createOrder = async (req, res) => {
     try {
+        const { userId } = req.params
         // Extract order data from the request body
         const orderData = req.body;
 
         // Create a new order instance with the extracted data
-        const order = new Order(orderData);
+        const order = new Order(user = userId, orderData);
 
         // Save the new order to the database
         await order.save();
