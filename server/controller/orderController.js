@@ -1,5 +1,4 @@
 const Order = require('../models/orderModel');
-const mongoose = require('mongoose');
 const { findById } = require('../models/userModel');
 
 const createOrder = async (req, res) => {
