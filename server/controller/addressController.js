@@ -12,14 +12,6 @@ const getAddress = async (req, res) => {
 
 // add user's address
 const addAddress = async (req, res) => {
-    const { userId } = req.params
-
-    const addressCheck = Address.findOne(userId)
-
-    if (addressCheck) {
-        return res.status(409).json({ message: 'Address already exists.' })
-    }
-
     try {
         // Create a new address instance with data from request body
         const address = new Address({
@@ -40,7 +32,7 @@ const addAddress = async (req, res) => {
         res.status(201).json(address);
     } catch (error) {
         // If an error occurs, send an error response
-        res.status(400).json({ error: error.message });
+        res.status(400).json({ message: 'Error creating address' });
     }
 };
 

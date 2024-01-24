@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const { Schema } = mongoose
 
 const addressSchema = new Schema({
-    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', unique: true },
     fullName: { type: String, required: true },
     streetAddress: { type: String, required: true },
     city: { type: String, required: true },
