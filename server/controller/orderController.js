@@ -1,23 +1,49 @@
 const Order = require('../models/orderModel');
 const { findById } = require('../models/userModel');
 
+const mongoose = require('mongoose');
+const User = require('../models/user');
+const Product = require('../models/product');
+const Address = require('../models/address');
+const Cart = require('../models/cart'); // Assuming you have a Cart model
+const Order = require('../models/order');
+
 const createOrder = async (req, res) => {
     try {
-        const { userId } = req.params
-        // Extract order data from the request body
-        const { items } = req.body;
+        const userId = req.params.userId;
+        const cartId = req.params.cartId;
+        const shippingAddressId = req.params.shippingAddressId;
 
-        // Create a new order instance with the extracted data
-        const order = new Order(user = userId, items);
+        // Retrieve the cart
+        const cart = await Cart.findById(cartId);
 
-        // Save the new order to the database
+        // Check if the cart exists and belongs to the user
+        if (!cart || cart.userId.toString() !== userId) {
+            return res.status(400).send('Invalid cart ID or the cart does not belong to the user');
+        }
+
+        // Check if the referenced User, Products, and Shipping Address exist
+        const userExists = await User.exists({ _id: userId });
+        const productsExist = await Promise.all(cart.items.map(item => Product.exists({ _id: item.product })));
+        const addressExists = await Address.exists({ _id: shippingAddressId });
+
+        // If any of them don't exist, send a response with an error message
+        if (!userExists || !productsExist.every(Boolean) || !addressExists) {
+            return res.status(400).send('Referenced User, Product, or Address does not exist');
+        }
+
+        // Create the order using the cart data
+        const order = new Order({
+            user: userId,
+            orderedDate: Date.now(),
+            items: cart.items,
+            shippingAddress: shippingAddressId,
+            orderStatus: 'pending'
+        });
         await order.save();
-
-        // Send a success response with the saved order
-        res.status(201).json(order);
+        res.status(201).send(order);
     } catch (error) {
-        // Handle potential errors
-        res.status(500).json({ message: 'Error creating order', error: error.message });
+        res.status(500).send(error);
     }
 };
 
