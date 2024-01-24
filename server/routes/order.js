@@ -12,7 +12,7 @@ const {
 const router = express.Router()
 
 // Create a new order
-router.post('/:userId', requireAuth, createOrder); 
+router.post('/:userId/:cartId/:shippingAddressId', requireAuth, createOrder); 
 
 // Get all orders for a user
 router.get('/:userId', requireAuth, getUserOrders); 

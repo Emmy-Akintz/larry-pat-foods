@@ -1,18 +1,12 @@
 const Order = require('../models/orderModel');
-const { findById } = require('../models/userModel');
-
-const mongoose = require('mongoose');
-const User = require('../models/user');
-const Product = require('../models/product');
-const Address = require('../models/address');
-const Cart = require('../models/cart'); // Assuming you have a Cart model
-const Order = require('../models/order');
+const User = require('../models/userModel');
+const Product = require('../models/productModel');
+const Address = require('../models/addressModel');
+const Cart = require('../models/cartModel');
 
 const createOrder = async (req, res) => {
     try {
-        const userId = req.params.userId;
-        const cartId = req.params.cartId;
-        const shippingAddressId = req.params.shippingAddressId;
+        const { userId, cartId, shippingAddressId } = req.params;
 
         // Retrieve the cart
         const cart = await Cart.findById(cartId);
@@ -43,7 +37,7 @@ const createOrder = async (req, res) => {
         await order.save();
         res.status(201).send(order);
     } catch (error) {
-        res.status(500).send(error);
+        res.status(500).send(error.message);
     }
 };
 
