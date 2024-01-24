@@ -5,10 +5,10 @@ const createOrder = async (req, res) => {
     try {
         const { userId } = req.params
         // Extract order data from the request body
-        const orderData = req.body;
+        const { items } = req.body;
 
         // Create a new order instance with the extracted data
-        const order = new Order(user = userId, orderData);
+        const order = new Order(user = userId, items);
 
         // Save the new order to the database
         await order.save();
