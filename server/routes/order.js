@@ -24,6 +24,6 @@ router.get('/:orderId', requireAuth, getOrder);
 router.patch('/:orderId', requireAuth, updateOrder); 
 
 // Delete an order by ID
-router.delete('/:orderId', requireAuth, deleteOrder); 
+router.delete('/delete-order/:orderId', requireAuth, deleteOrder); 
 
 module.exports = router

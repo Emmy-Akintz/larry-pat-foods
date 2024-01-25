@@ -12,7 +12,7 @@ const createOrder = async (req, res) => {
         const cart = await Cart.findById(cartId);
 
         // Check if the cart exists and belongs to the user
-        if (!cart || cart.userId.toString() !== userId) {
+        if (!cart || cart.user.toString() !== userId) {
             return res.status(400).send('Invalid cart ID or the cart does not belong to the user');
         }
 
@@ -23,7 +23,7 @@ const createOrder = async (req, res) => {
 
         // If any of them don't exist, send a response with an error message
         if (!userExists || !productsExist.every(Boolean) || !addressExists) {
-            return res.status(400).send('Referenced User, Product, or Address does not exist');
+            return res.status(400).json({ message: 'Referenced User, Product, or Address does not exist' });
         }
 
         // Create the order using the cart data
