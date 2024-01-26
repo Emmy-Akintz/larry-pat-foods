@@ -15,13 +15,13 @@ const router = express.Router()
 router.post('/:userId/:cartId/:shippingAddressId', requireAuth, createOrder); 
 
 // Get all orders for a user
-router.get('/:userId', requireAuth, getUserOrders); 
+router.get('/get-user-orders/:userId', requireAuth, getUserOrders); 
 
 // Get a single order by ID
-router.get('/:orderId', requireAuth, getOrder); 
+router.get('/get-order/:orderId', requireAuth, getOrder); 
 
 // Update an order by ID
-router.patch('/:orderId', requireAuth, updateOrder); 
+router.patch('/update-order/:orderId', requireAuth, updateOrder); 
 
 // Delete an order by ID
 router.delete('/delete-order/:orderId', requireAuth, deleteOrder); 
