@@ -5,7 +5,9 @@ import { useProductContext } from '../../hooks/useProductContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 
 function products() {
+
   const { dispatch: productDispatch } = useProductContext()
+
   const [product, setProduct] = useState(null)
 
   const { user, dispatch: authDispatch } = useAuthContext()
@@ -17,6 +19,9 @@ function products() {
       const response = await fetch('http://localhost:2500/api/product/')
       const json = await response.json()
       setProduct(json)
+      // console.log(json);
+
+      productDispatch(({ type: 'SET_PRODUCT', payload: json }))
     }
 
     fetchProducts()
