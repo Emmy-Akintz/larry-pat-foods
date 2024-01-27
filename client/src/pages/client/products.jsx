@@ -21,7 +21,9 @@ function products() {
       setProduct(json)
       // console.log(json);
 
-      productDispatch(({ type: 'SET_PRODUCT', payload: json }))
+      if (response.ok) {
+        productDispatch(({ type: 'SET_PRODUCTS', payload: json }))
+      }
     }
 
     fetchProducts()
