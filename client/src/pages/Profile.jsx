@@ -55,8 +55,8 @@ function Profile() {
       <h1>PROFILE</h1>
       {user && (
         <div>
-          <div>Welcome {user.firstName}</div>
-          <div>Email: {user.email}</div>
+          <div>Welcome {user.user.firstName}</div>
+          <div>Email: {user.user.email}</div>
           {user.cart && (
             <div>
               {/* {error && <span className='border border-red-500 p-2'>{error}</span>} */}
