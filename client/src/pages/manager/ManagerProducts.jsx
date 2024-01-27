@@ -25,7 +25,7 @@ function ManagerProducts() {
       }
     }
 
-    if (user && user.role === "manager") {
+    if (user && user.user.role === "manager") {
       fetchProducts()
     }
   }, [dispatch, user, productDeleted])
