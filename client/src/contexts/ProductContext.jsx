@@ -38,14 +38,6 @@ export const ProductContextProvider = ({ children }) => {
 
     console.log(state);
 
-    useEffect(() => {
-        const product = JSON.parse(localStorage.getItem('larry-pat-product'))
-
-        if (product) {
-            dispatch({ type: 'SET_PRODUCT', payload: product })
-        }
-    }, [])
-
     return (
         <ProductContext.Provider value={{ ...state, dispatch }}>
             {children}
