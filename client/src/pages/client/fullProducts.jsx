@@ -19,6 +19,10 @@ function FullProducts() {
             const response = await fetch('http://localhost:2500/api/product')
             const json = await response.json()
             setProduct(json)
+
+            if (response.ok) {
+                productDispatch(({ type: 'SET_PRODUCTS', payload: json }))
+            }
         }
 
         fetchProducts()
