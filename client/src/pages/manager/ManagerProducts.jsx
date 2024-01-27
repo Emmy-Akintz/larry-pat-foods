@@ -21,7 +21,7 @@ function ManagerProducts() {
       const json = await response.json()
 
       if (response.ok) {
-        dispatch({ type: 'SET_PRODUCTS', payload: json })
+        dispatch(({ type: 'SET_PRODUCTS', payload: json }))
       }
     }
 
