@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useProductContext } from '../../../hooks/useProductContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 import '../../../App.css'
@@ -6,6 +7,8 @@ import '../../../App.css'
 function ProductForm() {
     const { dispatch } = useProductContext()
     const { user } = useAuthContext()
+    
+    const navigate = useNavigate()
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -13,12 +16,17 @@ function ProductForm() {
     const [stockQuantity, setStockQuantity] = useState('')
     const [error, setError] = useState(null)
     const [emptyFields, setEmptyFields] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
+        setIsLoading(false)
+
         if (!user && !user.role === "manager") {
             setError('You must be logged in as a manager')
+            prompt('You must be logged in as a manager!')
+            navigate('/login')
             return
         }
 
@@ -37,6 +45,7 @@ function ProductForm() {
         if (!response.ok) {
             setError(json.error)
             setEmptyFields(json.emptyFields)
+            setIsLoading(false)
         }
         if (response.ok) {
             setName('')
@@ -47,6 +56,7 @@ function ProductForm() {
             setEmptyFields([])
             // console.log('new product added!', json);
             dispatch({ type: 'CREATE_PRODUCT', payload: json })
+            setIsLoading(false)
         }
     }
 
@@ -95,7 +105,7 @@ function ProductForm() {
             <br />
             <br />
 
-            <button className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm m-4'>Add Product</button>
+            <button disabled={isLoading} className={isLoading ? 'bg-green-300 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm m-4' : 'bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm m-4'}>Add Product</button>
             {error && <div className='error'>{error}</div>}
         </form>
     )

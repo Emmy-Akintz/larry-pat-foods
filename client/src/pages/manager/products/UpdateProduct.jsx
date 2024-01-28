@@ -11,6 +11,7 @@ function UpdateProduct() {
     const navigate = useNavigate()
     const { id } = useParams()
     const [product, setProduct] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
@@ -35,8 +36,12 @@ function UpdateProduct() {
     const handleUpdate = async (e) => {
         e.preventDefault()
 
-        if (!user && !user.role === "manager") {
+        setIsLoading(true)
+
+        if (!user && !user.user.role === "manager") {
             setError('You must be logged in as a manager')
+            prompt('You must be logged in as a manager!')
+            navigate('/login')
             return
         }
 
@@ -54,6 +59,7 @@ function UpdateProduct() {
 
         if (!response.ok) {
             setError(json.error)
+            setIsLoading(false)
             // setEmptyFields(json.emptyFields)
         }
         if (response.ok) {
@@ -61,6 +67,7 @@ function UpdateProduct() {
             // setEmptyFields([])
             // console.log('new product added!', json);
             dispatch({ type: 'UPDATE_PRODUCT', payload: json })
+            setIsLoading(false)
         }
     }
 
@@ -112,7 +119,7 @@ function UpdateProduct() {
             <br />
             <br />
 
-            <button className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm m-4'>Update Product</button>
+            <button disabled={isLoading} className={isLoading ? 'bg-green-300 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm m-4' : 'bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm m-4'}>Update Product</button>
             {error && <div className='error text-red-500'>{error}</div>}
         </form>
     )

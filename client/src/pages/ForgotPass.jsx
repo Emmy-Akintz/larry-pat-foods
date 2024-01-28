@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom'
 function ForgotPass() {
     const [email, setEmail] = useState()
     const [error, setError] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
     setTimeout(() => {
         setError("")
     }, 3000)
@@ -14,13 +15,18 @@ function ForgotPass() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        
+        setIsLoading(true)
+
         axios.post("http://localhost:2500/api/user/forgot-password", { email })
             .then(response => {
                 if (response.status === 200) {
                     navigate('/login')
+                    setIsLoading(false)
                 }
             }).catch(err => {
                 // console.log(err);
+                setIsLoading(false)
                 if (err) {
                     console.log(err.response.status)
                     setError(err.response.data.message)
@@ -48,7 +54,7 @@ function ForgotPass() {
                 <br />
                 <button type="reset" title='Clear form'><FaTimes /></button>
                 <br />
-                <button type="submit" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'>SEND</button>
+                <button type="submit" className={isLoading? 'bg-green-300 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm' : 'bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'}>SEND</button>
                 <div className="error text-red-500">
                     {error}
                 </div>

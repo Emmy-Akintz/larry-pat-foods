@@ -69,7 +69,7 @@ function Loginpage() {
                 <br />
                 <button type="reset" title='Clear form'><FaTimes /></button>
                 <br />
-                <button type="submit" disabled={isLoading} className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'>LOGIN</button>
+                <button type="submit" disabled={isLoading} className={isLoading ? 'bg-green-300 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm' : 'bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'}>LOGIN</button>
                 <div className="error text-red-500">
                     {error && <div className='error'>{error}</div>}
                 </div>

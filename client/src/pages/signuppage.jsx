@@ -80,7 +80,7 @@ function Signup() {
                 <div className="error text-red-500">
                     {error && <div className='error'>{error}</div>}
                 </div>
-                <button type="submit" disabled={isLoading} className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'>SIGNUP</button>
+                <button type="submit" disabled={isLoading} className={isLoading ? 'bg-green-300 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm' : 'bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'}>SIGNUP</button>
                 <br />
                 <br />
                 <hr />

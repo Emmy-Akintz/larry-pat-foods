@@ -7,6 +7,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 function ResetPassword() {
     const [password, setPassword] = useState()
     const [error, setError] = useState("")
+    const [isLoading, setIsLoading] = (false)
     setTimeout(() => {
         setError("")
     }, 3000)
@@ -15,13 +16,18 @@ function ResetPassword() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        
+        setIsLoading(true)
+
         axios.post(`http://localhost:2500/api/user/reset-password/${id}/${token}`, { password })
             .then(response => {
                 if (response.status === 200) {
                     navigate('/login')
+                    setIsLoading(false)
                 }
             }).catch(err => {
                 // console.log(err);
+                setIsLoading(false)
                 if (err) {
                     console.log(err.response.status)
                     setError(err.response.data.message)
@@ -49,7 +55,7 @@ function ResetPassword() {
                 <br />
                 <button type="reset" title='Clear form'><FaTimes /></button>
                 <br />
-                <button type="submit" className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'>UPDATE</button>
+                <button type="submit" className={isLoading ? 'bg-green-300 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm' : 'bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'}>UPDATE</button>
                 <div className="error text-red-500">
                     {error}
                 </div>
