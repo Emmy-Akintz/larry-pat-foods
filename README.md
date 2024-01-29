@@ -59,7 +59,7 @@ If you want to run this application locally, follow the [Getting Started](#getti
 
 - Visit the website at [larry-pat-foods.com](https://larry-pat-foods.netlify.app/).
 - Create an account or log in to start shopping.
-- Browse the catalog, add items to your cart, and proceed to checkout.
+- Browse the catalog, add items to your cart, expect your delivery and then pay on delivery.
 - Check your order status in your account profile.
 <!-- - Track your orders in your account profile. -->
 
