@@ -29,9 +29,9 @@ function ProductDetails({ product }) {
     return (
         <div className="product-details mt-4">
             <div className='rounded-xl p-8 w-[250px] m-auto bg-green-100' key={product._id}>
-                <h4 className='font-bold'>{product.name.toUpperCase()}</h4>
+                <h4 className='font-bold'>{product.name?.toUpperCase()}</h4>
                 <p><span className="font-bold">Description: </span>{product.description}</p>
-                <p className='font-bold'>&#8358;{product.price.$numberDecimal}</p>
+                <p className='font-bold'>&#8358;{product.price?.$numberDecimal}</p>
                 <p><span className="font-bold">Quantity: </span>{product.stockQuantity}</p>
                 <br />
                 <Link to={`/product-update/${product._id}`} className="bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm">Update</Link>
