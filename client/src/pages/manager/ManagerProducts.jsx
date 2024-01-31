@@ -20,9 +20,9 @@ function ManagerProducts() {
       })
       const json = await response.json()
 
-      if (response.ok) {
-        dispatch(({ type: 'SET_PRODUCTS', payload: json }))
-      }
+        if (response.ok) {
+          dispatch(({ type: 'SET_PRODUCTS', payload: json }))
+        }
     }
 
     if (user && user.user.role === "manager") {
