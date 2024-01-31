@@ -2,47 +2,35 @@ import { IconContext } from 'react-icons'
 import { FaHome, FaTimes } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 import '../App.css'
-import axios from 'axios'
 import { useLogin } from '../hooks/useLogin'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 function Loginpage() {
+    const { user } = useAuthContext ()
+
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const { login, error, isLoading } = useLogin()
-    // setTimeout(() => {
-    //     setError("")
-    // }, 3000)
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         await login(email, password)
-
-        navigate('/')
-
-        // axios.post("http://localhost:2500/api/user/login", { email, password })
-        //     .then(response => {
-        //         // console.log(response);
-        //         // console.log(response.status);
-        //         if (response.status === 200) {
-        //             if (response.data.user === "manager") {
-        //                 navigate('/manager-dashbord')
-        //             } else if (response.data.user === "admin") {
-        //                 navigate('/admin-dashbord')
-        //             } else if (response.data.user === "client") {
-        //                 navigate('/')
-        //             }
-        //         }
-        //     }).catch(err => {
-        //         // console.log(err);
-        //         if (err) {
-        //             console.log(err.response.status)
-        //             setError(err.response.data.message)
-        //         }
-        //     })
     }
+
+    useEffect(() => {
+        if (user) {
+            if (user.user.role === "manager") {
+                navigate('/manager-dashbord')
+            } else if (user.user.role === "admin") {
+                navigate('/admin-dashbord')
+            } else if (user.user.role === "client") {
+                navigate('/')
+            }
+        }
+    }, [user])
 
     return (
         <div className='logsign p-4 bg-gray-200 h-[100vh]'>
