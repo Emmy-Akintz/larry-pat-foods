@@ -11,6 +11,26 @@ const createToken = (_id) => {
     return jwt.sign(({ _id }), process.env.SECRET)
 }
 
+// get clients
+const getClients = async (req, res) => {
+    try {
+        const clients = await User.find({ role: 'client' })
+        res.json(clients)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
+// get admins
+const getAdmins = async (req, res) => {
+    try {
+        const admins = await User.find({ role: 'admin' })
+        res.json(admins)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
 // login user
 const loginUser = async (req, res) => {
     const { email, password } = req.body
@@ -136,4 +156,4 @@ const resetPass = async (req, res) => {
     })
 }
 
-module.exports = { signupUser, loginUser, deleteUser, forgotPass, resetPass }
+module.exports = { getClients, getAdmins, signupUser, loginUser, deleteUser, forgotPass, resetPass }

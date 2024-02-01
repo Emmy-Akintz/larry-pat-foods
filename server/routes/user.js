@@ -3,9 +3,15 @@ const requireAuth = require('../middleware/requireAuth')
 const bodyParser = require('body-parser')
 
 // controller functions
-const { signupUser, loginUser, deleteUser, forgotPass, resetPass } = require('../controller/userController')
+const { getClients, getAdmins, signupUser, loginUser, deleteUser, forgotPass, resetPass } = require('../controller/userController')
 
 const router = express.Router()
+
+// get clients
+router.get('/get-clients', requireAuth, getClients)
+
+// get admins
+router.get('/get-admins', requireAuth, getAdmins)
 
 // login
 router.post('/login', loginUser)
