@@ -36,7 +36,7 @@ export const ProductContextProvider = ({ children }) => {
         productDeleted: false
     })
 
-    console.log(state);
+    console.log('products: ' + state);
 
     return (
         <ProductContext.Provider value={{ ...state, dispatch }}>
