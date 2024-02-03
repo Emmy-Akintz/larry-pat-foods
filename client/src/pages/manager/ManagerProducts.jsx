@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useProductContext } from '../../hooks/useProductContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 import '../../App.css'
@@ -28,7 +28,9 @@ function ManagerProducts() {
     if (user && user.user.role === "manager") {
       fetchProducts()
     }
-  }, [dispatch, user, productDeleted])
+
+    console.log('re-fetched!');
+  }, [user, productDeleted])
 
   return (
     <div className="">
