@@ -7,7 +7,7 @@ import '../../../App.css'
 function ProductForm() {
     const { dispatch } = useProductContext()
     const { user } = useAuthContext()
-    
+
     const navigate = useNavigate()
 
     const [name, setName] = useState('')
