@@ -59,7 +59,7 @@ const loginUser = async (req, res) => {
 
 // signup user
 const signupUser = async (req, res) => {
-    const { email, password, firstName, lastName } = req.body
+    const { email, password, firstName, lastName, role } = req.body
 
     // validation
     if (!email || !password || !firstName || !lastName) {
