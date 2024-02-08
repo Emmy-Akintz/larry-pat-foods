@@ -8,7 +8,7 @@ export const adminReducer = (state, action) => {
             return {
                 admins: action.payload
             }
-        case 'CREATE_ADMINS':
+        case 'CREATE_ADMIN':
             return {
                 admins: [action.payload, ...state.admins]
             }

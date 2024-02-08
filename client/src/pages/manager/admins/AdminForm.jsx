@@ -4,18 +4,20 @@ import { useAdminContext } from '../../../hooks/useAdminContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 import '../../../App.css'
 
-function ProductForm() {
+function AdminForm() {
     const { dispatch } = useAdminContext()
     const { user } = useAuthContext()
 
     const navigate = useNavigate()
 
-    const [FirstName, setFirstName] = useState(second)
-    const [LastName, setLastName] = useState(second)
-    const [Email, setEmail] = useState(second)
-    const [Password, setPassword] = useState(second)
+    const [FirstName, setFirstName] = useState('')
+    const [LastName, setLastName] = useState('')
+    const [Email, setEmail] = useState('')
+    const [Password, setPassword] = useState('ABCabc123!')
+    const [Role, setRole] = useState('')
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
+    const [EmptyFields, setEmptyFields] = useState([])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -29,11 +31,11 @@ function ProductForm() {
             return
         }
 
-        const product = { name, description, price, stockQuantity }
+        const person = { FirstName, LastName, Email, Password, Role }
 
-        const response = await fetch('http://localhost:2500/api/product/', {
+        const response = await fetch('http://localhost:2500/api/user/signup', {
             method: 'POST',
-            body: JSON.stringify(product),
+            body: JSON.stringify(person),
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${user.token}`
@@ -42,72 +44,88 @@ function ProductForm() {
         const json = await response.json()
 
         if (!response.ok) {
+            console.log(json)
             setError(json.error)
             setEmptyFields(json.emptyFields)
             setIsLoading(false)
         }
         if (response.ok) {
-            setName('')
-            setDescription('')
-            setPrice('')
-            setStockQuantity('')
+            setFirstName('')
+            setLastName('')
+            setEmail('')
+            setPassword('')
+            setRole('')
             setError(null)
             setEmptyFields([])
             // console.log('new product added!', json);
-            dispatch({ type: 'CREATE_PRODUCT', payload: json })
+            dispatch({ type: 'CREATE_ADMIN', payload: json })
             setIsLoading(false)
         }
     }
 
     return (
         <form className="create my-4 w-[350px] h-[320px] rounded-xl bg-green-100 m-auto" onSubmit={handleSubmit}>
-            <h3 className='font-bold'>Add a new product</h3>
+            <h3 className='font-bold'>Add a new admin or manager</h3>
             <br />
 
-            <label>Product Name: </label>
+            <label>FirstName: </label>
             <input
                 type="text"
-                onChange={(e) => setName(e.target.value)}
-                value={name}
-                className={emptyFields.includes('name') ? 'error' : 'border rounded px-2'}
+                onChange={(e) => setFirstName(e.target.value)}
+                value={FirstName}
+                className={EmptyFields.includes('firstName') ? 'error' : 'border rounded px-2'}
             />
             <br />
             <br />
 
-            <label>Description: </label>
+            <label>LastName: </label>
             <input
                 type="text"
-                onChange={(e) => setDescription(e.target.value)}
-                value={description}
-                className={emptyFields.includes('description') ? 'error' : 'border rounded px-2'}
+                onChange={(e) => setLastName(e.target.value)}
+                value={LastName}
+                className={EmptyFields.includes('lastName') ? 'error' : 'border rounded px-2'}
             />
             <br />
             <br />
 
-            <label>Price in naira: </label>
+            <label>Email: </label>
             <input
                 type="text"
-                onChange={(e) => setPrice(e.target.value)}
-                value={price}
-                className={emptyFields.includes('price') ? 'error' : 'border rounded px-2'}
+                onChange={(e) => setEmail(e.target.value)}
+                value={Email}
+                className={EmptyFields.includes('email') ? 'error' : 'border rounded px-2'}
             />
             <br />
             <br />
 
-            <label>Stock Quantity: </label>
+            <label>Password: </label>
             <input
-                type="number"
-                onChange={(e) => setStockQuantity(e.target.value)}
-                value={stockQuantity}
-                className={emptyFields.includes('stockQuantity') ? 'error' : 'border rounded px-2'}
+                type="text"
+                onChange={(e) => setPassword(e.target.value)}
+                value={Password}
+                className={EmptyFields.includes('password') ? 'error' : 'border rounded px-2'}
             />
             <br />
             <br />
+            
+            <label>Role: </label>
+            <select
+                value={Role}
+                onChange={(e) => setRole(e.target.value)}
+                className='border rounded px-2'
+            >
+                <option value="">Select Role</option>
+                <option value="Admin">Admin</option>
+                <option value="Manager">Manager</option>
+            </select>
+            <br />
+            <br />
+            <br />
 
-            <button disabled={isLoading} className={isLoading ? 'bg-green-300 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm m-4' : 'bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm m-4'}>Add Product</button>
+            <button disabled={isLoading} className={isLoading ? 'bg-green-300 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm m-4' : 'bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm m-4'}>Add Manager/Admin</button>
             {error && <div className='error'>{error}</div>}
         </form>
     )
 }
 
-export default ProductForm
+export default AdminForm
