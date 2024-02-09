@@ -83,7 +83,7 @@ const signupUser = async (req, res) => {
     const hash = await bcrypt.hash(password, salt)
 
     let user = new User({
-        firstName, lastName, email, password: hash,
+        firstName, lastName, email, password: hash, role,
     })
 
     user.save()
