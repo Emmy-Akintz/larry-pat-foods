@@ -7,14 +7,14 @@ export const useSignup = () => {
     const [isLoading, setIsLoading] = useState(null)
     const navigate = useNavigate()
 
-    const signup = async (email, password, firstName, lastName, phone) => {
+    const signup = async (firstName, lastName, email, password) => {
         setIsLoading(true)
         setError(null)
 
         const response = await fetch("http://localhost:2500/api/user/signup", {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ email, password, firstName, lastName, phone })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ firstName, lastName, email, password })
         })
         const json = await response.json()
 
@@ -29,5 +29,5 @@ export const useSignup = () => {
         }
     }
 
-    return {signup, isLoading, error}
+    return { signup, isLoading, error }
 }
