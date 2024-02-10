@@ -88,7 +88,7 @@ const signupUser = async (req, res) => {
 
     user.save()
         .then(doc => res.status(200).json({ message: 'Signup successful', doc }))
-        .catch(error => res.json({ message: error }))
+        .catch(error => res.status(500).json({ message: error.message }))
 }
 
 const deleteUser = async (req, res) => {
