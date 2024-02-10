@@ -4,6 +4,8 @@ import { useAdminContext } from '../../../hooks/useAdminContext'
 import { useAuthContext } from '../../../hooks/useAuthContext'
 import '../../../App.css'
 
+import { FaTimes } from 'react-icons/fa'
+
 function AdminForm() {
     const { dispatch } = useAdminContext()
     const { user } = useAuthContext()
@@ -13,7 +15,7 @@ function AdminForm() {
     const [FirstName, setFirstName] = useState('')
     const [LastName, setLastName] = useState('')
     const [Email, setEmail] = useState('')
-    const [Password, setPassword] = useState('ABCabc123')
+    const [Password, setPassword] = useState('ABCabc123!')
     const [Role, setRole] = useState('')
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
@@ -23,7 +25,7 @@ function AdminForm() {
 
         setIsLoading(false)
 
-        if (!user && !user.role === "manager") {
+        if (!user && !user.user.role === "manager") {
             setError('You must be logged in as a manager')
             prompt('You must be logged in as a manager!')
             navigate('/login')
@@ -31,29 +33,39 @@ function AdminForm() {
         }
         // console.log(FirstName, LastName, Email, Password, Role);
 
-        const response = await fetch('http://localhost:2500/api/user/signup', {
-            method: 'POST',
-            body: JSON.stringify({ FirstName, LastName, Email, Password, Role }),
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${user.token}`
-            }
-        })
-        const json = await response.json()
+        if (Role === "admin" || Role === "manager") {
+            const response = await fetch('http://localhost:2500/api/user/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', },
+                body: JSON.stringify({
+                    firstName: FirstName,
+                    lastName: LastName,
+                    email: Email,
+                    password: Password,
+                    role: Role
+                }),
+            })
 
-        if (!response.ok) {
-            console.log(json)
-            setError(json.message)
-            setIsLoading(false)
-        }
-        if (response.ok) {
-            setFirstName('')
-            setLastName('')
-            setEmail('')
-            setPassword('')
-            setRole('')
-            setError(null)
-            dispatch({ type: 'CREATE_ADMIN', payload: json })
+            const json = await response.json()
+
+            if (!response.ok) {
+                console.log(json)
+                setError(json.message)
+                setIsLoading(false)
+            }
+            if (response.ok) {
+                console.log(json);
+                setFirstName('')
+                setLastName('')
+                setEmail('')
+                setPassword('ABCabc123!')
+                setRole('')
+                setError(null)
+                dispatch({ type: 'CREATE_ADMIN', payload: json })
+                setIsLoading(false)
+            }
+        } else {
+            setError("You are yet to select a role!")
             setIsLoading(false)
         }
     }
@@ -102,7 +114,7 @@ function AdminForm() {
             />
             <br />
             <br />
-            
+
             <label>Role: </label>
             <select
                 value={Role}
@@ -110,9 +122,12 @@ function AdminForm() {
                 className='border rounded px-2'
             >
                 <option value="">Select Role</option>
-                <option value="Admin">admin</option>
-                <option value="Manager">manager</option>
+                <option value="admin">Admin</option>
+                <option value="manager">Manager</option>
             </select>
+            <br />
+            <br />
+            <button type="reset" title='Clear form'><FaTimes /></button>
             <br />
             <br />
             <br />

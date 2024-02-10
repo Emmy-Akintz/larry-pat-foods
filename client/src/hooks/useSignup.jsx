@@ -20,7 +20,7 @@ export const useSignup = () => {
 
         if (!response.ok) {
             setIsLoading(false)
-            setError(error.message)
+            setError(json.message)
         }
         if (response.ok) {
             navigate('/login')
