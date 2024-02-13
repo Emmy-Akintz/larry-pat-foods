@@ -6,6 +6,7 @@ export const adminReducer = (state, action) => {
     switch (action.type) {
         case 'SET_ADMINS':
             return {
+                ...state,
                 admins: action.payload
             }
         case 'CREATE_ADMIN':
