@@ -23,7 +23,7 @@ export const adminReducer = (state, action) => {
             }
         case 'UPDATE_ADMINS':
             return {
-                admins: state.admins.map(product => product._id === action.payload._id ? action.payload : admin)
+                admins: state.admins.map(admin => admin._id === action.payload._id ? action.payload : admin)
             }
         default:
             return state
@@ -36,7 +36,7 @@ export const AdminContextProvider = ({ children }) => {
         adminDeleted: false
     })
 
-    console.log('admins: ' + state);
+    console.log('admins: ' + state.admins);
 
     return (
         <AdminContext.Provider value={{ ...state, dispatch }}>
