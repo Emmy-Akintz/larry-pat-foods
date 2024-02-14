@@ -30,10 +30,9 @@ function AdminDetails({ admin }) {
     return (
         <div className="admin-details mt-4">
             <div className='rounded-xl p-8 w-[250px] m-auto bg-green-100' key={admin._id}>
-                <h4 className='font-bold'>{admin.name?.toUpperCase()}</h4>
-                <p><span className="font-bold">Description: </span>{admin.description}</p>
-                <p className='font-bold'>&#8358;{admin.price?.$numberDecimal}</p>
-                <p><span className="font-bold">Quantity: </span>{admin.stockQuantity}</p>
+                <h4 className='font-bold'>{admin.firstName} {admin.lastName}</h4>
+                <p><span className="font-bold">Email: </span>{admin.email}</p>
+                <p><span className="font-bold">Role: </span>{admin.role}</p>
                 <br />
                 <Link to={`/admin-update/${admin._id}`} className="bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm">Update</Link>
                 <span className='bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm m-2 cursor-pointer' onClick={handleClick}>Delete</span>
