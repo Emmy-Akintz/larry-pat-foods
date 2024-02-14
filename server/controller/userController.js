@@ -22,9 +22,9 @@ const getClients = async (req, res) => {
 }
 
 // get admins
-const getAdmins = async (req, res) => {
+const getAdminsManagers = async (req, res) => {
     try {
-        const admins = await User.find({ role: 'admin' })
+        const admins = await User.find({ role: { $in: ['admin', 'manager'] } })
         res.json(admins)
     } catch (error) {
         res.status(500).json({ message: error.message })
@@ -156,4 +156,4 @@ const resetPass = async (req, res) => {
     })
 }
 
-module.exports = { getClients, getAdmins, signupUser, loginUser, deleteUser, forgotPass, resetPass }
+module.exports = { getClients, getAdminsManagers, signupUser, loginUser, deleteUser, forgotPass, resetPass }
