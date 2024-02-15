@@ -25,7 +25,9 @@ function ManagerAdmins() {
       const json = await response.json()
 
       if (response.ok) {
-        dispatch(({ type: 'SET_ADMINS', payload: json }))
+        // Filter out the current user from the list of admins
+        const filteredAdmins = json.filter(admin => admin._id !== user._id);
+        dispatch(({ type: 'SET_ADMINS', payload: filteredAdmins }))
       }
     }
 
