@@ -22,8 +22,12 @@ function AdminDetails({ admin }) {
         const json = await response.json()
 
         if (response.ok) {
+            // console.log(json);
             dispatch({ type: 'DELETE_ADMIN', payload: json })
             dispatch({ type: 'ADMIN_DELETED' })
+        }
+        if (!response.ok) {
+            // console.log(json);
         }
     }
 
