@@ -92,16 +92,20 @@ const signupUser = async (req, res) => {
 }
 
 const deleteUser = async (req, res) => {
-    const { userId } = req.params
+    const { userId } = req.params;
 
-    User.findOneAndDelete({ userId })
-        .then(user => {
-            return res.status(200).json({ message: 'User deleted successfully', user })
-        })
-        .catch(error => {
-            return res.json({ message: error.message })
-        })
-}
+    try {
+        const deletedUser = await User.findOneAndDelete({ _id: userId });
+
+        if (!deletedUser) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        return res.status(200).json({ message: 'User deleted successfully', user: deletedUser });
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+};
 
 //reset-password
 const forgotPass = async (req, res) => {
