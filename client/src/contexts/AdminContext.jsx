@@ -37,7 +37,7 @@ export const AdminContextProvider = ({ children }) => {
         adminDeleted: false
     })
 
-    console.log('admins: ' + state.admins);
+    // console.log('admins: ' + state.admins);
 
     return (
         <AdminContext.Provider value={{ ...state, dispatch }}>
