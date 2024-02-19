@@ -18,6 +18,7 @@ import ManagerAdmins from './pages/manager/ManagerAdmins';
 import ManagerOrderController from './pages/manager/ManagerOrderController';
 import UpdateProduct from './pages/manager/products/UpdateProduct';
 import ProdCardView from './pages/client/ProdCardView';
+import UpdateAdmin from './pages/manager/admins/UpdateAdmin';
 
 function App() {
 
@@ -42,6 +43,7 @@ function App() {
             <Route path='/manager-order-controller' element={<ManagerOrderController />} />
             <Route path='/admin-dashbord' element={<AdminDashbord />} />
             <Route path='/admin-product' element={<AdminProducts />} />
+            <Route path='/admin-update/:id' element={<UpdateAdmin />} />
           </Routes>
         </div>
       </BrowserRouter>
