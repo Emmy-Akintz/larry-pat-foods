@@ -31,6 +31,20 @@ const getAdminsManagers = async (req, res) => {
     }
 }
 
+// get admin
+const getAdminManager = async (req, res) => {
+    try {
+        const { adminManagerId } = req.body
+        const admins = await User.findById(adminManagerId)
+        if (!admins) {
+            return res.status(404).json({ message: 'User not found' })
+        }
+        res.json(admins)
+    } catch (error) {
+        res.status(500).json({ message: error.message })
+    }
+}
+
 // login user
 const loginUser = async (req, res) => {
     const { email, password } = req.body
@@ -160,4 +174,4 @@ const resetPass = async (req, res) => {
     })
 }
 
-module.exports = { getClients, getAdminsManagers, signupUser, loginUser, deleteUser, forgotPass, resetPass }
+module.exports = { getClients, getAdminsManagers, getAdminManager, signupUser, loginUser, deleteUser, forgotPass, resetPass }
