@@ -8,7 +8,7 @@ import ProductForm from './products/ProductForm'
 import { Link, useNavigate } from 'react-router-dom'
 import { FaBackward } from 'react-icons/fa'
 
-function ManagerProducts() {
+const ManagerProducts = () => {
   const { products, dispatch, productDeleted } = useProductContext()
   const { user } = useAuthContext()
   const navigate = useNavigate()
