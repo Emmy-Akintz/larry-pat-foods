@@ -75,7 +75,7 @@ function UpdateAdmin() {
 
     return (
         <form className="create my-4 w-[350px] h-[320px] rounded-xl bg-green-100 m-auto" onSubmit={handleUpdate}>
-            <Link to='/manager-product' className="absolute top-4 left-4 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm">
+            <Link to='/manager-admins' className="absolute top-4 left-4 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm">
                 <FaBackward />
             </Link>
             <h3 className='font-bold'>Update Admin</h3>
@@ -101,23 +101,36 @@ function UpdateAdmin() {
             <br />
             <br />
 
-            <label>Price in naira: </label>
+            <label>Email: </label>
             <input
-                type="text"
-                onChange={(e) => setPrice(e.target.value)}
-                value={price}
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+                value={Email}
                 className='border rounded px-2'
             />
             <br />
             <br />
 
-            <label>Stock Quantity: </label>
+            <label>Password: </label>
             <input
-                type="number"
-                onChange={(e) => setStockQuantity(e.target.value)}
-                value={stockQuantity}
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+                value={Password}
                 className='border rounded px-2'
             />
+            <br />
+            <br />
+
+            <label>Role: </label>
+            <select
+                value={Role}
+                onChange={(e) => setRole(e.target.value)}
+                className='border rounded px-2'
+            >
+                <option value="admin">Admin</option>
+                <option value="manager">Manager</option>
+            </select>
+            <br />
             <br />
             <br />
 
