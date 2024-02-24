@@ -25,10 +25,11 @@ function UpdateAdmin() {
             const response = await fetch(`http://localhost:2500/api/user/get-admins/${id}`)
             const json = await response.json()
             setAdmin(json)
-            setName(json.name)
-            setDescription(json.description)
-            setPrice(json.price.$numberDecimal)
-            setStockQuantity(json.stockQuantity)
+            setFirstName(json.firstName)
+            setLastName(json.lastName)
+            setEmail(json.email)
+            setPassword(json.password)
+            setRole(json.role)
         }
 
         fetchAdmins()
@@ -46,11 +47,11 @@ function UpdateAdmin() {
             return
         }
 
-        const updatedProduct = { name, description, price, stockQuantity }
+        const updatedAdmin = { FirstName, LastName, Email, Password, Role }
 
         const response = await fetch(`http://localhost:2500/api/product/${product._id}`, {
             method: 'PATCH',
-            body: JSON.stringify(updatedProduct),
+            body: JSON.stringify(updatedAdmin),
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${user.token}`
@@ -77,24 +78,24 @@ function UpdateAdmin() {
             <Link to='/manager-product' className="absolute top-4 left-4 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm">
                 <FaBackward />
             </Link>
-            <h3 className='font-bold'>Update Product</h3>
+            <h3 className='font-bold'>Update Admin</h3>
             <br />
 
-            <label>Product Name: </label>
+            <label>FirstName: </label>
             <input
                 type="text"
-                onChange={(e) => setName(e.target.value)}
-                value={name}
+                onChange={(e) => setFirstName(e.target.value)}
+                value={FirstName}
                 className='border rounded px-2'
             />
             <br />
             <br />
 
-            <label>Description: </label>
+            <label>LastName: </label>
             <input
                 type="text"
-                onChange={(e) => setDescription(e.target.value)}
-                value={description}
+                onChange={(e) => setLastName(e.target.value)}
+                value={LastName}
                 className='border rounded px-2'
             />
             <br />

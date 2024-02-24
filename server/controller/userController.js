@@ -34,16 +34,25 @@ const getAdminsManagers = async (req, res) => {
 // get admin
 const getAdminManager = async (req, res) => {
     try {
-        const { adminManagerId } = req.body
-        const admins = await User.findById(adminManagerId)
-        if (!admins) {
-            return res.status(404).json({ message: 'User not found' })
+        // Extract the ID from the request parameters
+        const { adminManagerId } = req.params;
+
+        // Use the findByadminManagerId method to find the user by ID
+        const user = await User.findById(adminManagerId);
+
+        // Check if the user exists and has the correct role
+        if (user && ['admin', 'manager'].includes(user.role)) {
+            res.json(user);
+        } else {
+            // If the user does not exist or does not have the correct role, return a  404 error
+            res.status(404).json({ message: 'User not found or not an admin/manager' });
         }
-        res.json(admins)
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        // Handle any errors that occur during the process
+        res.status(500).json({ message: error.message });
     }
 }
+
 
 // login user
 const loginUser = async (req, res) => {
