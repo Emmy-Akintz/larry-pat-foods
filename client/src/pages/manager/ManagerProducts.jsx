@@ -29,7 +29,7 @@ const ManagerProducts = () => {
       fetchProducts()
     }
 
-    console.log('re-fetched!');
+    // console.log('re-fetched!');
   }, [user, productDeleted, dispatch])
 
   return (
