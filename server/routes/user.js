@@ -14,7 +14,7 @@ router.get('/get-clients', requireAuth, getClients)
 router.get('/get-admins', requireAuth, getAdminsManagers)
 
 // get admin
-router.get('/get-admin/adminManagerId', requireAuth, getAdminManager)
+router.get('/get-admin/:adminManagerId', requireAuth, getAdminManager)
 
 // login
 router.post('/login', loginUser)
