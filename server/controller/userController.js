@@ -42,7 +42,7 @@ const getAdminManager = async (req, res) => {
 
         // Check if the user exists and has the correct role
         if (user && ['admin', 'manager'].includes(user.role)) {
-            res.json(user);
+            res.status(200).json(user);
         } else {
             // If the user does not exist or does not have the correct role, return a  404 error
             res.status(404).json({ message: 'User not found or not an admin/manager' });

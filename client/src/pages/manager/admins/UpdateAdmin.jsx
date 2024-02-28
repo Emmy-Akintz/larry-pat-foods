@@ -22,8 +22,15 @@ function UpdateAdmin() {
 
     useEffect(() => {
         const fetchAdmins = async () => {
-            const response = await fetch(`http://localhost:2500/api/user/get-admins/${id}`)
+            const response = await fetch(`http://localhost:2500/api/user/get-admin/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
             const json = await response.json()
+            // console.log(json);
             setAdmin(json)
             setFirstName(json.firstName)
             setLastName(json.lastName)
