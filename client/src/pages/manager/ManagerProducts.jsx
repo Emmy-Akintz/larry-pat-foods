@@ -30,7 +30,7 @@ const ManagerProducts = () => {
     }
 
     // console.log('re-fetched!');
-  }, [user, productDeleted, dispatch])
+  }, [user, productDeleted, dispatch, products])
 
   return (
     <div className="">
