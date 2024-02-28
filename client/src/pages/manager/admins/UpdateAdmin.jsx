@@ -16,7 +16,7 @@ function UpdateAdmin() {
     const [FirstName, setFirstName] = useState('')
     const [LastName, setLastName] = useState('')
     const [Email, setEmail] = useState('')
-    const [Password, setPassword] = useState('ABCabc123!')
+    // const [Password, setPassword] = useState('ABCabc123!')
     const [Role, setRole] = useState('')
     const [error, setError] = useState(null)
 
@@ -30,12 +30,11 @@ function UpdateAdmin() {
                 }
             })
             const json = await response.json()
-            // console.log(json);
             setAdmin(json)
             setFirstName(json.firstName)
             setLastName(json.lastName)
             setEmail(json.email)
-            setPassword(json.password)
+            // setPassword(json.password)
             setRole(json.role)
         }
 
@@ -54,9 +53,13 @@ function UpdateAdmin() {
             return
         }
 
-        const updatedAdmin = { FirstName, LastName, Email, Password, Role }
+        const updatedAdmin = {
+            FirstName, LastName, Email,
+            // Password,
+            Role
+        }
 
-        const response = await fetch(`http://localhost:2500/api/product/${product._id}`, {
+        const response = await fetch(`http://localhost:2500/api/user/update-admin/${Admin._id}`, {
             method: 'PATCH',
             body: JSON.stringify(updatedAdmin),
             headers: {
@@ -118,7 +121,7 @@ function UpdateAdmin() {
             <br />
             <br />
 
-            <label>Password: </label>
+            {/* <label>Password: </label>
             <input
                 type="password"
                 onChange={(e) => setPassword(e.target.value)}
@@ -126,7 +129,7 @@ function UpdateAdmin() {
                 className='border rounded px-2'
             />
             <br />
-            <br />
+            <br /> */}
 
             <label>Role: </label>
             <select
