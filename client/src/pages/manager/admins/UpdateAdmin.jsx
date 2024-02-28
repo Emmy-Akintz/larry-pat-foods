@@ -39,7 +39,7 @@ function UpdateAdmin() {
         }
 
         fetchAdmins()
-    }, [id])
+    }, [id, user])
 
     const handleUpdate = async (e) => {
         e.preventDefault()
