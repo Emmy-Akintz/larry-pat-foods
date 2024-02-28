@@ -84,6 +84,8 @@ const updateProduct = async (req, res) => {
 
     const product = await Product.findOneAndUpdate({ _id: productId }, {
         ...req.body
+    }, {
+        new: true, runValidators: true
     })
 
     if (!product) {
