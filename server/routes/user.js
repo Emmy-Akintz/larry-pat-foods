@@ -3,7 +3,7 @@ const requireAuth = require('../middleware/requireAuth')
 const bodyParser = require('body-parser')
 
 // controller functions
-const { getClients, getAdminsManagers, getAdminManager, signupUser, loginUser, deleteUser, forgotPass, resetPass } = require('../controller/userController')
+const { getClients, getAdminsManagers, getAdminManager, signupUser, loginUser, deleteUser, forgotPass, resetPass, updateAdminManager } = require('../controller/userController')
 
 const router = express.Router()
 
@@ -15,6 +15,9 @@ router.get('/get-admins', requireAuth, getAdminsManagers)
 
 // get admin
 router.get('/get-admin/:adminManagerId', requireAuth, getAdminManager)
+
+// update admin or manager
+router.patch('/update-admin/:adminManagerId', requireAuth, updateAdminManager)
 
 // login
 router.post('/login', loginUser)

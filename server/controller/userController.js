@@ -53,6 +53,30 @@ const getAdminManager = async (req, res) => {
     }
 }
 
+// update admin or manager
+const updateAdminManager = async (req, res) => {
+    try {
+        // extract Id from request parameters
+        const { adminManagerId } = req.params
+
+        const user = await User.findByIdAndUpdate(
+            { _id: adminManagerId },
+            {
+                ...req.body
+            },
+            { new: true, runValidators: true }
+        )
+
+        if (!user) {
+            return res.status(400).json({ message: 'User not found' })
+        }
+
+        return res.status(200).json(user)
+    } catch (error) {
+        // handle any potential error during the process
+        return res.status(500).json({ message: error.message })
+    }
+}
 
 // login user
 const loginUser = async (req, res) => {
@@ -183,4 +207,4 @@ const resetPass = async (req, res) => {
     })
 }
 
-module.exports = { getClients, getAdminsManagers, getAdminManager, signupUser, loginUser, deleteUser, forgotPass, resetPass }
+module.exports = { getClients, getAdminsManagers, getAdminManager, signupUser, loginUser, deleteUser, forgotPass, resetPass, updateAdminManager }

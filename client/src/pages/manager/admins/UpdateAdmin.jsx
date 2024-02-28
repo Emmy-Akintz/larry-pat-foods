@@ -75,7 +75,7 @@ function UpdateAdmin() {
             // setEmptyFields(json.emptyFields)
         }
         if (response.ok) {
-            navigate('/manager-admin')
+            navigate('/manager-admins')
             // setEmptyFields([])
             // console.log('new product added!', json);
             dispatch({ type: 'UPDATE_ADMIN', payload: json })
@@ -84,7 +84,7 @@ function UpdateAdmin() {
     }
 
     return (
-        <form className="create my-4 w-[350px] h-[320px] rounded-xl bg-green-100 m-auto" onSubmit={handleUpdate}>
+        <form className="create my-4 w-[350px] h-[auto] rounded-xl bg-green-100 m-auto" onSubmit={handleUpdate}>
             <Link to='/manager-admins' className="absolute top-4 left-4 bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm">
                 <FaBackward />
             </Link>
@@ -142,7 +142,7 @@ function UpdateAdmin() {
             </select>
             <br />
             <br />
-            <br />
+            {/* <br /> */}
 
             <button disabled={isLoading} className={isLoading ? 'bg-green-300 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm m-4' : 'bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm m-4'}>Update Product</button>
             {error && <div className='error text-red-500'>{error}</div>}
