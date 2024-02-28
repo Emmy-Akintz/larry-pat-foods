@@ -90,7 +90,7 @@ const updateProduct = async (req, res) => {
         return res.status(400).json({ error: 'No such product' })
     }
 
-    res.status(200).json(product)
+    return res.status(200).json(product)
 }
 
 module.exports = {
