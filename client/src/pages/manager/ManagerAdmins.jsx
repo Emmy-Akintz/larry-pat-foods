@@ -34,7 +34,7 @@ function ManagerAdmins() {
     if (user && user.user.role === "manager") {
       fetchAdmins()
     }
-  }, [dispatch, user, adminDeleted])
+  }, [dispatch, user, adminDeleted, admins])
 
   return (
     <div className="">
