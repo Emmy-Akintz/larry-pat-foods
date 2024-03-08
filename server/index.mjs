@@ -1,11 +1,17 @@
-import dotenv from 'dotenv'
-dotenv.config()
 import express from 'express'
-const app = express()
+import mongoose from 'mongoose'
+import cors from 'cors'
+import dotenv from 'dotenv'
+
+dotenv.config();
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI);
+
+// Define your routes here
+
 const { PORT } = process.env
-
-app.get('/', (req, res) => {
-    res.send('Welcome to larry-pat foods backend')
-})
-
-app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`))
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
