@@ -5,6 +5,7 @@ import '../../../App.css'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { FaBackward } from 'react-icons/fa'
 
+
 function UpdateAdmin() {
     const { dispatch } = useAdminContext()
     const { user } = useAuthContext()
