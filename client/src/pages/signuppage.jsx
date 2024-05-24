@@ -24,7 +24,7 @@ function Signup() {
     }
 
     return (
-        <div className='logsign p-4 bg-gray-200 h-[100vh]'>
+        <div className='logsign p-4 bg-gray-300 h-[110vh]'>
             <Link to='/'>
                 <div className="p-4 bg-green-500 hover:bg-green-300 w-12 rounded">
                     <IconContext.Provider value={{ color: 'white' }}>
@@ -33,7 +33,7 @@ function Signup() {
                 </div>
             </Link>
             <form action="/" className='rounded-xl w-[300px] md:w-[400px] lg:w-[500px] m-auto p-4 bg-green-100' onSubmit={handleSubmit}>
-                <h1 className='font-bold text-xl'>SIGNUP TO LARRY-PAT FOODS</h1>
+                <h1 className='font-bold text-xl uppercase'>signup page</h1>
                 <br />
                 <label htmlFor="first_name">First Name: </label>
                 <br className="block md:hidden lg:hidden" />
