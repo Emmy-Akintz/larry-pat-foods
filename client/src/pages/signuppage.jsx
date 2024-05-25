@@ -5,8 +5,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import '../App.css'
 import axios from 'axios'
 import { useSignup } from '../hooks/useSignup'
+import InputMaker from './components/Input'
 
-function Signup() {
+export default function Signuppage() {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [firstName, setFirstName] = useState("")
@@ -24,20 +25,21 @@ function Signup() {
     }
 
     return (
-        <div className='logsign p-4 bg-gray-300 h-[110vh]'>
+        <div className='md:logsign px-4 py-12 pb-8  md:p-4  bg-gray-300 h-[120vh] md:h-[100vh] text-black'>
             <Link to='/'>
-                <div className="p-4 bg-green-500 hover:bg-green-300 w-12 rounded">
+                <div className="p-4 bg-green-500 hover:bg-green-300 w-12 rounded-full md:rounded">
                     <IconContext.Provider value={{ color: 'white' }}>
                         <FaHome />
                     </IconContext.Provider>
                 </div>
             </Link>
-            <form action="/" className='rounded-xl w-[300px] md:w-[400px] lg:w-[500px] m-auto p-4 bg-green-100' onSubmit={handleSubmit}>
+            <form action="/" className='rounded-xl w-[300px] md:w-[400px] lg:w-[500px] md:m-auto p-4 bg-green-100' onSubmit={handleSubmit}>
                 <h1 className='font-bold text-xl uppercase'>signup page</h1>
                 <br />
-                <label htmlFor="first_name">First Name: </label>
+                {/* <label htmlFor="first_name">First Name: </label>
                 <br className="block md:hidden lg:hidden" />
-                <input type="text" id='first_name' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' name='first_name' onChange={(e) => setFirstName(e.target.value)} required />
+                <input type="text" id='first_name' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' name='first_name' onChange={(e) => setFirstName(e.target.value)} required /> */}
+                <InputMaker label="First Name: " type="text" id="first_name" classes="" stater={() => setFirstName(e.target.value)} />
                 <br />
                 <br />
                 <label htmlFor="last_name">Last Name: </label>
@@ -55,21 +57,20 @@ function Signup() {
                 <input type="password" id='password' className='rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px]' placeholder='' name='password' onChange={(e) => setPassword(e.target.value)} required />
                 <br />
                 <br />
-                <button type="reset" title='Clear form'><FaTimes /></button>
+                <div className='flex justify-center items-center'>
+                    <p className='mr-3 md:mr-4 lg:mr-8 xl:mr-10 font-semibold'>Clear form?</p>
+                    <button type="reset" title='Clear form' className="bg-red-500 p-2 md:p-4 rounded text-white"><FaTimes /></button>
+                </div>
                 <br />
                 <div className="error text-red-500">
                     {error && <div className='error'>{error}</div>}
                 </div>
                 <button type="submit" disabled={isLoading} className={isLoading ? 'bg-green-300 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm' : 'bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'}>SIGNUP</button>
-                <br />
-                <br />
-                <hr />
-                <br />
-                <p>Already have an account?</p>
             </form>
-            <p>Login <Link to='/login' className='text-green-700 font-bold hover:underline'>HERE</Link></p>
+            <div className='bg-green-100 mt-2 md:mt-[3vh] px-2 py-3 md:px-4 md:py-6 rounded-2xl w-[300px] md:w-[400px] lg:w-[500px] m-auto'>
+                <p>Already have an account?</p>
+                <p>Login <Link to='/login' className='text-green-500 font-bold hover:underline'>HERE</Link></p>
+            </div>
         </div>
     )
 }
-
-export default Signup
