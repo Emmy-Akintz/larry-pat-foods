@@ -9,6 +9,8 @@ import '../../App.css'
 import { useProductContext } from '../../hooks/useProductContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 
+const serveLink = import.meta.env.VITE_SERVER_LINK
+
 function FullProducts() {
     const { dispatch: productDispatch } = useProductContext()
     const [product, setProduct] = useState(null)
@@ -16,7 +18,7 @@ function FullProducts() {
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const response = await fetch('http://localhost:2500/api/product')
+            const response = await fetch(`${serveLink}/api/product`)
             const json = await response.json()
             setProduct(json)
 

@@ -4,6 +4,8 @@ import '../../App.css'
 import { useProductContext } from '../../hooks/useProductContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 
+const serverLink = import.meta.env.VITE_SERVER_LINK
+
 function products() {
 
   const { dispatch: productDispatch } = useProductContext()
@@ -16,7 +18,7 @@ function products() {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await fetch('http://localhost:2500/api/product/')
+      const response = await fetch(`${serverLink}/api/product/`)
       const json = await response.json()
       setProduct(json)
       // console.log(json);
@@ -33,7 +35,7 @@ function products() {
     setIsLoading(true)
     setError('')
 
-    const response = await fetch(`http://localhost:2500/api/user/add-item/${user.id}/${product._id}`, {
+    const response = await fetch(`${serverLink}/api/user/add-item/${user.id}/${product._id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

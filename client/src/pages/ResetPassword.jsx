@@ -4,6 +4,8 @@ import { IconContext } from 'react-icons'
 import { FaHome, FaTimes } from 'react-icons/fa'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 
+const serverLink = import.meta.env.VITE_SERVER_LINK
+
 function ResetPassword() {
     const [password, setPassword] = useState()
     const [error, setError] = useState("")
@@ -19,7 +21,7 @@ function ResetPassword() {
         
         setIsLoading(true)
 
-        axios.post(`http://localhost:2500/api/user/reset-password/${id}/${token}`, { password })
+        axios.post(`${serverLink}/api/user/reset-password/${id}/${token}`, { password })
             .then(response => {
                 if (response.status === 200) {
                     navigate('/login')

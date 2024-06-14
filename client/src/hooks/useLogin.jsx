@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useAuthContext } from './useAuthContext'
 import { useNavigate } from 'react-router-dom'
 
+const serverLink = import.meta.env.VITE_SERVER_LINK
+
 export const useLogin = () => {
     const [error, setError] = useState(null)
     const [isLoading, setIsLoading] = useState(null)
@@ -12,7 +14,7 @@ export const useLogin = () => {
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch('http://localhost:2500/api/user/login', {
+        const response = await fetch(`${serverLink}/api/user/login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })

@@ -3,6 +3,8 @@ import { useProductContext } from '../../hooks/useProductContext'
 import { useNavigate, useParams } from 'react-router-dom'
 import { FaBackward } from 'react-icons/fa'
 
+const serverLink = import.meta.env.VITE_SERVER_LINK
+
 function ProdCardView() {
     const { dispatch } = useProductContext()
     const navigate = useNavigate()
@@ -11,7 +13,7 @@ function ProdCardView() {
 
     useEffect(() => {
         const fetchProduct = async () => {
-            const response = await fetch(`http://localhost:2500/api/product/${id}`)
+            const response = await fetch(`${serverLink}/api/product/${id}`)
             const json = await response.json()
             setProduct(json)
         }

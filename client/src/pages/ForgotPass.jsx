@@ -4,6 +4,8 @@ import { IconContext } from 'react-icons'
 import { FaHome, FaTimes } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
 
+const serverLink = import.meta.env.VITE_SERVER_LINK
+
 function ForgotPass() {
     const [email, setEmail] = useState()
     const [error, setError] = useState("")
@@ -18,7 +20,7 @@ function ForgotPass() {
         
         setIsLoading(true)
 
-        axios.post("http://localhost:2500/api/user/forgot-password", { email })
+        axios.post(`${serverLink}/api/user/forgot-password`, { email })
             .then(response => {
                 if (response.status === 200) {
                     navigate('/login')
