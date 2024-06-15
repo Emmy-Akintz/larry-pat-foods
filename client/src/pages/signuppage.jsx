@@ -32,7 +32,7 @@ export default function Signuppage() {
                     </IconContext.Provider>
                 </div>
             </Link>
-            <form action="/" className='rounded-xl w-[300px] md:w-[400px] lg:w-[500px] md:m-auto p-4 bg-green-100' onSubmit={handleSubmit}>
+            <form action="/" className='rounded-xl w-[300px] md:w-[400px] lg:w-[500px] md:m-auto p-4 bg-[rgb(110,189,138)]' onSubmit={handleSubmit}>
                 <h1 className='font-bold text-xl uppercase border-b-2 pb-4'>signup page</h1>
                 <br />
                 <Input label="First Name: " type="text" id="first_name" classes="" stater={(e) => setFirstName(e.target.value)} />
@@ -47,11 +47,11 @@ export default function Signuppage() {
                 <div className="error text-red-500">
                     {error && <div className='error'>{error}</div>}
                 </div>
-                <button type="submit" disabled={isLoading} className={isLoading ? 'bg-green-300 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm' : 'bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'}>SIGN UP</button>
+                <button type="submit" disabled={isLoading} className={isLoading ? 'bg-green-400 hover:bg-green-500 transition-all py-2 px-4 rounded-3xl text-white text-sm' : 'bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm'}>SIGN UP</button>
             </form>
-            <div className='bg-green-100 mt-2 md:mt-[3vh] px-2 py-3 md:px-4 md:py-6 rounded-2xl w-[300px] md:w-[400px] lg:w-[500px] m-auto'>
+            <div className='bg-[rgb(110,189,138)] mt-2 md:mt-[3vh] px-2 py-3 md:px-4 md:py-6 rounded-2xl w-[300px] md:w-[400px] lg:w-[500px] m-auto'>
                 <p>Already have an Account?</p>
-                <p className='font-semibold'>Login <Link to='/login' className='text-green-500 font-bold underline md:no-underline hover:underline'>HERE</Link></p>
+                <p className='font-semibold'>Login <Link to='/login' className='text-green-700 font-bold underline md:no-underline hover:underline'>HERE</Link></p>
             </div>
         </div>
     )

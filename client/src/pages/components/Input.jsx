@@ -2,18 +2,22 @@ export default function Input({ type, id, label, classes, stater }) {
   return (
     <div className="flex flex-col md:flex-row items-center flex-wrap md:justify-center mt-4 md:mt-6">
       {label ? (
-        <label htmlFor={id} className="mb-3 md:mb-0 font-semibold">
+        <label
+          htmlFor={id}
+          className="mb-3 md:mb-0 font-semibold xl:text-2xl xl:font-normal"
+        >
           {label}
         </label>
       ) : null}
-      {/* <br className="md:hidden lg:hidden"/> */}
+      {/* <br className="md:hidden xl:hidden"/> */}
       <input
         type={type}
         id={id}
-        className={`rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] lg:w-[200px] focus-within:outline-green-200 ml-2 md:ml-3 lg:ml-4  ${classes ? { classes } : ""} `}
+        className={`rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] xl:w-[200px] focus-within:outline-green-200 ml-2 md:ml-3 xl:ml-4 
+        ${classes ? classes : ""}   `}
         onChange={stater}
         required
-        autofill
+        autofill="true"
       ></input>
     </div>
   );
