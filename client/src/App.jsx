@@ -21,7 +21,6 @@ import ProdCardView from './pages/client/ProdCardView';
 import UpdateAdmin from './pages/manager/admins/UpdateAdmin';
 
 function App() {
-  document.title = "Larry-Pat Foods"
   return (
     <>
       <BrowserRouter>
