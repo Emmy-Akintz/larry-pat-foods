@@ -4,7 +4,7 @@ export default function Input({ type, id, label, classes, stater }) {
       {label ? (
         <label
           htmlFor={id}
-          className="mb-3 md:mb-0 font-semibold xl:text-2xl xl:text-[2.63vh]"
+          className="mb-3 md:mb-0 font-semibold lg:text-[2.63vh] basis-full"
         >
           {label}
         </label>
@@ -13,7 +13,7 @@ export default function Input({ type, id, label, classes, stater }) {
         type={type}
         id={id}
         className={`rounded border-gray-700 px-2 py-1 w-[200px] md:w-[200px] xl:w-[200px] focus-within:outline-green-200 ml-2 md:ml-3 xl:ml-4 
-        ${classes ? classes : ""}   `}
+        ${classes ? classes : ""}  xl:basis-3/5 xl:mt-4 `}
         onChange={stater}
         required
       ></input>
