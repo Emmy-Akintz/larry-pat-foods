@@ -32,40 +32,41 @@ export default function Loginpage() {
     }
   }, [user]);
 
+  document.title = "Login | Larry-Pat Foods"
   return (
-    <div className="min-h-screen md:logsign py-2 px-2 bg-gray-200">
+    <div className="min-h-screen h-[110vh] max-2xl:h-[120vh] md:logsign py-2 px-2 bg-gray-200">
       <Link to="/">
-        <div className="p-4 bg-green-500 hover:bg-green-300 w-12 rounded-full md:rounded translate-y-20 md:translate-y-0 translate-x-4 md:translate-x-0 xl:w-[6vw] xl:h-[8vh] xl:rounded-2xl xl:flex xl:justify-center xl:items-center">
+        <div className="p-4 bg-green-500 hover:bg-green-300 w-12 rounded-full md:rounded translate-y-20 md:translate-y-0 translate-x-4 md:translate-x-0 xl:w-[5.6vw] xl:h-[8vh] xl:rounded-full xl:flex xl:justify-center xl:items-center">
           <IconContext.Provider value={{ color: "white", size: "2.6vh", }}>
             <FaHome />
           </IconContext.Provider>
         </div>
       </Link>
-      <br />
-      <div className="lg:flex lg:flex-col lg:justify-center lg:min-h-[70vh]">
+      <br className=" select-none" />
+      <div className="lg:flex lg:flex-col lg:justify-evenly lg:h-fit">
         <form
           action="/"
-          className="rounded-xl sm:w-[300px] md:w-[400px] xl:w-[40vw] max-2xl:h-[50vh]  xl:h-[43vh] md:m-auto px-4 bg-[rgb(132,192,151)]"
+          className="rounded-xl sm:w-[300px] md:w-[400px] xl:w-[40vw] pb-4 md:m-auto px-4 bg-[rgb(132,192,151)]"
           onSubmit={handleSubmit}
         >
-          <h1 className="font-bold text-xl text-[3.6vh] uppercase border-b-2 py-4 border-gray-200 xl:py-8 xl:font-semibold">
+          <h1 className="font-bold text-xl lg:text-[3.45vh] uppercase border-b-2 py-4 border-gray-200 xl:py-8 xl:font-semibold">
             Login
           </h1>
-          <br />
+          <br className=" select-none" />
           <Input
             type="email"
             id="email"
             label="Email: "
             classes=" font-semibold lg:text-xl xl:text-[1.6vh] xl:w-[12vw] xl:h-[3vh]"
             stater={(e) => setEmail(e.target.value)} />
-          <br />
+          <br className=" select-none" />
           <Input
             type="password"
             id="password"
             label="Password: "
-            classes="font-semibold lg:text-xl xl:text-[1.6vh] xl:w-[12vw] xl:h-[3vh]"
+            classes="font-semibold xl:text-[1.8vh] xl:w-[12vw] xl:h-[3vh]"
             stater={(e) => setPassword(e.target.value)} />
-          <br />
+          <br className=" select-none" />
           <div className="flex justify-center items-center pt-4 md:pt-6">
             <p className="mr-3 md:mr-4 lg:mr-8 xl:mr-10 font-semibold text-red-600 xl:text-[2.4vh]">
               Clear form?
@@ -74,12 +75,11 @@ export default function Loginpage() {
               type="reset"
               title="Clear form"
               className="bg-red-500 p-2 md:p-3 rounded text-white xl:p-[1.2vh] xl:rounded-md"
-              onClick={password ? null : ""}
             >
               <FaTimes />
             </button>
           </div>
-          <br />
+          <br className=" select-none" />
           <button
             type="submit"
             disabled={isLoading}
@@ -102,7 +102,7 @@ export default function Loginpage() {
             </Link>
           </p>
         </form>
-        <div className="bg-[rgb(110,189,138)] mt-4 md:mt-10 md:mb-4 rounded-md py-6 px-2 font-semibold w-[300px] md:w-[400px] xl:w-[40vw] md:m-auto md:rounded-xl xl:text-[2vh] xl:h-[10vh]">
+        <div className="bg-[rgb(132,192,151)] mt-4 md:mt-10 md:mb-4 rounded-md py-6 px-2 font-semibold w-[300px] md:w-[400px] xl:w-[40vw] md:m-auto md:rounded-xl xl:text-[2vh] xl:h-[10vh]">
           <p>Don't have an account?</p>
           <p>
             Sign Up{" "}
