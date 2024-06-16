@@ -4,12 +4,11 @@ export default function Input({ type, id, label, classes, stater }) {
       {label ? (
         <label
           htmlFor={id}
-          className="mb-3 md:mb-0 font-semibold xl:text-2xl xl:font-normal"
+          className="mb-3 md:mb-0 font-semibold xl:text-2xl xl:text-[2.63vh]"
         >
           {label}
         </label>
       ) : null}
-      {/* <br className="md:hidden xl:hidden"/> */}
       <input
         type={type}
         id={id}
@@ -17,7 +16,6 @@ export default function Input({ type, id, label, classes, stater }) {
         ${classes ? classes : ""}   `}
         onChange={stater}
         required
-        autofill="true"
       ></input>
     </div>
   );
