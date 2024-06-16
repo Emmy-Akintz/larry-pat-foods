@@ -9,6 +9,8 @@ import '../../App.css'
 import { useProductContext } from '../../hooks/useProductContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 
+const serveLink = import.meta.env.VITE_SERVER_LINK
+
 function FullProducts() {
     const { dispatch: productDispatch } = useProductContext()
     const [product, setProduct] = useState(null)
@@ -16,7 +18,7 @@ function FullProducts() {
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const response = await fetch('http://localhost:2500/api/product')
+            const response = await fetch(`${serveLink}/api/product`)
             const json = await response.json()
             setProduct(json)
 
@@ -75,7 +77,7 @@ function FullProducts() {
                 placeholder='Search Product...'
             />
             <div className="grid grid-cols-2 gap-10 md:grid md:grid-cols-3 lg:grid lg:grid-cols-4 justify-between w-5/6 mx-auto mt-8">
-                {product && product.filter((item) => {
+                {product && product ? product.filter((item) => {
                     return search.toLowerCase() === '' ? item : item.name.toLowerCase().includes(search)
                 }).map(e => (
                     <div className="bg-white w-[150px] md:w-[150px] lg:w-[150px] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto" key={e._id}>
@@ -92,7 +94,9 @@ function FullProducts() {
                         <br />
                         <span className="text-sm">{e.stockQuantity} left</span>
                     </div>
-                ))}
+                )): <div className=''>
+                        <p className=''>No products available</p>
+                    </div>}
             </div>
         </div>
     )

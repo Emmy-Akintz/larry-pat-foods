@@ -4,6 +4,8 @@ import '../../App.css'
 import { useProductContext } from '../../hooks/useProductContext'
 import { useAuthContext } from '../../hooks/useAuthContext'
 
+const serverLink = import.meta.env.VITE_SERVER_LINK
+
 function products() {
 
   const { dispatch: productDispatch } = useProductContext()
@@ -16,7 +18,7 @@ function products() {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await fetch('http://localhost:2500/api/product/')
+      const response = await fetch(`${serverLink}/api/product/`)
       const json = await response.json()
       setProduct(json)
       // console.log(json);
@@ -33,7 +35,7 @@ function products() {
     setIsLoading(true)
     setError('')
 
-    const response = await fetch(`http://localhost:2500/api/user/add-item/${user.id}/${product._id}`, {
+    const response = await fetch(`${serverLink}/api/user/add-item/${user.id}/${product._id}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -61,7 +63,7 @@ function products() {
         <h1 className="prod-1 7font-bold text-5xl">What We Offer</h1>
         <p className="">Curious? Here are our most popular items.</p>
         <div className="grid grid-cols-2 gap-6 md:flex lg:flex justify-between w-5/6 mx-auto mt-8">
-          {product && product.slice(0, 4).map(product => (
+          {product && product ? product.slice(0, 4).map(product => (
             <div className="bg-white w-[150px] md:w-[150px] lg:w-[30%] rounded-xl border-2 border-white hover:border-gray-300 transition-all p-4 my-4 mx-auto" key={product._id}>
               <img src="images/anh-nguyen-kcA-c3f_3FE-unsplash-removebg-preview.png" alt={product.name} />
               <p className="font-bold text-green-500">{product.name}</p>
@@ -73,7 +75,7 @@ function products() {
               <br />
               <span className="text-sm">{product.stockQuantity} left</span>
             </div>
-          ))}
+          )): <div>No product available</div>}
         </div>
         <br />
         <button>

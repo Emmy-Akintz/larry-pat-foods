@@ -4,6 +4,8 @@ import { useLogout } from '../hooks/useLogout'
 import { useNavigate } from 'react-router-dom'
 import { FaBackward } from 'react-icons/fa'
 
+const serverLink = import.meta.env.VITE_SERVER_LINK
+
 function Profile() {
   const { logout } = useLogout()
   const { user, dispatch } = useAuthContext()
@@ -28,7 +30,7 @@ function Profile() {
     setIsLoading(true)
     setError('')
 
-    const response = await fetch(`http://localhost:2500/api/user/clear-cart/${user.id}`, {
+    const response = await fetch(`${serverLink}/api/user/clear-cart/${user.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
