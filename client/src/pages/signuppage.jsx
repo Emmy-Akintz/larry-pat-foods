@@ -4,7 +4,7 @@ import { FaHome, FaTimes } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useSignup } from "../hooks/useSignup";
-import Input from "./components/Input";
+import Input from "../components/Input";
 
 export default function Signuppage() {
   const [email, setEmail] = useState("");

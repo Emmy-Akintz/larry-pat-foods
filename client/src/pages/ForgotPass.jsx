@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { IconContext } from 'react-icons'
 import { FaHome, FaTimes } from 'react-icons/fa'
 import { Link, useNavigate } from 'react-router-dom'
-import Input from './components/Input'
+import Input from '../components/Input'
 
 const serverLink = import.meta.env.VITE_SERVER_LINK
 

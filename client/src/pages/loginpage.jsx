@@ -4,7 +4,7 @@ import { FaHome, FaTimes } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogin } from "../hooks/useLogin";
-import Input from "./components/Input";
+import Input from "../components/Input";
 
 export default function Loginpage() {
   const { user } = useAuthContext();
