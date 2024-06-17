@@ -42,6 +42,7 @@ function ManagerAdmins() {
         <FaBackward />
       </Link>
       <h3 className='font-bold text-2xl'>ADMIN FORMS</h3>
+      <p className='font-light'>Shows both admin and manager</p>
       <br />
       <br />
       <div className="md:flex lg:flex lg:w-[1300px] justify-between m-[auto]">

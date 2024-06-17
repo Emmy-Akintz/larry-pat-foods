@@ -129,8 +129,6 @@ function AdminForm() {
             <br />
             <button type="reset" title='Clear form'><FaTimes /></button>
             <br />
-            <br />
-            <br />
 
             <button disabled={isLoading} className={isLoading ? 'bg-green-300 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm m-4' : 'bg-green-500 hover:bg-green-400 transition-all py-2 px-4 rounded-3xl text-white text-sm m-4'}>Add Manager/Admin</button>
             {error && <div className='text-red-500'>{error}</div>}
