@@ -21,11 +21,10 @@ import ProdCardView from './pages/client/ProdCardView';
 import UpdateAdmin from './pages/manager/admins/UpdateAdmin';
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
-        <div className="App">
+        <div className="App overflow-x-hidden">
           <Routes>
             <Route path='/' element={<Parentpage />} />
             <Route path='/profile' element={<Profile />} />

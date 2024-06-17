@@ -157,5 +157,5 @@
 /* login and signup */
 
 .logsign {
-  animation: 1s ease-in-out 0s 1 slideInRight;
+  animation: 0.7s ease-out 0s 1 slideInRight forwards;
 }
