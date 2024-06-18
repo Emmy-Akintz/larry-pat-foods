@@ -102,7 +102,7 @@ export default function Loginpage() {
             </Link>
           </p>
         </form>
-        <div className="bg-[rgb(132,192,151)] mt-4 md:mt-10 md:mb-4 rounded-md py-6 px-2 font-semibold w-[300px] md:w-[400px] xl:w-[40vw] md:m-auto md:rounded-xl xl:text-[2vh] xl:h-[10vh]">
+        <div className="bg-[rgb(132,192,151)] mt-4 md:mt-10 md:mb-4 rounded-md py-6 px-2 font-semibold w-[300px] md:w-[400px] xl:w-[40vw] md:m-auto md:rounded-xl xl:text-[2vh] xl:h-[10vh] lg:flex lg:flex-col lg:justify-center">
           <p>Don't have an account?</p>
           <p>
             Sign Up{" "}
