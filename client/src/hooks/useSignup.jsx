@@ -23,6 +23,9 @@ export const useSignup = () => {
         if (!response.ok) {
             setIsLoading(false)
             setError(json.message)
+            setTimeout(() => {
+                setError("")
+            }, 5000)
         }
         if (response.ok) {
             navigate('/login')
@@ -30,6 +33,5 @@ export const useSignup = () => {
             setIsLoading(false)
         }
     }
-
     return { signup, isLoading, error }
 }

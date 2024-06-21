@@ -19,7 +19,8 @@ export const useLogin = () => {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
         })
-        const json = await response.json()
+        console.log(response)
+        const json = response.json()
 
         // console.log(json, response);
         // console.log(json.role);
@@ -27,6 +28,9 @@ export const useLogin = () => {
         if (!response.ok) {
             setIsLoading(false)
             setError(json.message)
+            setTimeout(() => {
+                setError("")
+            }, 5000)
         }
         if (response.ok) {
             localStorage.setItem('larry-pat-user', JSON.stringify(json))

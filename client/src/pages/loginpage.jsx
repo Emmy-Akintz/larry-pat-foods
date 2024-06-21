@@ -4,7 +4,7 @@ import { FaHome, FaTimes } from "react-icons/fa";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuthContext } from "../hooks/useAuthContext";
 import { useLogin } from "../hooks/useLogin";
-import Input from "./components/Input";
+import Input from "../components/Input";
 
 export default function Loginpage() {
   const { user } = useAuthContext();
@@ -89,8 +89,8 @@ export default function Loginpage() {
           >
             LOGIN
           </button>
-          <div className="error text-red-500">
-            {error && <div className="error">{error}</div>}
+          <div className={`error text-white text-[2.6vh] absolute top-1 left-2 ${error ? "bg-red-400" : "bg-transparent"}   px-8 py-4 rounded-md`}>
+            {error}
           </div>
           <p className="  border-t-gray-200 border-t-2 pt-6 mb-6 xl:text-[2.25vh] xl:font-semibold">
             Forgot Your{" "}
@@ -102,7 +102,7 @@ export default function Loginpage() {
             </Link>
           </p>
         </form>
-        <div className="bg-[rgb(132,192,151)] mt-4 md:mt-10 md:mb-4 rounded-md py-6 px-2 font-semibold w-[300px] md:w-[400px] xl:w-[40vw] md:m-auto md:rounded-xl xl:text-[2vh] xl:h-[10vh]">
+        <div className="bg-[rgb(132,192,151)] mt-4 md:mt-10 md:mb-4 rounded-md py-6 px-2 font-semibold w-[300px] md:w-[400px] xl:w-[40vw] md:m-auto md:rounded-xl xl:text-[2vh] xl:h-[10vh] lg:flex lg:flex-col lg:justify-center">
           <p>Don't have an account?</p>
           <p>
             Sign Up{" "}
