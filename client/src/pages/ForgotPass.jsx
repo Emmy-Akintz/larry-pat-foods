@@ -13,7 +13,7 @@ function ForgotPass() {
     const [isLoading, setIsLoading] = useState(false)
     setTimeout(() => {
         setError("")
-    }, 3000)
+    }, 5000)
     const navigate = useNavigate()
 
     const handleSubmit = (e) => {
@@ -28,11 +28,11 @@ function ForgotPass() {
                     setIsLoading(false)
                 }
             }).catch(err => {
-                // console.log(err);
+                console.log(err);
                 setIsLoading(false)
                 if (err) {
                     console.log(err.response.status)
-                    setError(err.response.data.message)
+                    setError(err.message)
                 }
             })
     }
@@ -74,7 +74,7 @@ function ForgotPass() {
                 >
                     SEND
                 </button>
-                <div className="error text-red-500">
+                <div className={`error text-white text-[2.6vh] absolute top-1 left-2 ${error ? "bg-red-400" : "bg-transparent" }   px-8 py-4 rounded-md`}>
                     {error}
                 </div>
             </form>

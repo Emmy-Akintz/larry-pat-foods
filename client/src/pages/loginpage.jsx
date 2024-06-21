@@ -89,8 +89,8 @@ export default function Loginpage() {
           >
             LOGIN
           </button>
-          <div className="error text-red-500">
-            {error && <div className="error">{error}</div>}
+          <div className={`error text-white text-[2.6vh] absolute top-1 left-2 ${error ? "bg-red-400" : "bg-transparent"}   px-8 py-4 rounded-md`}>
+            {error}
           </div>
           <p className="  border-t-gray-200 border-t-2 pt-6 mb-6 xl:text-[2.25vh] xl:font-semibold">
             Forgot Your{" "}
