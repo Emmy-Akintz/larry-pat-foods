@@ -49,7 +49,7 @@ export default function Loginpage() {
           className="rounded-xl sm:w-[300px] md:w-[400px] xl:w-[40vw] pb-4 md:m-auto px-4 bg-[rgb(132,192,151)]"
           onSubmit={handleSubmit}
         >
-          <h1 className="font-bold text-xl lg:text-[3.45vh] uppercase border-b-2 py-4 border-gray-200 xl:py-8 xl:font-semibold">
+          <h1 className="font-bold text-xl lg:text-[3.45vh] uppercase border-b-2 py-4 border-gray-200 text-black xl:py-8 xl:font-semibold">
             Login
           </h1>
           <br className=" select-none" />
@@ -92,7 +92,7 @@ export default function Loginpage() {
           <div className={`error text-white text-[2.6vh] absolute top-1 left-2 ${error ? "bg-red-400" : "bg-transparent"}   px-8 py-4 rounded-md`}>
             {error}
           </div>
-          <p className="  border-t-gray-200 border-t-2 pt-6 mb-6 xl:text-[2.25vh] xl:font-semibold">
+          <p className="  border-t-gray-200 border-t-2 pt-6 mb-6 xl:text-[2.25vh] xl:font-semibold text-black">
             Forgot Your{" "}
             <Link
               to="/forgotPass"
@@ -102,7 +102,7 @@ export default function Loginpage() {
             </Link>
           </p>
         </form>
-        <div className="bg-[rgb(132,192,151)] mt-4 md:mt-10 md:mb-4 rounded-md py-6 px-2 font-semibold w-[300px] md:w-[400px] xl:w-[40vw] md:m-auto md:rounded-xl xl:text-[2vh] xl:h-[10vh] lg:flex lg:flex-col lg:justify-center">
+        <div className="text-black bg-[rgb(132,192,151)] mt-4 md:mt-10 md:mb-4 rounded-md py-6 px-2 font-semibold w-[300px] md:w-[400px] xl:w-[40vw] md:m-auto md:rounded-xl xl:text-[2vh] xl:h-[10vh] lg:flex lg:flex-col lg:justify-center">
           <p>Don't have an account?</p>
           <p>
             Sign Up{" "}
