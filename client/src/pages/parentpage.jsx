@@ -9,10 +9,9 @@ import Contact from '../pages/client/contact'
 import { Link, useNavigate, } from 'react-router-dom'
 
 import { FaArrowAltCircleUp, FaShoppingCart } from 'react-icons/fa'
-import '../App.css'
+import { IconContext } from 'react-icons'
 
 import { useAuthContext } from '../hooks/useAuthContext'
-import { IconContext } from 'react-icons'
 
 function Parentpage() {
   const { user } = useAuthContext()
